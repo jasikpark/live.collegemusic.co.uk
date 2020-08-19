@@ -3,7 +3,6 @@ _tmp/
 .DS_Store
 node_modules/
 package-lock.json
-yarn.lock
 _site_style.css
 # Local Netlify folder
 .netlify

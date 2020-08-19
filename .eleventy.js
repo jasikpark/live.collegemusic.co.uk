@@ -12,7 +12,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("base_url", function () {
-    return "https://live-collegemusic-co-uk.netlify.app/";
+    return "https://live-collegemusic-co-uk.netlify.app";
   });
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {

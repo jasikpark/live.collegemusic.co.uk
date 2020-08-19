@@ -4,3 +4,4 @@ _tmp/
 node_modules/
 package-lock.json
 yarn.lock
+_site_style.css

@@ -4,6 +4,81 @@
   color: black;
 }
 
+.background {
+  background: linear-gradient(71.61deg, #693a88 -2.65%, #37416d 90.64%);
+}
+
+.framing {
+  background: linear-gradient(180deg, #2f1f60 0%, #460e62 100%);
+}
+
+.artist-spotlight {
+  background: red;
+  height: 368px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.now-playing {
+  background: blue;
+  height: 120px;
+  width: 100%;
+  max-width: 430px;
+}
+
+.play-history {
+  background: yellow;
+  width: 100%;
+  max-width: 430px;
+  height: 214px;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  min-width: 298px;
+}
+.video-container embed,
+.video-container iframe,
+.video-container object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chat-container {
+  position: relative;
+  padding-bottom: 141%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  min-width: 298px;
+  min-height: 360px;
+}
+.chat-container embed,
+.chat-container iframe,
+.chat-container object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 1280px) {
+  .hello-container {
+    display: grid;
+    grid-template-columns: calc(747px / 1045px) calc(298px / 1045px);
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
 @tailwind components;
 
 @tailwind utilities;

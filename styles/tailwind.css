@@ -13,24 +13,23 @@
 }
 
 .artist-spotlight {
-  background: red;
-  height: 368px;
-  max-width: 400px;
+  height: 300px;
+  max-width: 430px;
   width: 100%;
 }
 
 .now-playing {
-  background: blue;
+  background: linear-gradient(180deg, #8dc4fc 0%, #e0c3fc 100%);
   height: 120px;
   width: 100%;
   max-width: 430px;
 }
 
 .play-history {
-  background: yellow;
+  background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
   width: 100%;
   max-width: 430px;
-  height: 214px;
+  height: 180px;
 }
 
 .video-container {
@@ -73,7 +72,7 @@
 @media (min-width: 1280px) {
   .hello-container {
     display: grid;
-    grid-template-columns: calc(747px / 1045px) calc(298px / 1045px);
+    grid-template-columns: 5fr 2fr;
     gap: 1rem;
     padding: 1rem;
   }

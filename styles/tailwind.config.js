@@ -9,11 +9,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
   },
   theme: {
-    extend: {
-      colors: {
-        change: "black",
-      },
-    },
+    extend: {},
   },
   variants: {},
   plugins: [],

@@ -69,9 +69,15 @@
 }
 
 .controls {
-  width: 245px;
+  width: 100%;
   height: 316px;
   background: red;
+}
+
+@media (min-width: 1024px) {
+  .controls {
+    width: 245px;
+  }
 }
 
 .artist-spotlight {
@@ -79,7 +85,7 @@
 
 .artist-hero {
   min-width: 65px;
-  min-height: 130px;
+  min-height: 135px;
   color: white;
 }
 
@@ -98,8 +104,12 @@
 
 .kalaido {
   background-color: #f6d9c1;
-  background: url("/static/kalaido.png") bottom center;
-  background: url("/static/kalaido.png") bottom center, #f6d9c1;
+  background: url("/static/kalaido.png") bottom center no-repeat;
+  background: url("/static/kalaido.png") bottom center no-repeat, #f6d9c1;
+}
+
+.kalaido::before {
+  background-color: #f6d9c1;
 }
 
 .wei {
@@ -110,9 +120,13 @@
 
 .santpoort {
   background-color: #f8b6b3;
-  background: url("/static/santpoort.png") bottom center;
-  background: url("/static/santpoort.png") bottom center,
+  background: url("/static/santpoort.png") bottom center no-repeat;
+  background: url("/static/santpoort.png") bottom center no-repeat,
     linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
+}
+
+.santpoort::before {
+  background: linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
 }
 
 .eillah {

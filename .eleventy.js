@@ -1,5 +1,16 @@
 const htmlmin = require("html-minifier");
 const env = require("env-var");
+const myTldjs = require(`tldjs`).fromUserSettings({
+  validHosts: ["localhost"],
+});
+const { getDomain } = myTldjs;
+
+function base_url() {
+  return env
+    .get("BASE_URL")
+    .default("https://live-collegemusic-co-uk.netlify.app")
+    .asString();
+}
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
@@ -16,11 +27,14 @@ module.exports = function (eleventyConfig) {
     return String(Date.now());
   });
 
-  eleventyConfig.addShortcode("base_url", function () {
-    return env
-      .get("BASE_URL")
-      .default("live-collegemusic-co-uk.netlify.app")
-      .asString();
+  eleventyConfig.addShortcode("base_url", base_url);
+
+  eleventyConfig.addShortcode("base_domain", function () {
+    const url = base_url();
+    console.log(url);
+    const domain = getDomain(url);
+    console.log(domain);
+    return domain;
   });
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {

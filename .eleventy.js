@@ -1,4 +1,5 @@
 const htmlmin = require("html-minifier");
+const env = require("env-var");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
@@ -14,7 +15,10 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("base_url", function () {
-    return "live-collegemusic-co-uk.netlify.app";
+    return env
+      .get("BASE_URL")
+      .default("live-collegemusic-co-uk.netlify.app")
+      .asString();
   });
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {

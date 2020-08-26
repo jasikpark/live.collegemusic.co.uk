@@ -116,6 +116,7 @@
 }
 
 .kalaido::before {
+  content: "";
   background-color: #f6d9c1;
 }
 
@@ -133,6 +134,7 @@
 }
 
 .santpoort::before {
+  content: "";
   background: linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
 }
 

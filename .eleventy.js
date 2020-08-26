@@ -3,7 +3,6 @@ const env = require("env-var");
 const myTldjs = require(`tldjs`).fromUserSettings({
   validHosts: ["localhost"],
 });
-const { getDomain } = myTldjs;
 
 function base_url() {
   return env
@@ -29,12 +28,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode("base_url", base_url);
 
-  eleventyConfig.addShortcode("base_domain", function () {
+  eleventyConfig.addShortcode("hostname", function () {
     const url = base_url();
     console.log(url);
-    const domain = getDomain(url);
-    console.log(domain);
-    return domain;
+    const hostname = myTldjs.parse(url).hostname;
+    console.log(hostname);
+    return hostname;
   });
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {

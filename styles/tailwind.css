@@ -80,6 +80,52 @@
 .artist-hero {
   min-width: 65px;
   min-height: 130px;
+  color: white;
+}
+
+.kyle-mcevoy {
+  background-color: #4fc2e8;
+  background: url("/static/kyle_mcevoy.png") bottom center;
+  background: url("/static/kyle_mcevoy.png") bottom center,
+    linear-gradient(
+      89.71deg,
+      #4fc2e8 0.35%,
+      #4fc2e8 31.97%,
+      #41b0d8 85.87%,
+      #36a8ce 99.86%
+    );
+}
+
+.kalaido {
+  background-color: #f6d9c1;
+  background: url("/static/kalaido.png") bottom center;
+  background: url("/static/kalaido.png") bottom center, #f6d9c1;
+}
+
+.wei {
+  background-color: #f8b6b3;
+  background: url("/static/wei.png") bottom center;
+  background: url("/static/wei.png") bottom center, #f8b6b3;
+}
+
+.santpoort {
+  background-color: #f8b6b3;
+  background: url("/static/santpoort.png") bottom center;
+  background: url("/static/santpoort.png") bottom center,
+    linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
+}
+
+.eillah {
+  background-color: #f372e6;
+  background: url("/static/eillah.png") bottom center;
+  background: url("/static/eillah.png") bottom center,
+    linear-gradient(180deg, #eae9ff 0%, #f372e6 95.31%, #43488e 100%);
+}
+
+.brillon {
+  background-color: #f8b6b3;
+  background: url("/static/brillon.png") bottom center;
+  background: url("/static/brillon.png") bottom center, #f8b6b3;
 }
 
 @tailwind components;

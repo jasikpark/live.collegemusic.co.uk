@@ -10,6 +10,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("static/");
 
+  eleventyConfig.addPassthroughCopy({ "static/favicons/": "/" });
+
   eleventyConfig.addShortcode("version", function () {
     return String(Date.now());
   });

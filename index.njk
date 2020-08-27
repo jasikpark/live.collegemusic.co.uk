@@ -7,7 +7,7 @@
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8">
             <h1 class="text-white inline">College Music | Lofi Hip Hop Radio</h1>
             <span>
-                <time class="text-white inline">Mon 9:15 pm.</time>
+                <time class="text-white inline" @load="showTime()">Mon 9:15 pm.</time>
                 <svg class="inline" aria-label="partially-cloudy" width="21" height="18" viewbox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.71">
                         <path opacity="0.71" d="M11.0921 10.4131C11.0691 10.4131 11.0421 10.4131 11.0201 10.4131C10.9026 10.411 10.7851 10.4157 10.6681 10.4271C10.4417 9.43484 9.85839 8.56045 9.02917 7.97032C8.19996 7.38019 7.18273 7.11552 6.17105 7.22666C5.15938 7.33781 4.22387 7.81702 3.54256 8.5731C2.86125 9.32918 2.48168 10.3094 2.4761 11.3271C2.47692 11.4641 2.48459 11.6009 2.4991 11.7371C1.79276 11.8148 1.14221 12.1576 0.678795 12.6963C0.215375 13.2351 -0.0263962 13.9295 0.00228916 14.6395C0.0309745 15.3496 0.32798 16.0223 0.833346 16.5218C1.33871 17.0214 2.01479 17.3106 2.7251 17.3311H11.0931C11.9994 17.3157 12.8633 16.9448 13.4988 16.2985C14.1342 15.6521 14.4903 14.782 14.4903 13.8756C14.4903 12.9692 14.1342 12.0991 13.4988 11.4527C12.8633 10.8064 11.9994 10.4355 11.0931 10.4201L11.0921 10.4131Z" fill="white"/>
@@ -20,12 +20,12 @@
         <div class="hello-container space-y-4 lg:space-y-0 px-2 sm:px-8">
             <div class="">
                 <div class="video-container">
-                    <iframe class="rounded-sm" width="853" height="480" src="https://www.youtube-nocookie.com/embed/MCkTebktHVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+                    <iframe class="rounded-lg" width="853" height="480" src="https://www.youtube-nocookie.com/embed/MCkTebktHVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
                 </div>
             </div>
             <div class="">
                 <div class="chat-container">
-                    <iframe class="rounded-sm" width="480" height="480" referrerpolicy="origin" src="https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain={% hostname %}&dark_theme=1" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
+                    <iframe class="rounded-lg" width="480" height="480" referrerpolicy="origin" src="https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain={% hostname %}&dark_theme=1" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>
             </div>
         </div>

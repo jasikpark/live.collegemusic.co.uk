@@ -11,7 +11,7 @@
 @media (min-width: 1024px) {
   .hello-container {
     display: grid;
-    grid-template-columns: 64% 36%;
+    grid-template-columns: calc(64% - 0.64rem) calc(36% - 0.36rem);
     gap: 1rem;
   }
 }

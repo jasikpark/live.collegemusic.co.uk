@@ -58,20 +58,18 @@
   background: linear-gradient(180deg, #8dc4fc 0%, #e0c3fc 100%);
   height: 120px;
   width: 100%;
-  max-width: 430px;
 }
 
 .play-history {
   background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
   width: 100%;
-  max-width: 430px;
   height: 180px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
   .now-playing,
   .play-history {
-    width: 430px;
+    width: 400px;
   }
 }
 
@@ -83,7 +81,7 @@
 
 @media (min-width: 1024px) {
   .controls {
-    width: 245px;
+    width: 200px;
   }
 }
 
@@ -91,7 +89,6 @@
 }
 
 .artist-hero {
-  min-width: 65px;
   min-height: 130px;
   color: white;
 }

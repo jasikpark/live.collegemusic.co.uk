@@ -6,8 +6,8 @@
     <div class="sm:my-4 sm:rounded-lg space-y-4 framing">
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8">
             <h1 class="text-white inline">College Music | Lofi Hip Hop Radio</h1>
-            <span>
-                <time class="text-white inline" @load="showTime()">Mon 9:15 pm.</time>
+            <span x-data="initClock()" x-init="startClock">
+                <time x-text="time" class="text-white inline"></time>
                 <svg class="inline" aria-label="partially-cloudy" width="21" height="18" viewbox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.71">
                         <path opacity="0.71" d="M11.0921 10.4131C11.0691 10.4131 11.0421 10.4131 11.0201 10.4131C10.9026 10.411 10.7851 10.4157 10.6681 10.4271C10.4417 9.43484 9.85839 8.56045 9.02917 7.97032C8.19996 7.38019 7.18273 7.11552 6.17105 7.22666C5.15938 7.33781 4.22387 7.81702 3.54256 8.5731C2.86125 9.32918 2.48168 10.3094 2.4761 11.3271C2.47692 11.4641 2.48459 11.6009 2.4991 11.7371C1.79276 11.8148 1.14221 12.1576 0.678795 12.6963C0.215375 13.2351 -0.0263962 13.9295 0.00228916 14.6395C0.0309745 15.3496 0.32798 16.0223 0.833346 16.5218C1.33871 17.0214 2.01479 17.3106 2.7251 17.3311H11.0931C11.9994 17.3157 12.8633 16.9448 13.4988 16.2985C14.1342 15.6521 14.4903 14.782 14.4903 13.8756C14.4903 12.9692 14.1342 12.0991 13.4988 11.4527C12.8633 10.8064 11.9994 10.4355 11.0931 10.4201L11.0921 10.4131Z" fill="white"/>
@@ -32,8 +32,18 @@
 
         <div class="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:space-y-0 lg:space-x-4 pb-8 px-2 sm:px-8">
             <div class="grid grid-flow-row gap-4">
-                <div class="flex justify-center items-center rounded-lg now-playing">
+                <div class="flex justify-center space-x-4 items-center rounded-lg now-playing">
                     <img class="now-playing-album-art" aria-labeledby="now-playing-song-details" src="/static/plush_memories__refeeld.jpg"/>
+                    <svg width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint0_linear)"/>
+                        <defs>
+                            <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
+                                <stop stop-color="#2594D0"/>
+                                <stop offset="1" stop-color="#F6F6F6"/>
+                            </lineargradient>
+                        </defs>
+                    </svg>
+
                     <div id="now-playing-song-details">
                         <p>Delightful</p>
                         <p>Refeeld</p>

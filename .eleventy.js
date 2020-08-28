@@ -57,6 +57,10 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy({
+    "./node_modules/dayjs/dayjs.min.js": "./js/dayjs.min.js",
+  });
+
+  eleventyConfig.addPassthroughCopy({
     "./site.js": "./js/site.js",
   });
 };

@@ -32,25 +32,38 @@
 
         <div class="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:space-y-0 lg:space-x-4 pb-8 px-2 sm:px-8">
             <div class="grid grid-flow-row gap-4">
-                <div class="flex justify-center space-x-4 items-center rounded-lg now-playing">
+                <div class="rounded-lg now-playing">
                     <img class="now-playing-album-art" aria-labeledby="now-playing-song-details" src="/static/plush_memories__refeeld.jpg"/>
-                    <svg width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint0_linear)"/>
-                        <defs>
-                            <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
-                                <stop stop-color="#2594D0"/>
-                                <stop offset="1" stop-color="#F6F6F6"/>
-                            </lineargradient>
-                        </defs>
-                    </svg>
+                    <div class="now-playing-container-1 flex justify-center space-x-4 items-center">
+                        <svg id="play-pause" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint0_linear)"/>
+                            <defs>
+                                <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
+                                    <stop stop-color="#2594D0"/>
+                                    <stop offset="1" stop-color="#F6F6F6"/>
+                                </lineargradient>
+                            </defs>
+                        </svg>
 
-                    <div id="now-playing-song-details">
-                        <p>Delightful</p>
-                        <p>Refeeld</p>
+                        <div id="now-playing-song-details">
+                            <p>Delightful</p>
+                            <p>Refeeld</p>
+                        </div>
                     </div>
+                    <div class="song-options flex space-x-1">
+                        <span>+</span><span>h</span><span>s</span>
+                    </div>
+
                 </div>
-                <div class="flex justify-center items-center rounded-lg play-history">
-                    <h1>Playing History</h1>
+                <div class="relative rounded-lg overflow-y-scroll play-history">
+                    <h1 class="sticky bg-red-100 top-0 left-0 h-8">Last Played</h1>
+                    <div class="song-block bg-orange-100">Hello</div>
+                    <div class="song-block bg-yellow-100">World</div>
+                    <div class="song-block bg-green-100">Nice</div>
+                    <div class="song-block bg-blue-100">To</div>
+                    <div class="song-block bg-indigo-100">Meet</div>
+                    <div class="song-block bg-purple-100">You</div>
+
                 </div>
             </div>
             <div class="flex justify-center items-center rounded-lg controls">

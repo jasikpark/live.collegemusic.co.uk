@@ -12,7 +12,7 @@
   .hello-container {
     display: grid;
     grid-template-columns: 64fr 36fr;
-    gap: 1rem;
+    gap: 2rem;
   }
 }
 
@@ -90,6 +90,7 @@
 }
 
 .song-block {
+  position: relative;
   height: 65px;
   text-align: center;
   scroll-snap-align: start;

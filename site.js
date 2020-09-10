@@ -16,7 +16,7 @@ function initClock() {
 
 function initWeather() {
   return {
-    weather_icon: "http://openweathermap.org/img/wn/02d@2x.png",
+    weather_icon: "",
     getWeather: function () {
       const geoOptions = {
         maximumAge: 5 * 60 * 1000,
@@ -29,11 +29,11 @@ function initWeather() {
         const longitude = position.coords.longitude;
 
         fetch(
-          `http://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${latitude}&lon=${longitude}`
+          `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${latitude}&lon=${longitude}`
         )
           .then((response) => response.json())
           .then((data) => {
-            self.weather_icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
           });
       }
 
@@ -55,11 +55,11 @@ function initWeather() {
         .then((response) => response.json())
         .then((data) => {
           fetch(
-            `http://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
+            `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
           )
             .then((response) => response.json())
             .then((data) => {
-              self.weather_icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+              self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             });
         });
     },

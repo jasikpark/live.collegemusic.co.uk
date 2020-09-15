@@ -89,11 +89,16 @@
   height: 180px;
 }
 
+.play-history-header {
+  background: rgba(18, 21, 96, 0.17);
+}
+
 .song-block {
   position: relative;
-  height: 65px;
+  min-height: 4rem;
   text-align: center;
   scroll-snap-align: start;
+  background: linear-gradient(to bottom, transparent, rgba(18, 21, 96, 0.17));
 }
 
 .song-block-container {

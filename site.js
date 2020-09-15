@@ -2,7 +2,6 @@ function initClock() {
   return {
     time: dayjs().format("ddd. h:mm a"),
     startClock: function () {
-      console.log("called startClock");
       const self = this;
       function updateClock() {
         self.time = dayjs().format("ddd. h:mm a");
@@ -64,4 +63,20 @@ function initWeather() {
         });
     },
   };
+}
+
+function initSongData() {
+  return {
+    songData: null,
+    getSongData: function() {
+      var self = this;
+
+      let sub = new WebSocket('wss://api.collegemusic.co.uk/static/api/live/nowplaying/cm');
+      sub.onmessage = function(event) {
+        let data = JSON.parse(event.data);
+        console.log(data);
+        self.songData = data;
+      }
+    }
+  }
 }

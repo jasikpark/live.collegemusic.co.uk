@@ -10,8 +10,8 @@
                 <span x-data="initClock()" x-init="startClock">
                     <time x-text="time" class="text-white inline"></time>
                 </span>
-                <span x-data="initWeather()" x-init="getWeather2">
-                    <img x-bind:src="weather_icon" class="inline h-10"></img>
+                <span x-data="initWeather()" x-init="getWeather2" class="overflow-y-hidden">
+                    <img x-bind:src="weather_icon" class="inline h-8"></img>
                 </span>
             </span>
         </header>
@@ -30,71 +30,51 @@
         </div>
 
         <div class="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:space-y-0 lg:space-x-8 pb-8 px-2 sm:px-8">
-            <div class="grid grid-flow-row gap-4">
-                <div class="rounded-lg now-playing">
-                    <img class="now-playing-album-art" aria-labeledby="now-playing-song-details" src="/static/plush_memories__refeeld.jpg"/>
-                    <div class="now-playing-container-1 flex justify-center space-x-4 items-center">
-                        <svg id="play-pause" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint0_linear)"/>
-                            <defs>
-                                <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
-                                    <stop stop-color="#2594D0"/>
-                                    <stop offset="1" stop-color="#F6F6F6"/>
-                                </lineargradient>
-                            </defs>
-                        </svg>
+            <div x-data="initSongData()" x-init="getSongData" class="grid grid-flow-row gap-4">
+                <template x-if="songData">
+                    <div class="rounded-lg now-playing">
+                        <img :src="songData.now_playing.song.art" class="now-playing-album-art" aria-labeledby="now-playing-song-details" src="/static/plush_memories__refeeld.jpg"/>
+                        <div class="now-playing-container-1 flex justify-center space-x-4 items-center">
+                            <svg id="play-pause" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint0_linear)"/>
+                                <defs>
+                                    <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
+                                        <stop stop-color="#2594D0"/>
+                                        <stop offset="1" stop-color="#F6F6F6"/>
+                                    </lineargradient>
+                                </defs>
+                            </svg>
 
-                        <div id="now-playing-song-details">
-                            <p>Delightful</p>
-                            <p>Refeeld</p>
+                            <div class="max-w-xs pr-4" id="now-playing-song-details">
+                                <p class="text-gray-700 font-semibold" x-text="songData.now_playing.song.title">Delightful</p>
+                                <p class="text-gray-100 font-semibold" x-text="songData.now_playing.song.artist">Refeeld</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="song-options flex space-x-1">
-                        <span>+</span><span>h</span><span>s</span>
-                    </div>
+                        <div class="song-options flex space-x-1">
+                            <span>+</span><span>h</span><span>s</span>
+                        </div>
 
-                </div>
-                <div class="rounded-lg  play-history">
-                    <div class="flex rounded-t-lg justify-start align-center bg-red-100 h-8">
-                        <h1 class="pl-4 text-lg font-bold text-gray-700">Last Played</h1>
+                    </div>
+                </template>
+                <div class="rounded-lg play-history overflow-hidden">
+                    <div class="flex rounded-t-lg justify-start align-center h-8 play-history-header">
+                        <h1 class="pl-4 pt-1 text-lg font-bold text-gray-700">Last Played</h1>
                     </div>
                     <div class="overflow-y-scroll rounded-b-lg song-block-container">
-                        <div class="song-block bg-orange-100">
-                            <span>Hello</span>
-                            <div class="song-options flex space-x-1">
-                                <span>+</span><span>h</span><span>s</span>
+                        <template x-if="songData" x-for="song in songData.song_history" :key="song">
+                            <div class="song-block">
+                                <div class="flex align-center space-x-4 py-4 pl-4">
+                                    <img class="h-12 w-12" :src="song.song.art"></img>
+                                    <div class="max-w-xs">
+                                        <p class="text-gray-700 font-semibold text-left" x-text="song.song.title">Delightful</p>
+                                        <p class="text-gray-100 font-semibold text-left" x-text="song.song.artist">Refeeld</p>
+                                    </div>
+                                </div>
+                                <div class="song-options flex space-x-1">
+                                    <span>+</span><span>h</span><span>s</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="song-block bg-yellow-100">
-                            <span>World</span>
-                            <div class="song-options flex space-x-1">
-                                <span>+</span><span>h</span><span>s</span>
-                            </div>
-                        </div>
-                        <div class="song-block bg-green-100">
-                            <span>Nice</span>
-                            <div class="song-options flex space-x-1">
-                                <span>+</span><span>h</span><span>s</span>
-                            </div>
-                        </div>
-                        <div class="song-block bg-blue-100">
-                            <span>To</span>
-                            <div class="song-options flex space-x-1">
-                                <span>+</span><span>h</span><span>s</span>
-                            </div>
-                        </div>
-                        <div class="song-block bg-indigo-100">
-                            <span>Meet</span>
-                            <div class="song-options flex space-x-1">
-                                <span>+</span><span>h</span><span>s</span>
-                            </div>
-                        </div>
-                        <div class="song-block bg-purple-100">
-                            <span>You</span>
-                            <div class="song-options flex space-x-1">
-                                <span>+</span><span>h</span><span>s</span>
-                            </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>

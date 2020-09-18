@@ -36,6 +36,12 @@ module.exports = function (eleventyConfig) {
     return hostname;
   });
 
+  eleventyConfig.addShortcode("this_is_dev_server", function () {
+    if (!process.env.ELEVENTY_PRODUCTION) {
+      return "🚧 ";
+    }
+  });
+
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (
       process.env.ELEVENTY_PRODUCTION &&

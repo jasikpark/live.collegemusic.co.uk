@@ -124,18 +124,23 @@
   }
 }
 
-.artist-spotlight {
-}
-
 .artist-hero {
   min-height: 130px;
   color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.artist-hero:hover,
+.artist-hero:focus-within {
+  @apply shadow-2xl;
+  transform: scale(1.1);
 }
 
 .kyle-mcevoy {
   background-color: #4fc2e8;
-  background: url("/static/kyle_mcevoy.png") bottom center;
-  background: url("/static/kyle_mcevoy.png") bottom center,
+  background: url("/static/kyle_mcevoy.png") bottom center no-repeat;
+  background: url("/static/kyle_mcevoy.png") bottom center no-repeat,
     linear-gradient(
       89.71deg,
       #4fc2e8 0.35%,

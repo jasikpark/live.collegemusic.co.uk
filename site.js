@@ -67,16 +67,59 @@ function initWeather() {
 
 function initSongData() {
   return {
-    songData: null,
-    getSongData: function() {
+    songData: {
+      now_playing: {
+        elapsed: 78,
+        remaining: 33,
+        sh_id: 51197,
+        played_at: 1600545484,
+        duration: 111,
+        playlist: "default",
+        streamer: "",
+        is_request: false,
+        song: {
+          id: "",
+          text: "-- --",
+          artist: "--",
+          title: "--",
+          album: "--",
+          lyrics: "",
+          art: "/static/default_album_art.png",
+          custom_fields: [],
+        },
+      },
+      playing_next: false,
+      song_history: false,
+    },
+
+    getSongData: function () {
       var self = this;
 
-      let sub = new WebSocket('wss://api.collegemusic.co.uk/static/api/live/nowplaying/cm');
-      sub.onmessage = function(event) {
+      let sub = new WebSocket(
+        "wss://api.collegemusic.co.uk/static/api/live/nowplaying/cm"
+      );
+      sub.onmessage = function (event) {
         let data = JSON.parse(event.data);
         console.log(data);
         self.songData = data;
-      }
-    }
-  }
+      };
+    },
+  };
+}
+
+function initArtistHero() {
+  return {
+    setupArtistLink: function ($el) {
+      let up,
+        down,
+        link = $el.querySelector("a");
+      $el.onmousedown = () => (down = +new Date());
+      $el.onmouseup = () => {
+        up = +new Date();
+        if (up - down < 200) {
+          link.click();
+        }
+      };
+    },
+  };
 }

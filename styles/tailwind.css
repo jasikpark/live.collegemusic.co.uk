@@ -95,7 +95,7 @@
 
 .song-block {
   position: relative;
-  min-height: 4rem;
+  min-height: calc(90px - 1rem);
   text-align: center;
   scroll-snap-align: start;
   background: linear-gradient(to bottom, transparent, rgba(18, 21, 96, 0.17));

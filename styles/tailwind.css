@@ -109,7 +109,7 @@
 @media (min-width: 1024px) {
   .now-playing,
   .play-history {
-    width: 550px;
+    width: 34rem;
   }
 }
 

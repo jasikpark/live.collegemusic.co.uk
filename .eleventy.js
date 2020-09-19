@@ -39,6 +39,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("this_is_dev_server", function () {
     if (!process.env.ELEVENTY_PRODUCTION) {
       return "🚧 ";
+    } else {
+      return "";
     }
   });
 

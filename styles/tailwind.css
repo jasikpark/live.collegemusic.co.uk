@@ -146,20 +146,20 @@
 }
 
 .kalaido {
-  background-color: #f6d9c1;
+  background-color: #f0dac4;
   background: url("/static/kalaido.png") bottom center no-repeat;
-  background: url("/static/kalaido.png") bottom center no-repeat, #f6d9c1;
+  background: url("/static/kalaido.png") bottom center no-repeat, #f0dac4;
 }
 
 .kalaido::before {
   content: "";
-  background-color: #f6d9c1;
+  background-color: #f0dac4;
 }
 
 .wei {
   background-color: #f8b6b3;
-  background: url("/static/wei.png") bottom center;
-  background: url("/static/wei.png") bottom center, #f8b6b3;
+  background: url("/static/wei.png") bottom center no-repeat;
+  background: url("/static/wei.png") bottom center no-repeat, #f8b6b3;
 }
 
 .santpoort {
@@ -177,15 +177,15 @@
 
 .eillah {
   background-color: #f372e6;
-  background: url("/static/eillah.png") bottom center;
-  background: url("/static/eillah.png") bottom center,
+  background: url("/static/eillah.png") bottom center no-repeat;
+  background: url("/static/eillah.png") bottom center no-repeat,
     linear-gradient(180deg, #eae9ff 0%, #f372e6 95.31%, #43488e 100%);
 }
 
 .brillon {
   background-color: #f8b6b3;
-  background: url("/static/brillon.png") bottom center;
-  background: url("/static/brillon.png") bottom center, #f8b6b3;
+  background: url("/static/brillon.png") bottom center no-repeat;
+  background: url("/static/brillon.png") bottom center no-repeat, #f8b6b3;
 }
 
 @tailwind components;

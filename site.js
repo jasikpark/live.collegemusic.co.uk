@@ -115,6 +115,8 @@ function initSongData() {
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
+      } else {
+        this.$el.querySelector("a").click();
       }
     },
   };

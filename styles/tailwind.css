@@ -1,5 +1,9 @@
 @tailwind base;
 
+[x-cloak] {
+  @apply hidden;
+}
+
 .background {
   background: linear-gradient(71.61deg, #693a88 -2.65%, #37416d 90.64%);
 }

@@ -109,14 +109,14 @@ function initSongData() {
       if (navigator.share) {
         navigator
           .share({
-            title: "live.collegemusic.co.uk",
-            text: "Check out live.collegemusic.co.uk.",
-            url: "https://live.collegemusic.co.uk",
+            title: "College Music YT",
+            text: "Check out the College Music Youtube.",
+            url: "https://youtube.com/collegemusic",
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
-        alert("Check out live.collegemusic.co.uk.");
+        window.location.href = "https://youtube.com/collegemusic";
       }
     },
   };

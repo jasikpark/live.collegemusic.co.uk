@@ -109,14 +109,14 @@ function initSongData() {
       if (navigator.share) {
         navigator
           .share({
-            title: "web.dev",
-            text: "Check out web.dev.",
-            url: "https://web.dev/",
+            title: "live.collegemusic.co.uk",
+            text: "Check out live.collegemusic.co.uk.",
+            url: "https://live.collegemusic.co.uk",
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
-        this.$el.querySelector("a").click();
+        alert("Check out live.collegemusic.co.uk.");
       }
     },
   };

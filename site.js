@@ -1,10 +1,18 @@
 function initClock() {
   return {
-    time: dayjs().format("ddd. h:mm a"),
+    time: new Intl.DateTimeFormat("default", {
+      weekday: "short",
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(),
     startClock: function () {
       const self = this;
       function updateClock() {
-        self.time = dayjs().format("ddd. h:mm a");
+        self.time = new Intl.DateTimeFormat("default", {
+          weekday: "short",
+          hour: "numeric",
+          minute: "2-digit",
+        }).format();
       }
       setInterval(() => {
         updateClock();

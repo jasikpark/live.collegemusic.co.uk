@@ -152,6 +152,7 @@
       #41b0d8 85.87%,
       #36a8ce 99.86%
     );
+  background-size: cover;
 }
 
 .kalaido {
@@ -169,6 +170,7 @@
   background-color: #f8b6b3;
   background: url("/static/wei.png") bottom center no-repeat;
   background: url("/static/wei.png") bottom center no-repeat, #f8b6b3;
+  background-size: cover;
 }
 
 .santpoort {
@@ -195,6 +197,7 @@
   background-color: #f8b6b3;
   background: url("/static/brillon.png") bottom center no-repeat;
   background: url("/static/brillon.png") bottom center no-repeat, #f8b6b3;
+  background-size: cover;
 }
 
 @tailwind components;

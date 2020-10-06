@@ -39,7 +39,7 @@
                 <div class="rounded-lg now-playing">
                     <img :src="songData.now_playing.song.art" class="now-playing-album-art" aria-labeledby="now-playing-song-details" src="/static/default_album_art.png"/>
                     <div class="now-playing-container-1 flex justify-center space-x-4 items-center">
-                        <button x-data="{ playing: false }" @click="playing = !playing">
+                        <button @click="playing = !playing">
                             <svg aria-label="paused" :class="{ 'hidden': playing, 'block': !playing }" class="block w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0)">
                                     <path d="M26.8704 22.4705L10.1135 33.7965C6.0304 36.5569 0.5 33.6571 0.5 28.7611V6.10612C0.5 1.20727 6.0304 -1.68962 10.1135 1.0707L26.8704 12.3968C30.4508 14.8171 30.4508 20.0501 26.8704 22.4705Z" fill="black"/>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="song-options flex justify-center align-center space-x-2">
-                        <button @click="alert('you added it to a playlist')">
+                        <button @click="openSongLink()">
                             <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="#002251" stroke-width="0.8"/>
                             </svg>
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
                                     <div class="song-options flex justify-center align-center space-x-2">
-                                        <button @click="alert('you added it to a playlist')">
+                                        <button @click="openSongLink()">
                                             <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="#002251" stroke-width="0.8"/>
                                             </svg>

@@ -102,6 +102,8 @@ function initSongData() {
       song_history: false,
     },
 
+    playing: false,
+
     getSongData: function () {
       var self = this;
 
@@ -110,9 +112,16 @@ function initSongData() {
       );
       sub.onmessage = function (event) {
         let data = JSON.parse(event.data);
-        console.log(data);
         self.songData = data;
       };
+    },
+
+    openSongLink: function () {
+      window.open(
+        "https://song.link/us/i/1532373384",
+        "_blank",
+        "noopener noreferrer"
+      );
     },
 
     shareSong: function () {
@@ -126,7 +135,11 @@ function initSongData() {
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
-        window.location.href = "https://youtube.com/collegemusic";
+        window.open(
+          "https://youtube.com/collegemusic",
+          "_blank",
+          "noopener noreferrer"
+        );
       }
     },
   };

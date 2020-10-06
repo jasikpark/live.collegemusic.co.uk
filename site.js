@@ -24,6 +24,7 @@ function initClock() {
 function initWeather() {
   return {
     weather_icon: "",
+    weather_description: "",
     getWeather: function () {
       const geoOptions = {
         maximumAge: 5 * 60 * 1000,
@@ -67,6 +68,7 @@ function initWeather() {
             .then((response) => response.json())
             .then((data) => {
               self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+              self.weather_description = data.weather[0].description;
             });
         });
     },

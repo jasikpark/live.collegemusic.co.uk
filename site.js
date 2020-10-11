@@ -104,6 +104,8 @@ function initSongData() {
 
     playing: false,
 
+    songLink: "https://song.link/us/i/1532373384",
+
     getSongData: function () {
       var self = this;
 
@@ -120,7 +122,7 @@ function initSongData() {
       window.open(
         "https://song.link/us/i/1532373384",
         "_blank",
-        "noopener noreferrer"
+        "noopener,noreferrer"
       );
     },
 
@@ -138,7 +140,7 @@ function initSongData() {
         window.open(
           "https://youtube.com/collegemusic",
           "_blank",
-          "noopener noreferrer"
+          "noopener,noreferrer"
         );
       }
     },

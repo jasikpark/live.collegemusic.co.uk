@@ -120,11 +120,12 @@
 .controls {
   width: 100%;
   height: 316px;
+  color: white;
 }
 
 @media (min-width: 1024px) {
   .controls {
-    width: 200px;
+    width: 250px;
   }
 }
 

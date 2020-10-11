@@ -74,19 +74,6 @@
   left: 1rem;
 }
 
-.now-playing-container-1 {
-  position: absolute;
-  left: 8rem;
-  top: 0;
-  bottom: 0;
-}
-
-.song-options {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
 .play-history {
   background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
   width: 100%;
@@ -98,7 +85,6 @@
 }
 
 .song-block {
-  position: relative;
   min-height: calc(90px - 1rem);
   text-align: center;
   scroll-snap-align: start;

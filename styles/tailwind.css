@@ -117,7 +117,7 @@
 
 @media (min-width: 1024px) {
   .artist-spotlight {
-    min-width: 23rem;
+    min-width: 5rem;
   }
 }
 
@@ -196,3 +196,19 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer utilities {
+  @responsive {
+    @variants hover, focus {
+      .text-shadow-sm {
+        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+      }
+      .text-shadow {
+        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+      }
+      .drop-shadow {
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      }
+    }
+  }
+}

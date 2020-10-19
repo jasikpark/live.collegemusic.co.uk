@@ -6,7 +6,7 @@ const myTldjs = require(`tldjs`).fromUserSettings({
 
 function base_url() {
   return env
-    .get("BASE_URL")
+    .get("DEPLOY_PRIME_URL")
     .default("https://live-collegemusic-co-uk.netlify.app")
     .asString();
 }

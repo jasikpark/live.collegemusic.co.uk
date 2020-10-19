@@ -36,7 +36,8 @@ body::-webkit-scrollbar-thumb {
   .hello-container {
     display: grid;
     grid-template-columns: 64fr 36fr;
-    gap: 20rem;
+    gap: 2rem;
+    max-width: 70vw; /* this is setting the height of the video and chat by proxy since they are percentages based off the width */
   }
 }
 
@@ -137,7 +138,7 @@ body::-webkit-scrollbar-thumb {
 
 @media (min-width: 1024px) {
   .artist-spotlight {
-    min-width: 5rem;
+    max-width: 30rem;
   }
 }
 

@@ -3,7 +3,7 @@ publish = "_site/"
 command = "yarn run build"
 
 [context.branch-deploy]
-command = "export BASE_URL=DEPLOY_PRIME_URL && yarn run build"
+command = "export BASE_URL=$DEPLOY_PRIME_URL && yarn run build"
 
 [context.deploy-preview]
-command = "export BASE_URL=DEPLOY_PRIME_URL && yarn run build"
+command = "export BASE_URL=$DEPLOY_PRIME_URL && yarn run build"

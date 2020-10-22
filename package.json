@@ -19,7 +19,5 @@
     "tailwindcss": "^1.7.2",
     "tldjs": "^2.3.1"
   },
-  "dependencies": {
-    "dayjs": "^1.8.34"
-  }
+  "dependencies": {}
 }

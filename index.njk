@@ -141,13 +141,15 @@
             <div class="flex flex-col justify-start space-y-2 p-2 pt-4 controls">
                 <div class="group flex gap-2 justify-end text-white hover:text-purple-500">
                     <input class="w-3/4" type="range" min="1" max="100" value="25" id="volume">
-                    <label class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-purple-400 group-hover:bg-opacity-25 active:text-purple-700" for="volume">
-                        <svg class="not-sr-only" width="22" height="21" viewbox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g opacity="0.83">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7496 18.1736V18.1724V16.3709C15.3263 15.6043 17.1254 13.1902 17.1254 10.4993C17.1254 7.80925 15.326 5.39513 12.7496 4.62863V2.82593C14.4639 3.21505 16.0185 4.18531 17.1282 5.55698C18.2547 6.94935 18.875 8.70457 18.875 10.4993C18.875 12.2941 18.2547 14.0495 17.1282 15.4421C16.0183 16.8143 14.4637 17.7842 12.7508 18.1733L12.7496 18.1736ZM11 17.4995L10.9983 17.4978L6.6251 13.1246H3.125V7.87493H6.6251L11 3.50003V17.4971V17.4995ZM12.7496 14.0174V14.0158V6.97313C14.0997 7.64865 14.9375 9.00016 14.9375 10.4993C14.9375 12.0028 14.0997 13.3506 12.751 14.0167L12.7496 14.0174Z" fill="currentColor"/>
-                            </g>
-                        </svg>
-                        <span class="sr-only">Volume</span>
+                    <label for="volume">
+                        <button class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-purple-400 group-hover:bg-opacity-25 active:text-purple-700">
+                            <svg class="not-sr-only inline" width="22" height="21" viewbox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g opacity="0.83">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7496 18.1736V18.1724V16.3709C15.3263 15.6043 17.1254 13.1902 17.1254 10.4993C17.1254 7.80925 15.326 5.39513 12.7496 4.62863V2.82593C14.4639 3.21505 16.0185 4.18531 17.1282 5.55698C18.2547 6.94935 18.875 8.70457 18.875 10.4993C18.875 12.2941 18.2547 14.0495 17.1282 15.4421C16.0183 16.8143 14.4637 17.7842 12.7508 18.1733L12.7496 18.1736ZM11 17.4995L10.9983 17.4978L6.6251 13.1246H3.125V7.87493H6.6251L11 3.50003V17.4971V17.4995ZM12.7496 14.0174V14.0158V6.97313C14.0997 7.64865 14.9375 9.00016 14.9375 10.4993C14.9375 12.0028 14.0997 13.3506 12.751 14.0167L12.7496 14.0174Z" fill="currentColor"/>
+                                </g>
+                            </svg>
+                            <span class="sr-only">Volume</span>
+                        </button>
                     </label>
                 </div>
                 <div class="grid grid-flow-row grid-cols-2 gap-2">

@@ -28,6 +28,14 @@ module.exports = {
       "group-focus",
       "active",
     ],
+    backgroundOpacity: [
+      "responsive",
+      "hover",
+      "focus",
+      "group-hover",
+      "group-focus",
+      "active",
+    ],
   },
   plugins: [],
 };

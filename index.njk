@@ -10,12 +10,12 @@
             </a>
             <h1 class="text-white inline">College Music |
                 <span class="font-semibold">Lofi Hip Hop Radio</span></h1>
-            <span class="rounded-lg bg-gray-100 bg-opacity-25 p-2">
+            <span>
                 <span x-data="initClock()" x-init="startClock">
                     <time x-text="time" class="text-white inline"></time>
                 </span>
-                <span x-data="initWeather()" x-init="getWeather2" class="overflow-y-hidden">
-                    <img aria-hidden="true" :src="weather_icon" :title="weather_description" class="inline h-8">
+                <span x-data="initWeather()" x-init="getWeather2">
+                    <img aria-hidden="true" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow">
                     <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
                 </span>
             </span>

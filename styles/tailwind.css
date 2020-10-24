@@ -180,6 +180,13 @@ how to remove the virtical space around the range input in IE*/
   height: 100%;
 }
 
+@media (min-width: 1024px) {
+  .now-playing,
+  .play-history {
+    width: 23rem;
+  }
+}
+
 .now-playing {
   position: relative;
   background: linear-gradient(180deg, #8dc4fc 0%, #e0c3fc 100%);
@@ -208,7 +215,6 @@ how to remove the virtical space around the range input in IE*/
 
 .song-block {
   min-height: calc(90px - 1rem);
-  text-align: center;
   scroll-snap-align: start;
   background: linear-gradient(to bottom, transparent, rgba(18, 21, 96, 0.17));
 }
@@ -216,13 +222,6 @@ how to remove the virtical space around the range input in IE*/
 .song-block-container {
   height: calc(180px - 2rem);
   scroll-snap-type: y mandatory;
-}
-
-@media (min-width: 1024px) {
-  .now-playing,
-  .play-history {
-    width: 34rem;
-  }
 }
 
 .controls {

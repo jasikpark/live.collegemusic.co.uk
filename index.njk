@@ -38,21 +38,15 @@
             <div x-data="initSongData()" x-init="getSongData" class="grid grid-flow-row gap-4">
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
-                    <div class="flex flex-wrap w-full justify-center space-x-4 align-center p-3 sm:pr-4 pl-32">
+                    <div class="min-w-0 flex-1 flex space-x-4 align-center p-3 sm:pr-4 pl-32">
                         <button :title="playing ? 'playing' : 'paused'" :aria-label="playing ? 'playing' : 'paused'" @click.debounce="playing = !playing">
                             <svg aria-label="paused" :class="{ 'hidden': playing, 'block': !playing }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0)">
-                                    <path d="M26.8704 22.4705L10.1135 33.7965C6.0304 36.5569 0.5 33.6571 0.5 28.7611V6.10612C0.5 1.20727 6.0304 -1.68962 10.1135 1.0707L26.8704 12.3968C30.4508 14.8171 30.4508 20.0501 26.8704 22.4705Z" fill="black"/>
-                                </g>
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
                                 <defs>
-                                    <lineargradient id="paint0_linear" x1="-11.729" y1="-6.29059" x2="-11.729" y2="28.5762" gradientunits="userSpaceOnUse">
-                                        <stop stop-color="#4F4F4F"/>
-                                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                                    <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
+                                        <stop stop-color="#2594D0"/>
+                                        <stop offset="1" stop-color="#F6F6F6"/>
                                     </lineargradient>
-                                    <clippath id="clip0">
-                                        <rect width="29.0557" height="34.8668" fill="white" transform="translate(0.5)"/>
-                                    </clippath>
                                 </defs>
                             </svg>
 
@@ -67,9 +61,9 @@
                             </svg>
                         </button>
 
-                        <div class="flex-grow flex flex-col justify-center" id="now-playing-song-details">
-                            <p class="text-gray-700 text-shadow-sm font-semibold break-words" x-text="songData.now_playing.song.title">--</p>
-                            <p class="text-gray-100 text-shadow-sm font-semibold break-words" x-text="songData.now_playing.song.artist">--</p>
+                        <div class="min-w-0 flex-1" id="now-playing-song-details">
+                            <p class="text-gray-700 text-shadow-sm font-semibold truncate" data-text="songData.now_playing.song.title">Hello this is another line a;lsdkjf;alksjdf;alksdfj;alsdkfj;als</p>
+                            <p class="text-gray-100 text-shadow-sm font-semibold truncate" x-text="songData.now_playing.song.artist">--</p>
                         </div>
 
                         <div class="self-start flex justify-center align-center space-x-3">
@@ -104,11 +98,11 @@
                         <div class="overflow-y-scroll rounded-b-lg song-block-container">
                             <template x-for="song in songData.song_history" :key="song">
                                 <div class="song-block">
-                                    <div class="flex flex-wrap align-center w-full space-x-4 p-3 sm:px-4">
+                                    <div class="flex w-full align-center space-x-4 p-3 sm:px-4">
                                         <img class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art"/>
-                                        <div class="flex-grow">
-                                            <p class="text-gray-700 text-shadow-sm font-semibold text-left break-words" x-text="song.song.title">Delightful</p>
-                                            <p class="text-gray-100 text-shadow-sm font-semibold text-left break-words" x-text="song.song.artist">Refeeld</p>
+                                        <div class="min-w-0 flex-1">
+                                            <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate" x-text="song.song.title">Delightful</p>
+                                            <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate" x-text="song.song.artist">Refeeld</p>
                                         </div>
                                         <div class="self-start flex justify-center align-center space-x-3">
                                             <a title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLink">

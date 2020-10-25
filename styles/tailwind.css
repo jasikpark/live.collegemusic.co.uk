@@ -138,7 +138,10 @@ how to remove the virtical space around the range input in IE*/
     display: grid;
     grid-template-columns: 64fr 36fr;
     gap: 2rem;
-    max-width: 70vw; /* this is setting the height of the video and chat by proxy since they are percentages based off the width */
+    max-width: 70vw;
+    max-width: calc(
+      (350px * 2.9423868313) + 2rem
+    ); /* this is setting the height of the video and chat by proxy since they are percentages based off the width */
   }
 }
 
@@ -180,19 +183,11 @@ how to remove the virtical space around the range input in IE*/
   height: 100%;
 }
 
-@media (min-width: 1024px) {
-  .now-playing,
-  .play-history {
-    width: 23rem;
-  }
-}
-
 .now-playing {
   position: relative;
   background: linear-gradient(180deg, #8dc4fc 0%, #e0c3fc 100%);
   height: 5.4rem;
   margin-top: 2rem;
-  width: 100%;
 }
 
 .now-playing-album-art {
@@ -205,7 +200,6 @@ how to remove the virtical space around the range input in IE*/
 
 .play-history {
   background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
-  width: 100%;
   height: 180px;
 }
 

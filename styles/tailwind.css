@@ -224,32 +224,6 @@ how to remove the virtical space around the range input in IE*/
   scroll-snap-type: y mandatory;
 }
 
-.controls {
-  width: 100%;
-  height: 316px;
-  color: white;
-}
-
-.controls .btn-background {
-  padding: 0.25rem;
-  height: 2rem;
-  width: 2rem;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.15),
-      rgba(255, 255, 255, 0.15)
-    ),
-    rgba(255, 255, 255, 0.0001);
-  clip-path: circle(50%);
-  backdrop-filter: blur(103.295px);
-}
-
-@media (min-width: 1024px) {
-  .controls {
-    width: 300px;
-  }
-}
-
 @media (min-width: 1024px) {
   .artist-spotlight {
     max-width: 25rem;

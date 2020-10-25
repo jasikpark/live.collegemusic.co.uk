@@ -9,7 +9,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
   },
   theme: {
-    extend: {},
+    extend: { width: { 72: "18rem" } },
   },
   variants: {
     textColor: [

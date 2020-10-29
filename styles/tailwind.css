@@ -302,7 +302,8 @@ how to remove the virtical space around the range input in IE*/
 }
 
 .purple-wave {
-  left: 0;
+  left: -20px;
+  right: -50px;
   bottom: -150px;
 }
 

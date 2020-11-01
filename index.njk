@@ -99,8 +99,8 @@
                             <template x-for="song in songData.song_history" :key="song">
                                 <div class="song-block">
                                     <div class="flex w-full align-center space-x-4 p-3 sm:px-4">
-                                        <img class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art"/>
-                                        <div class="min-w-0 flex-1">
+                                        <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art"/>
+                                        <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1">
                                             <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate" x-text="song.song.title">Delightful</p>
                                             <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate" x-text="song.song.artist">Refeeld</p>
                                         </div>
@@ -260,8 +260,8 @@
                 </div>
             </div>
         </div>
-        <img src="/static/pink-wave.svg" class="absolute -z-10 pink-wave"/>
-        <img src="/static/purple-wave.svg" class="absolute -z-10 purple-wave"/>
-        <img src="/static/blue-wave.svg" class="absolute -z-10 blue-wave"/>
+        <img alt="" src="/static/pink-wave.svg" class="absolute -z-10 pink-wave"/>
+        <img alt="" src="/static/purple-wave.svg" class="absolute -z-10 purple-wave"/>
+        <img alt="" src="/static/blue-wave.svg" class="absolute -z-10 blue-wave"/>
     </div>
 {% endblock %}

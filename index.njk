@@ -45,7 +45,7 @@
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
                     <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-32">
-                        <button class="hidden sm:block" :title="playing ? 'playing' : 'paused'" :aria-label="playing ? 'playing' : 'paused'" @click.debounce="playing = !playing">
+                        <button class="hidden sm:block" :title="playing ? 'playing' : 'paused'" :aria-label="playing ? 'playing' : 'paused'" @click="playing = !playing">
                             <svg aria-label="paused" :class="{ 'hidden': playing, 'block': !playing }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
                                 <defs>
@@ -142,7 +142,7 @@
                 <div x-data="{ volume: 25, muted: false }" class="group flex space-x-3 justify-end ">
                     <input class="w-3/4" x-model:value="volume" @change="muted = false" @input="muted = false" type="range" min="1" max="100" value="25" id="volume">
                     <label for="volume">
-                        <button @click.debounce="muted = !muted" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
+                        <button @click="muted = !muted" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
 
                             <!-- new icons -->
                             <svg aria-hidden="true" id="muted" class="hidden" :class="{ 'hidden': !muted, 'block': muted }" width="24" height="17" viewbox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">

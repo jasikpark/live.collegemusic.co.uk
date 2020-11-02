@@ -4,6 +4,10 @@
   @apply hidden;
 }
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /** styling the scrollbar **/
 html {
   --scrollbarBG: rgb(0, 0, 0, 0.1);

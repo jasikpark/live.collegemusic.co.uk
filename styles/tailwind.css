@@ -224,6 +224,11 @@ how to remove the virtical space around the range input in IE*/
   }
 }
 
+.artist-spotlight h2 svg {
+  left: 0.925rem;
+  top: -0.575rem;
+}
+
 .artist-hero {
   min-height: 130px;
   color: white;

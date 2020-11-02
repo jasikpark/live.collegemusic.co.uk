@@ -5,8 +5,8 @@
 {% block content %}
     <div class="sm:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8 relative">
-            <a href="#content" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
-                Skip to content
+            <a href="#video" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+                Skip to video
             </a>
             <h1 class="text-white inline">College Music |
                 <span class="font-semibold">Lofi Hip Hop Radio</span></h1>
@@ -22,12 +22,18 @@
         </header>
 
         <div class="hello-container space-y-4 lg:space-y-0 px-2 sm:px-8">
-            <div class="">
+            <div id="video" class="">
+                <a href="#chat" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+                    Skip to chat
+                </a>
                 <div class="video-container">
                     <iframe title="Youtube video radio stream" class="rounded-sm" width="853" height="480" src="https://www.youtube-nocookie.com/embed/MCkTebktHVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
                 </div>
             </div>
-            <div class="hidden sm:block">
+            <div id="chat" class="hidden sm:block">
+                <a href="#content" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+                    Skip to content
+                </a>
                 <div class="chat-container">
                     <iframe title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" src="https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain={% hostname %}&dark_theme=1" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>

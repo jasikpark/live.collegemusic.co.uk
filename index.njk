@@ -3,7 +3,7 @@
 {% block title %}{% this_is_dev_server %}College Music{% endblock %}
 
 {% block content %}
-    <div class="sm:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
+    <div class="xl:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8 relative">
             <a href="#video" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                 Skip to video
@@ -266,8 +266,8 @@
                 </div>
             </div>
         </div>
-        <img alt="" src="/static/pink-wave.svg" class="absolute -z-10 pink-wave"/>
-        <img alt="" src="/static/purple-wave.svg" class="absolute -z-10 purple-wave"/>
-        <img alt="" src="/static/blue-wave.svg" class="absolute -z-10 blue-wave"/>
+        <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute left-0 bottom-0 -z-10"/>
+        <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute -left-6 bottom-0 -z-10"/>
+        <img id="blue-wave" alt="" src="/static/blue-wave.svg" class="absolute -right-12 bottom-0 -z-10"/>
     </div>
 {% endblock %}

@@ -13,6 +13,7 @@ module.exports = {
       width: { 7: "1.75rem", 72: "18rem", 116: "29rem" },
       height: { 7: "1.75rem" },
       zIndex: { "-10": "-10" },
+      inset: { "-6": "-1.5rem", "-12": "-3rem" },
     },
   },
   variants: {

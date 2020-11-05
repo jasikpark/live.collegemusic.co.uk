@@ -305,22 +305,6 @@ how to remove the virtical space around the range input in IE*/
   background-size: cover;
 }
 
-.pink-wave {
-  left: 0;
-  bottom: -80px;
-}
-
-.purple-wave {
-  left: -20px;
-  right: -50px;
-  bottom: -150px;
-}
-
-.blue-wave {
-  right: -50px;
-  bottom: -80px;
-}
-
 @tailwind components;
 
 @tailwind utilities;

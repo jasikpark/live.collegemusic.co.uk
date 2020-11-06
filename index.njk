@@ -3,11 +3,11 @@
 {% block title %}{% this_is_dev_server %}College Music{% endblock %}
 
 {% block content %}
-    <div class="xl:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
+    <main class="xl:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8 relative">
-            <a href="#video" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+            <button @click.prevent="document.getElementById('video').focus()" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                 Skip to video
-            </a>
+            </button>
             <h1 class="text-white inline">College Music |
                 <span class="font-semibold">Lofi Hip Hop Radio</span></h1>
             <span>
@@ -22,18 +22,18 @@
         </header>
 
         <div class="hello-container space-y-4 lg:space-y-0 px-2 sm:px-8">
-            <div id="video" class="">
-                <a href="#chat" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+            <div class="">
+                <button id="video" @click.prevent="document.getElementById('chat').focus()" @keydown.enter="document.getElementById('chat').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                     Skip to chat
-                </a>
+                </button>
                 <div class="video-container">
                     <iframe title="Youtube video radio stream" class="rounded-sm" width="853" height="480" src="https://www.youtube-nocookie.com/embed/MCkTebktHVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
                 </div>
             </div>
-            <div id="chat" class="hidden sm:block">
-                <a href="#content" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+            <div class="hidden sm:block">
+                <button id="chat" @click.prevent="document.getElementById('content').focus()" @keydown.enter="document.getElementById('content').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                     Skip to content
-                </a>
+                </button>
                 <div class="chat-container">
                     <iframe title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" src="https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain={% hostname %}&dark_theme=1" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>
@@ -208,14 +208,24 @@
                             </svg>
                         </div>
                     </button>
-                    <button class="group flex justify-end content-center gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
-                        <span class="p-1">Search</span>
-                        <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
-                            <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.83" fill-rule="evenodd" clip-rule="evenodd" d="M14.202 13.3338L10.2052 9.29961C10.9874 8.31913 11.4589 7.07669 11.4589 5.72572C11.4589 2.56348 8.89545 0 5.72946 0C2.56347 0 0 2.56722 0 5.72946C0 8.8917 2.56347 11.4552 5.72946 11.4552C7.09914 11.4552 8.35281 10.9762 9.34078 10.1753L13.3114 14.1833C13.4311 14.3106 13.5958 14.3742 13.7567 14.3742C13.9101 14.3742 14.0636 14.318 14.1796 14.2058C14.4266 13.97 14.434 13.5808 14.202 13.3338L14.202 13.3338ZM5.72946 10.224C4.52818 10.224 3.39801 9.75617 2.54851 8.90667C1.69901 8.05717 1.23122 6.92699 1.23122 5.72946C1.23122 4.52818 1.69901 3.39801 2.54851 2.55225C3.39801 1.70275 4.52819 1.23496 5.72946 1.23496C6.93074 1.23496 8.06091 1.70275 8.91041 2.55225C9.75991 3.40175 10.2277 4.53193 10.2277 5.72946C10.2277 6.93074 9.75991 8.06091 8.91041 8.90667C8.06091 9.75617 6.93074 10.224 5.72946 10.224Z" fill="currentColor"/>
-                            </svg>
+                    <div x-data="initSearch()">
+                        <button id="open-search" @click="focusSearchModal($el)" class="group flex justify-end content-center gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
+                            <span class="p-1">Search</span>
+                            <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
+                                <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.83" fill-rule="evenodd" clip-rule="evenodd" d="M14.202 13.3338L10.2052 9.29961C10.9874 8.31913 11.4589 7.07669 11.4589 5.72572C11.4589 2.56348 8.89545 0 5.72946 0C2.56347 0 0 2.56722 0 5.72946C0 8.8917 2.56347 11.4552 5.72946 11.4552C7.09914 11.4552 8.35281 10.9762 9.34078 10.1753L13.3114 14.1833C13.4311 14.3106 13.5958 14.3742 13.7567 14.3742C13.9101 14.3742 14.0636 14.318 14.1796 14.2058C14.4266 13.97 14.434 13.5808 14.202 13.3338L14.202 13.3338ZM5.72946 10.224C4.52818 10.224 3.39801 9.75617 2.54851 8.90667C1.69901 8.05717 1.23122 6.92699 1.23122 5.72946C1.23122 4.52818 1.69901 3.39801 2.54851 2.55225C3.39801 1.70275 4.52819 1.23496 5.72946 1.23496C6.93074 1.23496 8.06091 1.70275 8.91041 2.55225C9.75991 3.40175 10.2277 4.53193 10.2277 5.72946C10.2277 6.93074 9.75991 8.06091 8.91041 8.90667C8.06091 9.75617 6.93074 10.224 5.72946 10.224Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div aria-live="polite" :aria-hidden="{ true: !open, false: open }" x-show="open" class="absolute top-0 left-0 w-full h-full z-10 flex items-center justify-center bg-opacity-75 bg-gray-500">
+                            <div id="search-modal" tabindex="-1" @click.away="closeModal($el)" @keydown.escape="closeModal($el)" class="flex flex-col gap-2 p-2 items-center bg-white rounded-lg text-black">
+                                <h1>Search</h1>
+                                <input id="search-input" class="border shadow-sm rounded-lg"/>
+                                <p>Here you can search for songs and such</p>
+                                <button class="order-first self-end" @click="closeModal($el)">x</button>
+                            </div>
                         </div>
-                    </button>
+                    </div>
                 </div>
             </div>
 
@@ -266,8 +276,10 @@
                 </div>
             </div>
         </div>
-        <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute left-0 bottom-0 -z-10"/>
-        <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute -left-6 bottom-0 -z-10"/>
-        <img id="blue-wave" alt="" src="/static/blue-wave.svg" class="absolute -right-12 bottom-0 -z-10"/>
-    </div>
-{% endblock %}
+        <a href="#" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">Back to top</a>
+        <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute max-w-none left-0 bottom-0 -z-10"/>
+        <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute max-w-none -left-6 bottom-0 -z-10"/>
+        <img id="blue-wave" alt="" src="/static/blue-wave.svg" class="absolute max-w-none -right-12 bottom-0 -z-10"/>
+    </main>
+
+{% endblock %}>

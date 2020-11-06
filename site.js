@@ -1,3 +1,6 @@
+const FOCUSABLE_SELECTORS =
+  "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+
 function initClock() {
   return {
     time: new Intl.DateTimeFormat("default", {
@@ -143,6 +146,29 @@ function initSongData() {
           "noopener,noreferrer"
         );
       }
+    },
+  };
+}
+
+function initSearch() {
+  return {
+    open: false,
+    focusSearchModal: function () {
+      var self = this;
+      self.open = true;
+      const modal = document.getElementById("search-modal");
+
+      const button = modal.querySelector(FOCUSABLE_SELECTORS);
+
+      self.$nextTick(() => button.focus());
+    },
+    closeModal: function ($el) {
+      var self = this;
+      self.open = false;
+
+      const openButton = document.getElementById("open-search");
+
+      openButton.focus();
     },
   };
 }

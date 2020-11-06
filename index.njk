@@ -209,7 +209,7 @@
                         </div>
                     </button>
                     <div x-data="initSearch()">
-                        <button id="open-search" @click="focusSearchModal($el)" class="group flex justify-end content-center gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
+                        <button id="open-search" @click="focusSearchModal" class="group flex justify-end content-center gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
                             <span class="p-1">Search</span>
                             <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
                                 <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -218,11 +218,13 @@
                             </div>
                         </button>
                         <div aria-live="polite" :aria-hidden="{ true: !open, false: open }" x-show="open" class="absolute top-0 left-0 w-full h-full z-10 flex items-center justify-center bg-opacity-75 bg-gray-500">
-                            <div id="search-modal" tabindex="-1" @click.away="closeModal($el)" @keydown.escape="closeModal($el)" class="flex flex-col gap-2 p-2 items-center bg-white rounded-lg text-black">
-                                <h1>Search</h1>
-                                <input id="search-input" class="border shadow-sm rounded-lg"/>
+                            <div id="search-modal" tabindex="-1" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col gap-2 p-2 items-center bg-white rounded-lg text-black">
+                                <label for="search-input">
+                                    <h1>Search</h1>
+                                </label>
+                                <input type="text" id="search-input" name="Search" class="border shadow-sm rounded-lg"/>
                                 <p>Here you can search for songs and such</p>
-                                <button class="order-first self-end" @click="closeModal($el)">x</button>
+                                <button class="order-first self-end" @click="closeModal">x<span class="sr-only focus:not-sr-only">Close the modal</span></button>
                             </div>
                         </div>
                     </div>

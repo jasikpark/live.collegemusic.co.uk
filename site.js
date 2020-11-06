@@ -162,7 +162,7 @@ function initSearch() {
 
       self.$nextTick(() => button.focus());
     },
-    closeModal: function ($el) {
+    closeModal: function () {
       var self = this;
       self.open = false;
 

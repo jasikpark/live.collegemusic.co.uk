@@ -221,11 +221,11 @@
                             <div id="search-modal" tabindex="-1" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col gap-2 items-center bg-white rounded-lg play-history h-auto relative text-black">
                                 <div class="rounded-t-lg w-full space-y-1 play-history-header">
                                     <label for="search-input">
-                                        <h1 class="pl-4 pt-1 text-lg font-bold text-gray-700">Search</h1>
+                                        <h1 class="pl-4 pt-2 text-lg font-bold text-gray-700">Search</h1>
                                     </label>
                                     <div class="pl-4 pb-4 space-x-1">
                                         <input type="text" id="search-input" name="Search" x-model:value="query" value="Search" @change="fetchSearch" class="border shadow-sm rounded-lg"/>
-                                        <button @click="fetchSearch" class="rounded-xl bg-white bg-opacity-50 h-8 w-8 hover:text-blue-500 hover:bg-blue-100 hover:bg-opacity-50 focus:text-blue-500 focus:bg-blue-100 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
+                                        <button @click="fetchSearch" class="rounded-xl bg-white bg-opacity-50 h-8 w-8 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
                                     </div>
                                 </div>
 

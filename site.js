@@ -153,6 +153,9 @@ function initSongData() {
 function initSearch() {
   return {
     open: false,
+    query: "",
+    data: null,
+    request_no: Date.now(),
     focusSearchModal: function () {
       var self = this;
       self.open = true;
@@ -169,6 +172,26 @@ function initSearch() {
       const openButton = document.getElementById("open-search");
 
       openButton.focus();
+    },
+    fetchSearch: function () {
+      var self = this;
+      const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&7rowCount=10&searchPhrase=${encodeURI(
+        self.query
+      )}&_=${self.request_no}`;
+
+      fetch(url, {
+        credentials: "omit",
+        mode: "cors",
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          self.data = data;
+          console.log(data);
+        });
+      self.request_no += 1;
     },
   };
 }

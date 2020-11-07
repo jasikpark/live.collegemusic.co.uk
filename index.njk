@@ -231,7 +231,7 @@
 
                                 <p class="px-2">Here you can search for songs and such</p>
 
-                                <div class="rounded-b-lg song-block-container grid grid-cols-1 sm:grid-cols-2 h-auto w-full">
+                                <div class="rounded-b-lg song-block-container grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
                                     <p class="p-2" x-show="data && data.total === 0">No songs found. Try searching again, or using different keywords.</p>
                                     <template x-if="data" x-for="song in data.rows">
                                         <div class="song-block">

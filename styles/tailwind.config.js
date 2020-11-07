@@ -10,10 +10,11 @@ module.exports = {
   },
   theme: {
     extend: {
-      width: { 7: "1.75rem", 72: "18rem", 116: "29rem" },
+      width: { 7: "1.75rem", 72: "18rem", 116: "29rem", 232: "58rem" },
       height: { 7: "1.75rem" },
       zIndex: { "-10": "-10" },
       inset: { "-6": "-1.5rem", "-12": "-3rem" },
+      padding: { "1/8": "12.5%", "1/4": "25%" },
     },
   },
   variants: {

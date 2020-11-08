@@ -154,6 +154,7 @@ function initSearch() {
   return {
     open: false,
     query: "",
+    rowCount: 10,
     data: null,
     request_no: Date.now(),
     focusSearchModal: function () {
@@ -175,9 +176,9 @@ function initSearch() {
     },
     fetchSearch: function () {
       var self = this;
-      const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=10&searchPhrase=${encodeURI(
-        self.query
-      )}&_=${self.request_no}`;
+      const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=${
+        self.rowCount
+      }&searchPhrase=${encodeURI(self.query)}&_=${self.request_no}`;
 
       fetch(url, {
         credentials: "omit",

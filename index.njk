@@ -219,13 +219,28 @@
                         </button>
                         <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500">
                             <div id="search-modal" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col gap-2 items-center shadow-lg rounded-lg play-history h-auto w-full lg:w-232 max-w-full relative text-black">
-                                <div class="rounded-t-lg w-full space-y-1 play-history-header">
+                                <div class="rounded-t-lg w-full p-4 pt-2 space-y-1 play-history-header">
                                     <label for="search-input">
-                                        <h1 class="pl-4 pt-2 text-lg font-bold text-gray-700">Search</h1>
+                                        <h1 class="text-lg font-bold text-gray-700">Search</h1>
                                     </label>
-                                    <div class="pl-4 pb-4 space-x-1">
-                                        <input type="text" id="search-input" name="Search" x-model:value="query" value="Search" @change="fetchSearch" class="border shadow-sm rounded-lg"/>
-                                        <button @click="fetchSearch" class="rounded-xl bg-white bg-opacity-50 h-8 w-8 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
+                                    <div class="space-y-1 min-w-0 sm:flex sm:space-y-0 sm:space-x-2 sm:items-center">
+                                        <div class="flex-1 flex space-x-1">
+                                            <input type="search" results="5" incremental="true" id="search-input" placeholder="Search" name="Search" x-model:value="query" value="Search" @change="fetchSearch" @search="fetchSearch" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-xl w-full flex-1 inline-block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
+                                            <button @click="fetchSearch" class="rounded-xl border bg-white bg-opacity-50 h-10 w-10 p-2 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
+
+                                        </div>
+                                        <div class="space-x-1">
+                                            <div class="inline-block relative w-16">
+                                                <select id="num-rows" name="Number of Rows" x-model.number="rowCount" class="block appearance-none w-full border bg-white bg-opacity-50 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white px-2 py-2 pr-6 rounded-xl shadow leading-tight">
+                                                    <option>10</option>
+                                                    <option>25</option>
+                                                    <option>50</option>
+                                                </select>
+                                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

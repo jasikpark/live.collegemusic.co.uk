@@ -217,7 +217,7 @@
                                 </svg>
                             </div>
                         </button>
-                        <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500">
+                        <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" style="display:hidden;" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500">
                             <div id="search-modal" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col gap-2 items-center shadow-lg rounded-lg play-history h-auto w-full lg:w-232 max-w-full relative text-black">
                                 <div class="rounded-t-lg w-full p-4 pt-2 space-y-1 play-history-header">
                                     <label for="search-input">
@@ -225,7 +225,7 @@
                                     </label>
                                     <div class="space-y-1 min-w-0 sm:flex sm:space-y-0 sm:space-x-2 sm:items-center">
                                         <div class="flex-1 flex space-x-1">
-                                            <input type="search" results="5" incremental="true" id="search-input" placeholder="Search" name="Search" x-model:value="query" value="Search" @change="fetchSearch" @search="fetchSearch" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-xl w-full flex-1 inline-block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
+                                            <input type="search" results="5" incremental="true" x-ref="search" id="search-input" placeholder="Search" name="Search" x-model:value="query" value="Search" @change="fetchSearch" @search="fetchSearch" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-xl w-full flex-1 inline-block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
                                             <button @click="fetchSearch" class="rounded-xl border bg-white bg-opacity-50 h-10 w-10 p-2 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
 
                                         </div>
@@ -244,7 +244,7 @@
                                     </div>
                                 </div>
 
-                                <p class="px-2">Here you can search for songs and such</p>
+                                <button @click="$refs.search.focus()" class="sr-only focus:not-sr-only">Back to search</button>
                                 <p class="p-2" x-show="data && data.total === 0">No songs found. Try searching again, or using different keywords.</p>
 
                                 <div x-show="data && data.total != 0" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">

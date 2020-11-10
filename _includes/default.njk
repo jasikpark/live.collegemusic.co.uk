@@ -46,13 +46,16 @@
         <link rel="preconnect" href="https://geolocation-db.com"/>
         <link rel="preconnect" href="https://youtube.com"/>
         <link rel="stylesheet" href="/style.css?v={% version %}"/>
-        <script src="/js/site.js?v={% version %}"></script>
-        <script src="/js/alpine.js?v={% version %}" defer="defer"></script>
+        <link rel="preconnect" href="/js/site.js?v={% version %}"/>
+        <link rel="preconnect" href="/js/alpine.js?v={% version %}"/>
+
         {% block head %}{% endblock %}
     </head>
     <body class="sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
         {% block content %}
             {{ content | safe }}
         {% endblock %}
+        <script src="/js/site.js?v={% version %}"></script>
+        <script src="/js/alpine.js?v={% version %}" defer="defer"></script>
     </body>
 </html>

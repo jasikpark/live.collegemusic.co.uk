@@ -8,6 +8,7 @@ function initClock() {
       hour: "numeric",
       minute: "2-digit",
     }).format(),
+    unix: new Date().toISOString(),
     startClock: function () {
       const self = this;
       function updateClock() {
@@ -16,6 +17,7 @@ function initClock() {
           hour: "numeric",
           minute: "2-digit",
         }).format();
+        self.unix = new Date().toISOString();
       }
       setInterval(() => {
         updateClock();

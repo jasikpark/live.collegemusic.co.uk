@@ -217,7 +217,7 @@
                                 </svg>
                             </div>
                         </button>
-                        <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" style="display:none;" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500 backdrop-blur">
+                        <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" style="display:none;" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500">
                             <div id="search-modal" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col items-center shadow-lg rounded-lg overflow-hidden play-history h-auto w-full lg:w-232 max-w-full relative text-black">
                                 <div class="rounded-t-lg w-full p-4 pt-2 space-y-1 play-history-header">
                                     <label for="search-input">

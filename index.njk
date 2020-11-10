@@ -18,6 +18,7 @@
                     <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
                     <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
                 </span>
+                <button x-data="initFullscreen()" @click="toggleFullscreen" class="text-white inline">Toggle Fullscreen</button>
             </span>
         </header>
 

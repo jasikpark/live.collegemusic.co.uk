@@ -14,7 +14,7 @@
                 <span x-data="initClock()" x-init="startClock">
                     <time x-text="time" class="text-white inline"></time>
                 </span>
-                <span x-data="initWeather()" x-init="getWeather2">
+                <span x-data="initWeather()" x-init="getWeather">
                     <img aria-hidden="true" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
                     <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
                 </span>

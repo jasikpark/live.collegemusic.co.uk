@@ -44,7 +44,7 @@
             <div x-data="initSongData()" x-init="getSongData" class="space-y-4 w-full lg:w-116">
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
-                    <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-32">
+                    <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-30 sm:pl-32">
                         <button class="hidden sm:block" :title="playing ? 'playing' : 'paused'" :aria-label="playing ? 'playing' : 'paused'" @click="playing = !playing">
                             <svg aria-label="paused" :class="{ 'hidden': playing, 'block': !playing }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
@@ -72,7 +72,7 @@
                             <p class="text-gray-100 text-shadow-sm font-semibold truncate" x-text="songData.now_playing.song.artist">--</p>
                         </div>
 
-                        <div class="pl-4 self-start flex justify-center align-center space-x-3">
+                        <div class="pl-3 sm:pl-4 self-start flex justify-center align-center space-x-3">
                             <a title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLink">
                                 <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="#002251" stroke-width="0.8"/>

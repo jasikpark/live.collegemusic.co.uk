@@ -199,7 +199,13 @@ how to remove the virtical space around the range input in IE*/
   height: 6rem;
   width: 6rem;
   bottom: 0.5rem;
-  left: 1rem;
+  left: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .now-playing-album-art {
+    left: 1rem;
+  }
 }
 
 .play-history {

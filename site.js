@@ -147,6 +147,10 @@ function initSearch() {
     },
     fetchSearch: function () {
       var self = this;
+      if (self.query.trim() === "") {
+        this.data = null;
+        return false;
+      }
       self.loading = true;
       const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=${
         self.rowCount

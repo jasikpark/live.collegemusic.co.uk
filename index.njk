@@ -244,10 +244,10 @@
                                 </div>
 
                                 <button @click="$refs.search.focus()" class="sr-only focus:not-sr-only">Back to search</button>
-                                <p class="p-2" x-show="data?.total === 0 && !data?.loading">No songs found. Try searching again, or using different keywords.</p>
-                                <p class="p-2" x-show="data?.loading">Loading...</p>
-                                <div x-show="data?.total > 0 && !data?.loading" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
-                                    <template x-if="data?.total > 0 && !data?.loading" x-for="song in data.rows">
+                                <p class="p-2" x-show="data?.total === 0 && !loading">No songs found. Try searching again, or using different keywords.</p>
+                                <p class="p-2" x-show="loading">Loading...</p>
+                                <div x-show="data?.total > 0 && !loading" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
+                                    <template x-if="data?.total > 0 && !loading" x-for="song in data.rows">
                                         <div class="song-block">
                                             <div class="flex align-center space-x-4 p-3 sm:px-4">
                                                 <img class="rounded-sm shadow-lg h-12 w-12" :aria-labelledby="'song-details-' + song.song_id" :src="song.song_art" src="/static/default_album_art.png"/>

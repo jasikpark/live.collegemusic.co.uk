@@ -35,14 +35,18 @@ function initWeather() {
       fetch("https://geolocation-db.com/json/")
         .then((response) => response.json())
         .then((data) => {
-          fetch(
-            `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-              self.weather_description = data.weather[0].description;
-            });
+          if (data?.latitude && data?.longitude) {
+            fetch(
+              `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                self.weather_description = data.weather[0].description;
+              });
+          } else {
+            return;
+          }
         });
     },
   };

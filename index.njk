@@ -218,7 +218,7 @@
                             </div>
                         </button>
                         <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" style="display:hidden;" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500">
-                            <div id="search-modal" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col gap-2 items-center shadow-lg rounded-lg play-history h-auto w-full lg:w-232 max-w-full relative text-black">
+                            <div id="search-modal" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col gap-2 items-center shadow-lg rounded-lg overflow-hidden play-history h-auto w-full lg:w-232 max-w-full relative text-black">
                                 <div class="rounded-t-lg w-full p-4 pt-2 space-y-1 play-history-header">
                                     <label for="search-input">
                                         <h1 class="text-lg font-bold text-gray-700">Search</h1>
@@ -245,9 +245,9 @@
                                 </div>
 
                                 <button @click="$refs.search.focus()" class="sr-only focus:not-sr-only">Back to search</button>
-                                <p class="p-2" x-show="data && data.total === 0">No songs found. Try searching again, or using different keywords.</p>
-
-                                <div x-show="data && data.total != 0" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
+                                <p class="p-2" x-show="data?.total === 0">No songs found. Try searching again, or using different keywords.</p>
+                                <p class="p-2" x-show="data?.loading === true">Loading...</p>
+                                <div x-show="data?.total != 0" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
                                     <template x-if="data" x-for="song in data.rows">
                                         <div class="song-block">
                                             <div class="flex align-center space-x-4 p-3 sm:px-4">
@@ -281,7 +281,7 @@
                                     </template>
                                 </div>
 
-                                <button title="Close" class="absolute top-0 right-0 p-2" @click="closeModal">
+                                <button title="Close" class="absolute top-0 right-0 p-3" @click="closeModal">
                                     <svg aria-hidden="true" class="w-4 h-4" width="9" height="9" viewbox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8.014 8.82191L4.98414 5.79205L1.95428 8.82191C1.73113 9.04506 1.36952 9.04506 1.14637 8.82191C0.923216 8.59902 0.923216 8.23715 1.14637 8.014L4.17622 4.98414L1.14637 1.95428C0.923216 1.73113 0.923216 1.36952 1.14637 1.14637C1.36952 0.923216 1.73113 0.923216 1.95428 1.14637L4.98414 4.17622L8.014 1.14637C8.23715 0.923216 8.59902 0.923216 8.82191 1.14637C9.04506 1.36952 9.04506 1.73113 8.82191 1.95428L5.79205 4.98414L8.82191 8.014C9.04506 8.23715 9.04506 8.59902 8.82191 8.82191C8.71047 8.93348 8.56427 8.98927 8.41805 8.98927C8.27183 8.98927 8.12557 8.93348 8.014 8.82191Z" fill="currentColor"/>
                                     </svg>

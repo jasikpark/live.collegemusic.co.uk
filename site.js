@@ -70,6 +70,7 @@ function initWeather() {
           )
             .then((response) => response.json())
             .then((data) => {
+              console.log(data);
               self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
               self.weather_description = data.weather[0].description;
             });
@@ -176,6 +177,8 @@ function initSearch() {
     },
     fetchSearch: function () {
       var self = this;
+      self.data = null;
+      self.data = { loading: true };
       const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=${
         self.rowCount
       }&searchPhrase=${encodeURI(self.query)}&_=${self.request_no}`;

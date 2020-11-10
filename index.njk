@@ -3,7 +3,7 @@
 {% block title %}{% this_is_dev_server %}College Music{% endblock %}
 
 {% block content %}
-    <main class="xl:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
+    <main class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8 relative">
             <button @click.prevent="const v = document.getElementById('video'); v.addq" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                 Skip to video

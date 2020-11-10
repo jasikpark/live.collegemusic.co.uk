@@ -7,3 +7,6 @@ command = "export BASE_URL=$DEPLOY_PRIME_URL && yarn run build"
 
 [context.deploy-preview]
 command = "export BASE_URL=$DEPLOY_PRIME_URL && yarn run build"
+
+[dev]
+command = "yarn start"

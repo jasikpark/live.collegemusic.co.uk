@@ -128,6 +128,7 @@ function initSearch() {
   return {
     open: false,
     query: "",
+    prev_query: "",
     loading: false,
     rowCount: 10,
     data: null,
@@ -155,7 +156,11 @@ function initSearch() {
         this.data = null;
         return false;
       }
+      if (self.query.trim() === self.prev_query.trim()) {
+        return false;
+      }
       self.loading = true;
+      self.prev_query = self.query;
       const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=${
         self.rowCount
       }&searchPhrase=${encodeURI(self.query)}&_=${self.request_no}`;

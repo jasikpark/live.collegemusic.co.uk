@@ -30,6 +30,7 @@ function initWeather() {
   return {
     weather_icon: "",
     weather_description: "",
+    weather_link: "",
     getWeather: function () {
       const self = this;
       function updateWeather() {
@@ -44,6 +45,7 @@ function initWeather() {
                 .then((data) => {
                   self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
                   self.weather_description = data.weather[0].description;
+                  self.weather_link = `https://openweathermap.org/city/${data.id}`;
                 });
             } else {
               return;
@@ -204,3 +206,5 @@ function initArtistHero() {
     },
   };
 }
+
+Spruce.store("modal", { open: "login" });

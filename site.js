@@ -177,13 +177,17 @@ function initSearchModal() {
     },
     tabEvent: function ($event) {
       var self = this;
+      if (self.$store.search.open === false) {
+        return;
+      }
       const search = document.getElementById("search-modal");
       const focusableEls = search.querySelectorAll(FOCUSABLE_SELECTORS);
       firstFocusableEl = focusableEls[0];
       lastFocusableEl = focusableEls[focusableEls.length - 1];
-      console.log(firstFocusableEl);
-      console.log(document.activeElement);
-      console.log(lastFocusableEl);
+      if (!search.contains(document.activeElement)) {
+        firstFocusableEl.focus();
+        $event.preventDefault();
+      }
       if ($event.shiftKey && document.activeElement === firstFocusableEl) {
         lastFocusableEl.focus();
         $event.preventDefault();

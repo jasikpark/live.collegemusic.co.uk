@@ -212,14 +212,4 @@ function initArtistHero() {
   };
 }
 
-const deferrer =
-  window.deferLoadingAlpine ||
-  function (callback) {
-    callback();
-  };
-
-window.deferLoadingAlpine = function (callback) {
-  Spruce.store("search", { open: "false" });
-
-  deferrer(callback);
-};
+Spruce.store("search", { open: "false" });

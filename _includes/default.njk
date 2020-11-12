@@ -57,8 +57,8 @@
         {% block content %}
             {{ content | safe }}
         {% endblock %}
-        <script src="/js/site.js?v={% version %}"></script>
         <script src="/js/spruce.umd.js?v={% version %}"></script>
-        <script src="/js/alpine.js?v={% version %}" defer></script>
+        <script src="/js/alpine.js?v={% version %}"></script>
+        <script src="/js/site.js?v={% version %}"></script>
     </body>
 </html>

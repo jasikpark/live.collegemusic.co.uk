@@ -248,4 +248,4 @@ function initArtistHero() {
   };
 }
 
-Spruce.store("search", { open: "false" });
+Spruce.store("search", { open: false });

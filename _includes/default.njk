@@ -53,7 +53,7 @@
         <link rel="preconnect" href="/js/alpine.js?v={% version %}"/>
         {% block head %}{% endblock %}
     </head>
-    <body class="sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
+    <body x-data :class="{ 'overflow-hidden': $store.search.open, 'overflow-auto': !$store.search.open }" class="sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
         {% block content %}
             {{ content | safe }}
         {% endblock %}

@@ -136,6 +136,9 @@ function initSearchButton() {
   return {
     focusSearchModal: function () {
       var self = this;
+      const main = document.getElementsByTagName("main")[0];
+
+      main.setAttribute("inert", "true");
       console.log("before open " + self.$store.search.open);
       self.$store.search.open = true;
       console.log("after open " + self.$store.search.open);
@@ -160,14 +163,37 @@ function initSearchModal() {
     closeModal: function ($event) {
       var self = this;
       const openButton = document.getElementById("open-search");
+      const main = document.getElementsByTagName("main")[0];
 
       if (openButton.contains($event.target)) {
         return false;
       }
+
       console.log("before close " + self.$store.search.open);
       self.$store.search.open = false;
+      main.removeAttribute("inert");
       console.log("after close " + self.$store.search.open);
       openButton.focus();
+    },
+    tabEvent: function ($event) {
+      var self = this;
+      const search = document.getElementById("search-modal");
+      const focusableEls = search.querySelectorAll(FOCUSABLE_SELECTORS);
+      firstFocusableEl = focusableEls[0];
+      lastFocusableEl = focusableEls[focusableEls.length - 1];
+      console.log(firstFocusableEl);
+      console.log(document.activeElement);
+      console.log(lastFocusableEl);
+      if ($event.shiftKey && document.activeElement === firstFocusableEl) {
+        lastFocusableEl.focus();
+        $event.preventDefault();
+      } else if (
+        !$event.shiftKey &&
+        document.activeElement === lastFocusableEl
+      ) {
+        firstFocusableEl.focus();
+        $event.preventDefault();
+      }
     },
     fetchSearch: function () {
       var self = this;

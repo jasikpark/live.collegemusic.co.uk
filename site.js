@@ -207,4 +207,14 @@ function initArtistHero() {
   };
 }
 
-Spruce.store("modal", { open: "login" });
+const deferrer =
+  window.deferLoadingAlpine ||
+  function (callback) {
+    callback();
+  };
+
+window.deferLoadingAlpine = function (callback) {
+  Spruce.store("modal", { open: "login" });
+
+  deferrer(callback);
+};

@@ -341,6 +341,29 @@
                 </div>
             </div>
         </div>
+        <div x-data>
+            <div x-show="$store.modal.open === 'login'">
+                <p>
+            This "login" modal isn't built with a11y in mind, don't actually use it
+        </p>
+            </div>
+        </div>
+
+        <div x-data>
+            <div x-show="$store.modal.open === 'register'">
+                <p>
+            This "register" modal isn't built with a11y in mind, don't actually use it
+        </p>
+            </div>
+        </div>
+
+        <div x-data>
+            <select x-model="$store.modal.open">
+                <option value="login" selected>login</option>
+                <option value="register">register</option>
+            </select>
+        </div>
+
         <a href="#" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">Back to top</a>
         <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute max-w-none left-0 bottom-0 -z-10"/>
         <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute max-w-none -left-6 bottom-0 -z-10"/>

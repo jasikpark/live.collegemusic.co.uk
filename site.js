@@ -136,7 +136,9 @@ function initSearchButton() {
   return {
     focusSearchModal: function () {
       var self = this;
+      console.log("before open " + self.$store.search.open);
       self.$store.search.open = true;
+      console.log("after open " + self.$store.search.open);
       const modal = document.getElementById("search-modal");
 
       const button = modal.querySelector(FOCUSABLE_SELECTORS);
@@ -155,12 +157,16 @@ function initSearchModal() {
     data: null,
     request_no: Date.now(),
 
-    closeModal: function () {
+    closeModal: function ($event) {
       var self = this;
-      self.$store.search.open = false;
-
       const openButton = document.getElementById("open-search");
 
+      if (openButton.contains($event.target)) {
+        return false;
+      }
+      console.log("before close " + self.$store.search.open);
+      self.$store.search.open = false;
+      console.log("after close " + self.$store.search.open);
       openButton.focus();
     },
     fetchSearch: function () {

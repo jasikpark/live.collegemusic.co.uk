@@ -132,27 +132,32 @@ function initSongData() {
   };
 }
 
-function initSearch() {
+function initSearchButton() {
   return {
-    open: false,
-    query: "",
-    prev_query: "",
-    loading: false,
-    rowCount: 10,
-    data: null,
-    request_no: Date.now(),
     focusSearchModal: function () {
       var self = this;
-      self.open = true;
+      self.$store.search.open = true;
       const modal = document.getElementById("search-modal");
 
       const button = modal.querySelector(FOCUSABLE_SELECTORS);
 
       self.$nextTick(() => button.focus());
     },
+  };
+}
+
+function initSearchModal() {
+  return {
+    query: "",
+    prev_query: "",
+    loading: false,
+    rowCount: 10,
+    data: null,
+    request_no: Date.now(),
+
     closeModal: function () {
       var self = this;
-      self.open = false;
+      self.$store.search.open = false;
 
       const openButton = document.getElementById("open-search");
 
@@ -214,7 +219,7 @@ const deferrer =
   };
 
 window.deferLoadingAlpine = function (callback) {
-  Spruce.store("modal", { open: "login" });
+  Spruce.store("search", { open: "false" });
 
   deferrer(callback);
 };

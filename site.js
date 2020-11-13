@@ -37,7 +37,7 @@ function initWeather() {
         fetch("https://geolocation-db.com/json/")
           .then((response) => response.json())
           .then((data) => {
-            if (data?.latitude && data?.longitude) {
+            if (data.latitude && data.longitude) {
               fetch(
                 `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
               )
@@ -304,7 +304,7 @@ function onYouTubeIframeAPIReady() {
       height: "390",
       width: "640",
       videoId: "MCkTebktHVc",
-      playerVars: { playsinline: 1 },
+      playerVars: { playsinline: 1, autoplay: 1 },
       events: {
         onStateChange: onPlayerStateChange,
         onReady: onPlayerReady,

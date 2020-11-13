@@ -129,6 +129,16 @@ function initSongData() {
         );
       }
     },
+
+    togglePlayback: function () {
+      var self = this;
+      const player = self.$store.youtube.player;
+      if (self.$store.youtube.state === 1) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    },
   };
 }
 
@@ -249,3 +259,29 @@ function initArtistHero() {
 }
 
 Spruce.store("search", { open: false });
+
+Spruce.store("youtube", {
+  state: -1,
+});
+
+function onYouTubeIframeAPIReady() {
+  console.log("api ready");
+  Spruce.reset("youtube", {
+    player: new YT.Player("player", {
+      height: "390",
+      width: "640",
+      videoId: "MCkTebktHVc",
+      playerVars: { playsinline: 1 },
+      events: {
+        onStateChange: onPlayerStateChange,
+      },
+    }),
+    state: -1,
+  });
+}
+
+function onPlayerStateChange() {
+  Spruce.store("youtube").state = Spruce.store(
+    "youtube"
+  ).player.getPlayerState();
+}

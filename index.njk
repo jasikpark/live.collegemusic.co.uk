@@ -29,7 +29,7 @@
                     Skip to chat
                 </button>
                 <div class="video-container">
-                    <iframe title="Youtube video radio stream" class="rounded-sm" width="853" height="480" src="https://www.youtube.com/embed/MCkTebktHVc?playsinline=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; playsinline" allowfullscreen="allowfullscreen"></iframe>
+                    <div title="Youtube video radio stream" class="rounded-sm" id="player"></div>
                 </div>
             </div>
             <div class="hidden sm:block">
@@ -47,8 +47,8 @@
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
                     <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-30 sm:pl-32">
-                        <button class="hidden sm:block" :title="playing ? 'playing' : 'paused'" :aria-label="playing ? 'playing' : 'paused'" @click="playing = !playing">
-                            <svg aria-label="paused" :class="{ 'hidden': playing, 'block': !playing }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button class="hidden sm:block" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
+                            <svg aria-label="paused" :class="{ 'hidden': $store.youtube.state === 1, 'block': $store.youtube.state !== 1 }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
                                 <defs>
                                     <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
@@ -58,7 +58,7 @@
                                 </defs>
                             </svg>
 
-                            <svg aria-label="playing" :class="{ 'hidden': !playing, 'block': playing }" class="hidden drop-shadow w-8 h-8" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-label="playing" :class="{ 'hidden': $store.youtube.state !== 1, 'block': $store.youtube.state === 1 }" class="hidden drop-shadow w-8 h-8" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint1_linear)"/>
                                 <defs>
                                     <lineargradient id="paint1_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">

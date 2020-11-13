@@ -51,14 +51,27 @@
         <link rel="preconnect" href="/js/spruce.umd.js?v={% version %}"/>
         <link rel="preconnect" href="/js/site.js?v={% version %}"/>
         <link rel="preconnect" href="/js/alpine.js?v={% version %}"/>
+        <link rel="preconnect" href="https://www.youtube.com/iframe_api"/>
+        <script>
+            var tag = document.createElement("script");
+            tag.id = "iframe-api";
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName("script")[0];
+            firstScriptTag
+                .parentNode
+                .insertBefore(tag, firstScriptTag);
+        </script>
+
         {% block head %}{% endblock %}
     </head>
-    <body x-data :class="{ 'overflow-hidden': $store.search.open, 'overflow-auto': !$store.search.open }" class="sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
+    <body x-data :class="{ 'overflow-hidden': $store.search.open, 'overflow-auto': !$store.search.open }" class="overflow-auto sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
         {% block content %}
             {{ content | safe }}
         {% endblock %}
+
         <script src="/js/spruce.umd.js?v={% version %}"></script>
         <script src="/js/alpine.js?v={% version %}"></script>
         <script src="/js/site.js?v={% version %}"></script>
+
     </body>
 </html>

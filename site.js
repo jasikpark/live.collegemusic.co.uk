@@ -163,7 +163,6 @@ function initVolumeControl() {
     },
     toggleMute: function () {
       var self = this;
-      self.$store.youtube.muted = !self.$store.youtube.muted;
       if (self.$store.youtube.muted) {
         self.$store.youtube.player.unMute();
       } else {

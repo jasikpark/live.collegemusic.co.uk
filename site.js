@@ -142,6 +142,16 @@ function initSongData() {
   };
 }
 
+function initVolumeControl() {
+  return {
+    adjustVolume: function () {
+      var self = this;
+      self.$store.youtube.player.setVolume(self.$store.youtube.volume);
+      self.$store.youtube.muted = false;
+    },
+  };
+}
+
 function initSearchButton() {
   return {
     focusSearchModal: function () {
@@ -262,6 +272,8 @@ Spruce.store("search", { open: false });
 
 Spruce.store("youtube", {
   state: -1,
+  volume: 25,
+  muted: false,
 });
 
 function onYouTubeIframeAPIReady() {
@@ -277,6 +289,8 @@ function onYouTubeIframeAPIReady() {
       },
     }),
     state: -1,
+    volume: 25,
+    muted: false,
   });
 }
 

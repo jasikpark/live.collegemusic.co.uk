@@ -129,6 +129,47 @@ function initSongData() {
         );
       }
     },
+
+    togglePlayback: function () {
+      var self = this;
+      const player = self.$store.youtube.player;
+      if (self.$store.youtube.state === 1) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    },
+  };
+}
+
+function initVolumeControl() {
+  return {
+    startVolume: function () {
+      const self = this;
+      function updateVolume() {
+        if (self.$store.youtube.ready) {
+          self.$store.youtube.volume = self.$store.youtube.player.getVolume();
+          self.$store.youtube.muted = self.$store.youtube.player.isMuted();
+        }
+      }
+      setInterval(() => {
+        updateVolume();
+      }, 250);
+    },
+    adjustVolume: function () {
+      var self = this;
+      self.$store.youtube.player.setVolume(self.$store.youtube.volume);
+      self.$store.youtube.muted = false;
+    },
+    toggleMute: function () {
+      var self = this;
+      self.$store.youtube.muted = !self.$store.youtube.muted;
+      if (self.$store.youtube.muted) {
+        self.$store.youtube.player.unMute();
+      } else {
+        self.$store.youtube.player.mute();
+      }
+    },
   };
 }
 
@@ -249,3 +290,41 @@ function initArtistHero() {
 }
 
 Spruce.store("search", { open: false });
+
+Spruce.store("youtube", {
+  state: -1,
+  volume: 25,
+  muted: false,
+  ready: false,
+});
+
+function onYouTubeIframeAPIReady() {
+  console.log("api ready");
+  Spruce.reset("youtube", {
+    player: new YT.Player("player", {
+      height: "390",
+      width: "640",
+      videoId: "MCkTebktHVc",
+      playerVars: { playsinline: 1 },
+      events: {
+        onStateChange: onPlayerStateChange,
+        onReady: onPlayerReady,
+      },
+    }),
+    state: -1,
+    volume: 25,
+    muted: false,
+    ready: false,
+  });
+}
+
+function onPlayerStateChange() {
+  console.log("state changed");
+  Spruce.store("youtube").state = Spruce.store(
+    "youtube"
+  ).player.getPlayerState();
+}
+
+function onPlayerReady() {
+  Spruce.store("youtube").ready = true;
+}

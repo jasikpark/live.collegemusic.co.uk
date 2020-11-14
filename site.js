@@ -151,10 +151,9 @@ function initVolumeControl() {
           self.$store.youtube.volume = self.$store.youtube.player.getVolume();
           self.$store.youtube.muted = self.$store.youtube.player.isMuted();
         }
+        window.requestAnimationFrame(updateVolume);
       }
-      setInterval(() => {
-        updateVolume();
-      }, 250);
+      window.requestAnimationFrame(updateVolume);
     },
     adjustVolume: function () {
       var self = this;

@@ -287,7 +287,6 @@ function initArtistHero() {
   };
 }
 
-
 function initFullscreen() {
   return {
     toggleFullscreen: function () {
@@ -317,6 +316,7 @@ function initFullscreen() {
       }
     },
   };
+}
 
 Spruce.store("search", { open: false });
 
@@ -356,5 +356,4 @@ function onPlayerStateChange() {
 
 function onPlayerReady() {
   Spruce.store("youtube").ready = true;
-
 }

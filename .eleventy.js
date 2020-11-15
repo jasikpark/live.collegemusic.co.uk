@@ -65,6 +65,16 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy({
+    "./node_modules/@ryangjchandler/spruce/dist/spruce.umd.js":
+      "./js/spruce.umd.js",
+  });
+
+  eleventyConfig.addPassthroughCopy({
+    "./node_modules/@ryangjchandler/spruce/dist/spruce.umd.js.map":
+      "./js/spruce.umd.js.map",
+  });
+
+  eleventyConfig.addPassthroughCopy({
     "./site.js": "./js/site.js",
   });
 };

@@ -3,7 +3,7 @@
 {% block title %}{% this_is_dev_server %}College Music{% endblock %}
 
 {% block content %}
-    <main class="xl:my-4 sm:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
+    <main class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between w-full pt-2 sm:pt-8 px-2 sm:px-8 relative">
             <button @click.prevent="const v = document.getElementById('video'); v.addq" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                 Skip to video
@@ -14,9 +14,11 @@
                 <span x-data="initClock()" x-init="startClock">
                     <time :datetime="unix" x-text="time" class="text-white inline"></time>
                 </span>
-                <span x-data="initWeather()" x-init="getWeather">
-                    <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
-                    <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
+                <span x-cloak x-data="initWeather()" x-init="getWeather">
+                    <a :href="weather_link">
+                        <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
+                        <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
+                    </a>
                 </span>
                 <button x-data="initFullscreen()" @click.debounce="toggleFullscreen" class="text-white inline fullscreen-button">
                     <svg xmlns="http://www.w3.org/2000/svg" class="not-fullscreen h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -51,7 +53,7 @@
                     Skip to chat
                 </button>
                 <div class="video-container">
-                    <iframe title="Youtube video radio stream" class="rounded-sm" width="853" height="480" src="https://www.youtube.com/embed/MCkTebktHVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+                    <div title="Youtube video radio stream" class="rounded-sm" id="player"></div>
                 </div>
             </div>
             <div class="hidden sm:block">
@@ -68,9 +70,9 @@
             <div x-data="initSongData()" x-init="getSongData" class="space-y-4 w-full lg:w-116">
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
-                    <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-32">
-                        <button class="hidden sm:block" :title="playing ? 'playing' : 'paused'" :aria-label="playing ? 'playing' : 'paused'" @click="playing = !playing">
-                            <svg aria-label="paused" :class="{ 'hidden': playing, 'block': !playing }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-30 sm:pl-32">
+                        <button class="hidden sm:block" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
+                            <svg aria-label="paused" :class="{ 'hidden': $store.youtube.state === 1, 'block': $store.youtube.state !== 1 }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
                                 <defs>
                                     <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
@@ -80,7 +82,7 @@
                                 </defs>
                             </svg>
 
-                            <svg aria-label="playing" :class="{ 'hidden': !playing, 'block': playing }" class="hidden drop-shadow w-8 h-8" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-label="playing" :class="{ 'hidden': $store.youtube.state !== 1, 'block': $store.youtube.state === 1 }" class="hidden drop-shadow w-8 h-8" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint1_linear)"/>
                                 <defs>
                                     <lineargradient id="paint1_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
@@ -96,7 +98,7 @@
                             <p class="text-gray-100 text-shadow-sm font-semibold truncate" x-text="songData.now_playing.song.artist">--</p>
                         </div>
 
-                        <div class="pl-4 self-start flex justify-center align-center space-x-3">
+                        <div class="pl-3 sm:pl-4 self-start flex justify-center align-center space-x-3">
                             <a title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLink">
                                 <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="#002251" stroke-width="0.8"/>
@@ -162,37 +164,37 @@
                 </template>
             </div>
 
-            <div id="controls" class="flex flex-col justify-start space-y-2 p-2 pt-4 text-white w-full lg:w-72">
-                <div x-data="{ volume: 25, muted: false }" class="group flex space-x-3 justify-end ">
-                    <input class="w-3/4" x-model:value="volume" @change="muted = false" @input="muted = false" type="range" min="0" max="100" value="25" id="volume">
+            <div id="controls" class="flex flex-col justify-start p-2 sm:pt-4 text-white w-full lg:w-72">
+                <div x-data="initVolumeControl()" x-init="startVolume" class="hidden sm:flex group space-x-3 justify-end ">
+                    <input class="w-3/4" x-model:value="$store.youtube.volume"  @input="adjustVolume" type="range" min="0" max="100" value="25" id="volume">
                     <label for="volume">
-                        <button @click="muted = !muted" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
+                        <button @click="toggleMute" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
 
                             <!-- new icons -->
-                            <svg aria-hidden="true" id="muted" class="hidden" :class="{ 'hidden': !muted && volume > 0, 'block': muted || volume === 0 }" width="24" height="17" viewbox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-hidden="true" id="muted" class="hidden" :class="{ 'hidden': !$store.youtube.muted && $store.youtube.volume > 0, 'block': $store.youtube.muted || $store.youtube.volume === 0 }" width="24" height="17" viewbox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4 16.5002C10.2011 16.5002 9.9984 16.3993 9.80238 16.3018L5.0999 12.5024L1.4999 12.5024C0.90183 12.5024 0.5 12.1006 0.5 11.5025V5.50581C0.5 4.90828 0.90183 4.50681 1.4999 4.50681H5.0999L9.7997 0.70881C9.99351 0.57999 10.2584 0.5 10.491 0.5C10.6517 0.5 10.7932 0.53766 10.9004 0.60891C11.3215 0.81948 11.4943 1.13041 11.3999 1.50801V15.5003C11.3999 15.9144 11.0735 16.2183 10.7996 16.4003C10.6997 16.5002 10.4973 16.5002 10.4 16.5002ZM2.4998 6.50572V10.5035L5.5004 10.5035C5.70021 10.5035 5.90335 10.6051 6.0998 10.7033L9.5 13.4015V3.60772L6.0998 6.30592C5.90313 6.40425 5.70013 6.50572 5.5004 6.50572H2.4998ZM22.4996 12.5024C22.2158 12.5024 22.0132 12.4156 21.8003 12.2027L19.4999 9.90412L17.2004 12.2027C16.9866 12.4156 16.7837 12.5024 16.5002 12.5024C16.2157 12.5024 16.0129 12.4156 15.8 12.2027C15.4015 11.8034 15.4015 11.2017 15.8 10.8032L18.1004 8.50462L15.8 6.20602C15.6067 6.01276 15.5003 5.76425 15.5003 5.50627C15.5003 5.24829 15.6067 4.99978 15.8 4.80652C15.9933 4.61326 16.2418 4.50682 16.4999 4.50682C16.7579 4.50682 17.0067 4.61326 17.2004 4.80652L19.4999 7.10512L21.8003 4.80652C21.9936 4.61326 22.2421 4.50682 22.5 4.50682C22.758 4.50682 23.0065 4.61326 23.1998 4.80652C23.3935 4.99978 23.5002 5.24829 23.5002 5.50627C23.5002 5.76425 23.3935 6.01276 23.1998 6.20602L20.9003 8.50462L23.1998 10.8032C23.3934 10.9963 23.5 11.2445 23.5002 11.5021C23.5003 11.7601 23.3937 12.0089 23.1998 12.2027C22.9869 12.4156 22.7841 12.5024 22.4996 12.5024Z" fill="currentColor"/>
                             </svg>
 
-                            <svg aria-hidden="true" id="volume-level-one" class="hidden" :class="{ 'hidden': volume > 33 || muted || volume == 0, 'block': volume <= 33 && volume > 0 }" width="18" height="16" viewbox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-hidden="true" id="volume-level-one" class="hidden" :class="{ 'hidden': $store.youtube.volume > 33 || $store.youtube.muted || $store.youtube.volume == 0, 'block': $store.youtube.volume <= 33 && $store.youtube.volume > 0 }" width="18" height="16" viewbox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.259 16.0002C10.0601 16.0002 9.85741 15.8993 9.66139 15.8018L4.95891 12.0024L1.35891 12.0024C0.760839 12.0024 0.359009 11.6006 0.359009 11.0025V5.00581C0.359009 4.40828 0.760839 4.00681 1.35891 4.00681H4.95891L9.65871 0.20881C9.85252 0.07999 10.1174 0 10.3501 0C10.5107 0 10.6522 0.03766 10.7594 0.10891C11.1805 0.31948 11.3533 0.63041 11.2589 1.00801V15.0003C11.2589 15.4144 10.9325 15.7183 10.6586 15.9003C10.5587 16.0002 10.3563 16.0002 10.259 16.0002ZM2.35881 6.00572V10.0035L5.35941 10.0035C5.55922 10.0035 5.76236 10.1051 5.95881 10.2033L9.35901 12.9015V3.10772L5.95881 5.80592C5.76214 5.90425 5.55914 6.00572 5.35941 6.00572H2.35881Z" fill="currentColor"/>
                             </svg>
 
-                            <svg aria-hidden="true" id="volume-level-two" class="hidden" :class="{ 'hidden': volume <= 33 || volume > 66 || muted, 'block': volume > 33 && volume <= 66 }" width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-hidden="true" id="volume-level-two" class="hidden" :class="{ 'hidden': $store.youtube.volume <= 33 || $store.youtube.volume > 66 || $store.youtube.muted, 'block': $store.youtube.volume > 33 && $store.youtube.volume <= 66 }" width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4 16.5002C10.2011 16.5002 9.9984 16.3993 9.80238 16.3018L5.0999 12.5024L1.4999 12.5024C0.90183 12.5024 0.5 12.1006 0.5 11.5025V5.50581C0.5 4.90828 0.90183 4.50681 1.4999 4.50681H5.0999L9.7997 0.70881C9.99351 0.57999 10.2584 0.5 10.491 0.5C10.6517 0.5 10.7932 0.53766 10.9004 0.60891C11.3215 0.81948 11.4943 1.13041 11.3999 1.50801V15.5003C11.3999 15.9144 11.0735 16.2183 10.7996 16.4003C10.6997 16.5002 10.4973 16.5002 10.4 16.5002ZM2.4998 6.50572V10.5035L5.5004 10.5035C5.70021 10.5035 5.90335 10.6051 6.0998 10.7033L9.5 13.4015V3.60772L6.0998 6.30592C5.90313 6.40425 5.70013 6.50572 5.5004 6.50572H2.4998ZM14.9999 13.0019C14.8076 13.0019 14.5065 12.9081 14.2997 12.7022C14.1064 12.509 14 12.2604 14 12.0025C14 11.7445 14.1064 11.496 14.2997 11.3027C15.0736 10.5292 15.4999 9.51761 15.4999 8.45422C15.4999 7.39083 15.0736 6.37921 14.2997 5.60572C14.1064 5.41246 14 5.16411 14 4.90642C14 4.64873 14.1064 4.40038 14.2997 4.20712C14.4934 4.01386 14.7421 3.90742 14.9999 3.90742C15.2577 3.90742 15.5064 4.01386 15.7001 4.20712C16.8781 5.38421 17.5173 6.92827 17.5 8.55487C17.4832 10.1339 16.844 11.6068 15.7001 12.7022C15.4942 12.9081 15.1928 13.0019 14.9999 13.0019Z" fill="currentColor"/>
                             </svg>
-                            <svg aria-hidden="true" id="volume-level-three" class="block" :class="{ 'hidden': volume <= 66 || muted, 'block': volume > 66 }" width="23" height="17" viewbox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-hidden="true" id="volume-level-three" class="block" :class="{ 'hidden': $store.youtube.volume <= 66 || $store.youtube.muted, 'block': $store.youtube.volume > 66 }" width="23" height="17" viewbox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5792 16.5001C18.3872 16.5001 18.0864 16.4069 17.8799 16.2022C17.6865 16.0097 17.5801 15.7624 17.5802 15.5061C17.5803 15.2501 17.6868 15.0035 17.8799 14.8117C19.571 13.1302 20.5023 10.8902 20.5023 8.50448C20.5023 6.11872 19.571 3.87878 17.8799 2.19728C17.6866 2.00532 17.5802 1.75841 17.5802 1.50203C17.5802 1.24565 17.6866 0.99874 17.8799 0.80678C18.0732 0.61482 18.3215 0.50911 18.5792 0.50911C18.8369 0.50911 19.0852 0.61482 19.2785 0.80678C21.3388 2.80754 22.483 5.50511 22.5001 8.40254C22.5175 11.3492 21.3734 14.1191 19.2785 16.2022C19.072 16.4069 18.7712 16.5001 18.5792 16.5001ZM10.3892 16.4002C10.1894 16.4002 9.98625 16.2995 9.7898 16.2022L5.0945 12.4276H1.499C0.90147 12.4276 0.5 12.0283 0.5 11.434V5.47508C0.5 4.88078 0.90147 4.48148 1.499 4.48148H5.0945L9.7898 0.70778C9.98294 0.5796 10.2473 0.5 10.4798 0.5C10.6399 0.5 10.781 0.5373 10.8878 0.60788C11.3089 0.81747 11.4816 1.12685 11.3873 1.50248L11.3873 15.4075C11.3873 15.8174 11.0613 16.1197 10.7879 16.3012C10.688 16.4002 10.4862 16.4002 10.3892 16.4002ZM2.498 6.46868V10.4413H5.4941C5.69571 10.4413 5.89793 10.5424 6.0935 10.6402L9.4901 13.3213V3.58778L6.0935 6.26979L6.08814 6.27244C5.89345 6.36892 5.69214 6.46868 5.4941 6.46868H2.498ZM14.9837 13.0234C14.791 13.0234 14.49 12.9302 14.2844 12.7255C14.0913 12.5336 13.9848 12.287 13.9847 12.0311C13.9846 11.7747 14.091 11.5275 14.2844 11.335C15.0576 10.5661 15.4834 9.56058 15.4832 8.50359C15.4831 7.44701 15.0573 6.44211 14.2844 5.67398C14.091 5.48144 13.9846 5.23422 13.9847 4.97787C13.9848 4.72192 14.0913 4.47531 14.2844 4.28348C14.4749 4.09387 14.7434 3.98513 15.0212 3.98513C15.2989 3.98513 15.5402 4.09387 15.683 4.28348C17.9736 6.56153 17.9737 10.3486 15.683 12.7255C15.4774 12.9302 15.1764 13.0234 14.9837 13.0234Z" fill="currentColor"/>
                             </svg>
 
-                            <span class="sr-only">
+                            <span aria-live="polite" class="sr-only">
                                 Volume:
-                                <span x-text="volume"></span>
+                                <span x-text="$store.youtube.volume"></span>
                                 , Muted:
-                                <span x-text="muted"></span></span>
+                                <span x-text="$store.youtube.muted"></span></span>
                         </button>
                     </label>
                 </div>
-                <div class="grid grid-flow-row grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2">
+                <div class="grid grid-flow-row grid-cols-2 sm:pt-2 lg:grid-cols-1 xl:grid-cols-2 gap-2">
                     <button class="group flex justify-end content-center gap-2 text-white hover:text-red-500 focus:text-red-500 active:text-red-700">
                         <span class="p-1">Favorites</span>
                         <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25  group-hover:bg-red-400 group-hover:bg-opacity-25 group-focus:bg-red-400 group-focus:bg-opacity-25">
@@ -232,87 +234,16 @@
                             </svg>
                         </div>
                     </button>
-                    <div x-data="initSearch()" class="flex justify-end">
-                        <button id="open-search" @click="focusSearchModal" class="group flex gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
-                            <span class="p-1">Search</span>
-                            <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
-                                <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.83" fill-rule="evenodd" clip-rule="evenodd" d="M14.202 13.3338L10.2052 9.29961C10.9874 8.31913 11.4589 7.07669 11.4589 5.72572C11.4589 2.56348 8.89545 0 5.72946 0C2.56347 0 0 2.56722 0 5.72946C0 8.8917 2.56347 11.4552 5.72946 11.4552C7.09914 11.4552 8.35281 10.9762 9.34078 10.1753L13.3114 14.1833C13.4311 14.3106 13.5958 14.3742 13.7567 14.3742C13.9101 14.3742 14.0636 14.318 14.1796 14.2058C14.4266 13.97 14.434 13.5808 14.202 13.3338L14.202 13.3338ZM5.72946 10.224C4.52818 10.224 3.39801 9.75617 2.54851 8.90667C1.69901 8.05717 1.23122 6.92699 1.23122 5.72946C1.23122 4.52818 1.69901 3.39801 2.54851 2.55225C3.39801 1.70275 4.52819 1.23496 5.72946 1.23496C6.93074 1.23496 8.06091 1.70275 8.91041 2.55225C9.75991 3.40175 10.2277 4.53193 10.2277 5.72946C10.2277 6.93074 9.75991 8.06091 8.91041 8.90667C8.06091 9.75617 6.93074 10.224 5.72946 10.224Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                        </button>
-                        <div aria-live="polite" :aria-hidden="{ 'true': !open, 'false': open }" x-show="open" style="display:none;" class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/4 md:pt-1/8 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500">
-                            <div id="search-modal" @click.away="closeModal" @keydown.escape="closeModal" class="flex flex-col items-center shadow-lg rounded-lg overflow-hidden play-history h-auto w-full lg:w-232 max-w-full relative text-black">
-                                <div class="rounded-t-lg w-full p-4 pt-2 space-y-1 play-history-header">
-                                    <label for="search-input">
-                                        <h1 class="text-lg font-bold text-gray-700">Search</h1>
-                                    </label>
-                                    <div class="space-y-1 min-w-0 sm:flex sm:space-y-0 sm:space-x-2 sm:items-center">
-                                        <div class="flex-1 flex space-x-1">
-                                            <input type="search" results="5" incremental="true" x-ref="search" id="search-input" placeholder="Search" name="Search" x-model:value="query" @change="fetchSearch" @search="fetchSearch" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-xl w-full flex-1 inline-block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
-                                            <button @click="fetchSearch" class="rounded-xl border bg-white bg-opacity-50 h-10 w-10 p-2 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
-                                        </div>
-                                        <div class="space-x-1">
-                                            <div class="inline-block relative w-16">
-                                                <select id="num-rows" name="Number of Rows" x-model.number="rowCount" class="block appearance-none w-full border bg-white bg-opacity-50 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white px-2 py-2 pr-6 rounded-xl shadow leading-tight">
-                                                    <option>10</option>
-                                                    <option>25</option>
-                                                    <option>50</option>
-                                                </select>
-                                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <button @click="$refs.search.focus()" class="sr-only focus:not-sr-only">Back to search</button>
-                                <p class="p-2" x-show="data?.total === 0 && !loading">No songs found. Try searching again, or using different keywords.</p>
-                                <p class="p-2" x-show="loading">Loading...</p>
-                                <div x-show="data?.total > 0 && !loading" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
-                                    <template x-if="data?.total > 0 && !loading" x-for="song in data.rows">
-                                        <div class="song-block">
-                                            <div class="flex align-center space-x-4 p-3 sm:px-4">
-                                                <img class="rounded-sm shadow-lg h-12 w-12" :aria-labelledby="'song-details-' + song.song_id" :src="song.song_art" src="/static/default_album_art.png"/>
-                                                <div :id="'song-details-' + song.song_id" class="min-w-0 flex-1">
-                                                    <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate" x-text="song.song_title">--</p>
-                                                    <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate" x-text="song.song_artist">--</p>
-                                                </div>
-                                                <div class="self-start flex justify-center align-center space-x-3">
-                                                    <a title="Add to playlist" target="_blank" rel="noreferrer noopener">
-                                                        <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="#002251" stroke-width="0.8"/>
-                                                        </svg>
-                                                        <span class="sr-only focus:not-sr-only">Add to playlist</span>
-                                                    </a>
-                                                    <button title="Share song">
-                                                        <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="#002251" stroke-width="1.16"/>
-                                                        </svg>
-                                                        <span class="sr-only focus:not-sr-only">Share song</span>
-                                                    </button>
-                                                    <button title="Love the song" @click="alert('you loved it')">
-                                                        <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="#002251"/>
-                                                        </svg>
-                                                        <span class="sr-only focus:not-sr-only">Love the song</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                </div>
-
-                                <button title="Close" class="absolute top-0 right-0 p-3 px-4" @click="closeModal">
-                                    <svg aria-hidden="true" class="w-4 h-4" width="9" height="9" viewbox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8.014 8.82191L4.98414 5.79205L1.95428 8.82191C1.73113 9.04506 1.36952 9.04506 1.14637 8.82191C0.923216 8.59902 0.923216 8.23715 1.14637 8.014L4.17622 4.98414L1.14637 1.95428C0.923216 1.73113 0.923216 1.36952 1.14637 1.14637C1.36952 0.923216 1.73113 0.923216 1.95428 1.14637L4.98414 4.17622L8.014 1.14637C8.23715 0.923216 8.59902 0.923216 8.82191 1.14637C9.04506 1.36952 9.04506 1.73113 8.82191 1.95428L5.79205 4.98414L8.82191 8.014C9.04506 8.23715 9.04506 8.59902 8.82191 8.82191C8.71047 8.93348 8.56427 8.98927 8.41805 8.98927C8.27183 8.98927 8.12557 8.93348 8.014 8.82191Z" fill="currentColor"/>
-                                    </svg>
-                                    <span class="sr-only focus:not-sr-only">Close the modal</span>
-                                </button>
-                            </div>
+                    <button  x-data="initSearchButton()"id="open-search" @click="focusSearchModal" class="group flex justify-end gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
+                        <span class="p-1">Search</span>
+                        <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
+                            <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.83" fill-rule="evenodd" clip-rule="evenodd" d="M14.202 13.3338L10.2052 9.29961C10.9874 8.31913 11.4589 7.07669 11.4589 5.72572C11.4589 2.56348 8.89545 0 5.72946 0C2.56347 0 0 2.56722 0 5.72946C0 8.8917 2.56347 11.4552 5.72946 11.4552C7.09914 11.4552 8.35281 10.9762 9.34078 10.1753L13.3114 14.1833C13.4311 14.3106 13.5958 14.3742 13.7567 14.3742C13.9101 14.3742 14.0636 14.318 14.1796 14.2058C14.4266 13.97 14.434 13.5808 14.202 13.3338L14.202 13.3338ZM5.72946 10.224C4.52818 10.224 3.39801 9.75617 2.54851 8.90667C1.69901 8.05717 1.23122 6.92699 1.23122 5.72946C1.23122 4.52818 1.69901 3.39801 2.54851 2.55225C3.39801 1.70275 4.52819 1.23496 5.72946 1.23496C6.93074 1.23496 8.06091 1.70275 8.91041 2.55225C9.75991 3.40175 10.2277 4.53193 10.2277 5.72946C10.2277 6.93074 9.75991 8.06091 8.91041 8.90667C8.06091 9.75617 6.93074 10.224 5.72946 10.224Z" fill="currentColor"/>
+                            </svg>
                         </div>
-                    </div>
+                    </button>
+
                 </div>
             </div>
 
@@ -325,37 +256,37 @@
                 </h2>
                 <div class="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-4">
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" class="rounded-lg artist-hero kyle-mcevoy">
-                        <a class="flex flex-col justify-start items-center" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
+                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kyle McEvoy</h3>
                             <span class="px-2 text-center text-shadow-sm">1,636k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" class="rounded-lg artist-hero kalaido">
-                        <a class="flex flex-col justify-start items-center" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
+                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kalaido</h3>
                             <span class="px-2 text-center text-shadow-sm">594k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" class="rounded-lg artist-hero wei">
-                        <a class="flex flex-col justify-start items-center" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
+                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">WEI</h3>
                             <span class="px-2 text-center text-shadow-sm">170k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" class="rounded-lg artist-hero santpoort">
-                        <a class="flex flex-col justify-start items-center" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
+                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Santpoort</h3>
                             <span class="px-2 text-center text-shadow-sm">586k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" class="rounded-lg artist-hero eillah">
-                        <a class="flex flex-col justify-start items-center" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
+                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Eillah</h3>
                             <span class="px-2 text-center text-shadow-sm">9,679 monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" class="rounded-lg artist-hero brillon">
-                        <a class="flex flex-col justify-start items-center" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
+                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">brillon.</h3>
                             <span class="px-2 text-center text-shadow-sm">2,001k monthly listeners</span>
                         </a>
@@ -363,10 +294,11 @@
                 </div>
             </div>
         </div>
+
         <a href="#" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">Back to top</a>
         <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute max-w-none left-0 bottom-0 -z-10"/>
         <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute max-w-none -left-6 bottom-0 -z-10"/>
         <img id="blue-wave" alt="" src="/static/blue-wave.svg" class="absolute max-w-none -right-12 bottom-0 -z-10"/>
     </main>
-
-{% endblock %}>
+    {% include "search.njk" %}
+{% endblock %}

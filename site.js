@@ -30,24 +30,32 @@ function initWeather() {
   return {
     weather_icon: "",
     weather_description: "",
+    weather_link: "",
     getWeather: function () {
-      var self = this;
-      fetch("https://geolocation-db.com/json/")
-        .then((response) => response.json())
-        .then((data) => {
-          if (data?.latitude && data?.longitude) {
-            fetch(
-              `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
-            )
-              .then((response) => response.json())
-              .then((data) => {
-                self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-                self.weather_description = data.weather[0].description;
-              });
-          } else {
-            return;
-          }
-        });
+      const self = this;
+      function updateWeather() {
+        fetch("https://geolocation-db.com/json/")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.latitude && data.longitude) {
+              fetch(
+                `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                  self.weather_description = data.weather[0].description;
+                  self.weather_link = `https://openweathermap.org/city/${data.id}`;
+                });
+            } else {
+              return;
+            }
+          });
+      }
+      updateWeather();
+      setInterval(() => {
+        updateWeather();
+      }, 30 * 60 * 1000);
     },
   };
 }
@@ -121,33 +129,114 @@ function initSongData() {
         );
       }
     },
+
+    togglePlayback: function () {
+      var self = this;
+      const player = self.$store.youtube.player;
+      if (self.$store.youtube.state === 1) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    },
   };
 }
 
-function initSearch() {
+function initVolumeControl() {
   return {
-    open: false,
-    query: "",
-    loading: false,
-    rowCount: 10,
-    data: null,
-    request_no: Date.now(),
+    startVolume: function () {
+      const self = this;
+      function updateVolume() {
+        if (self.$store.youtube.ready) {
+          self.$store.youtube.volume = self.$store.youtube.player.getVolume();
+          self.$store.youtube.muted = self.$store.youtube.player.isMuted();
+        }
+        window.requestAnimationFrame(updateVolume);
+      }
+      window.requestAnimationFrame(updateVolume);
+    },
+    adjustVolume: function () {
+      var self = this;
+      self.$store.youtube.player.setVolume(self.$store.youtube.volume);
+      self.$store.youtube.muted = false;
+    },
+    toggleMute: function () {
+      var self = this;
+      if (self.$store.youtube.muted) {
+        self.$store.youtube.player.unMute();
+      } else {
+        self.$store.youtube.player.mute();
+      }
+    },
+  };
+}
+
+function initSearchButton() {
+  return {
     focusSearchModal: function () {
       var self = this;
-      self.open = true;
+      const main = document.getElementsByTagName("main")[0];
+
+      main.setAttribute("inert", "true");
+      console.log("before open " + self.$store.search.open);
+      self.$store.search.open = true;
+      console.log("after open " + self.$store.search.open);
       const modal = document.getElementById("search-modal");
 
       const button = modal.querySelector(FOCUSABLE_SELECTORS);
 
       self.$nextTick(() => button.focus());
     },
-    closeModal: function () {
+  };
+}
+
+function initSearchModal() {
+  return {
+    query: "",
+    prev_query: "",
+    loading: false,
+    rowCount: 10,
+    data: null,
+    request_no: Date.now(),
+
+    closeModal: function ($event) {
       var self = this;
-      self.open = false;
-
       const openButton = document.getElementById("open-search");
+      const main = document.getElementsByTagName("main")[0];
 
+      if (openButton.contains($event.target)) {
+        return false;
+      }
+
+      console.log("before close " + self.$store.search.open);
+      self.$store.search.open = false;
+      main.removeAttribute("inert");
+      console.log("after close " + self.$store.search.open);
       openButton.focus();
+    },
+    tabEvent: function ($event) {
+      var self = this;
+      if (self.$store.search.open === false) {
+        return;
+      }
+      const search = document.getElementById("search-modal");
+      const focusableEls = search.querySelectorAll(FOCUSABLE_SELECTORS);
+      firstFocusableEl = focusableEls[0];
+      lastFocusableEl = focusableEls[focusableEls.length - 1];
+      if (!search.contains(document.activeElement)) {
+        firstFocusableEl.focus();
+        $event.preventDefault();
+      }
+      if ($event.shiftKey && document.activeElement === firstFocusableEl) {
+        lastFocusableEl.focus();
+        $event.preventDefault();
+      } else if (
+        !$event.shiftKey &&
+        document.activeElement === lastFocusableEl
+      ) {
+        firstFocusableEl.focus();
+        $event.preventDefault();
+      }
     },
     fetchSearch: function () {
       var self = this;
@@ -155,7 +244,11 @@ function initSearch() {
         this.data = null;
         return false;
       }
+      if (self.query.trim() === self.prev_query.trim()) {
+        return false;
+      }
       self.loading = true;
+      self.prev_query = self.query;
       const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=${
         self.rowCount
       }&searchPhrase=${encodeURI(self.query)}&_=${self.request_no}`;
@@ -194,6 +287,7 @@ function initArtistHero() {
   };
 }
 
+
 function initFullscreen() {
   return {
     toggleFullscreen: function () {
@@ -223,4 +317,44 @@ function initFullscreen() {
       }
     },
   };
+
+Spruce.store("search", { open: false });
+
+Spruce.store("youtube", {
+  state: -1,
+  volume: 25,
+  muted: false,
+  ready: false,
+});
+
+function onYouTubeIframeAPIReady() {
+  console.log("api ready");
+  Spruce.reset("youtube", {
+    player: new YT.Player("player", {
+      height: "390",
+      width: "640",
+      videoId: "MCkTebktHVc",
+      playerVars: { playsinline: 1 },
+      events: {
+        onStateChange: onPlayerStateChange,
+        onReady: onPlayerReady,
+      },
+    }),
+    state: -1,
+    volume: 25,
+    muted: false,
+    ready: false,
+  });
+}
+
+function onPlayerStateChange() {
+  console.log("state changed");
+  Spruce.store("youtube").state = Spruce.store(
+    "youtube"
+  ).player.getPlayerState();
+}
+
+function onPlayerReady() {
+  Spruce.store("youtube").ready = true;
+
 }

@@ -14,7 +14,7 @@ module.exports = {
       height: { 7: "1.75rem" },
       zIndex: { "-10": "-10" },
       inset: { "-6": "-1.5rem", "-12": "-3rem" },
-      padding: { "1/8": "12.5%", "1/4": "25%" },
+      padding: { 30: "7.5rem", "1/8": "12.5%", "1/4": "25%" },
     },
   },
   variants: {

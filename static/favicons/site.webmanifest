@@ -1,6 +1,7 @@
 {
   "name": "College Music | Lofi Hip Hop Radio",
   "short_name": "College Music",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png?v=kPLgG3mqdx",

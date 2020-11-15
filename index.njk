@@ -20,7 +20,7 @@
                         <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
                     </a>
                 </span>
-                <button x-data="initFullscreen()" @click.debounce="toggleFullscreen" class="text-white inline fullscreen-button">
+                <button x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" class="text-white inline fullscreen-button">
                     <div class="not-fullscreen">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

@@ -289,6 +289,18 @@ function initArtistHero() {
 
 function initFullscreen() {
   return {
+    canFullscreen: function () {
+      var doc = window.document;
+      var docEl = doc.documentElement;
+
+      var requestFullScreen =
+        docEl.requestFullscreen ||
+        docEl.mozRequestFullScreen ||
+        docEl.webkitRequestFullScreen ||
+        docEl.msRequestFullscreen;
+
+      return requestFullScreen;
+    },
     toggleFullscreen: function () {
       var doc = window.document;
       var docEl = doc.documentElement;

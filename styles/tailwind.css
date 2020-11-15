@@ -141,10 +141,6 @@ how to remove the virtical space around the range input in IE*/
   display: block;
 }
 
-.fullscreen:fullscreen {
-  display: block;
-}
-
 .fullscreen {
   display: none;
 }
@@ -153,7 +149,11 @@ how to remove the virtical space around the range input in IE*/
   display: block;
 }
 
-.not-fullscreen:fullscreen {
+:root:fullscreen .fullscreen {
+  display: block;
+}
+
+:root:fullscreen .not-fullscreen {
   display: none;
 }
 

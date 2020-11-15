@@ -141,7 +141,7 @@
             </div>
 
             <div id="controls" class="flex flex-col justify-start space-y-2 p-2 pt-4 text-white w-full lg:w-72">
-                <div x-data="initVolumeControl()" x-init="startVolume" class="group flex space-x-3 justify-end ">
+                <div x-data="initVolumeControl()" x-init="startVolume" class="hidden sm:flex group space-x-3 justify-end ">
                     <input class="w-3/4" x-model:value="$store.youtube.volume" @change="adjustVolume" @input="adjustVolume" type="range" min="0" max="100" value="25" id="volume">
                     <label for="volume">
                         <button @click="toggleMute" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">

@@ -137,6 +137,32 @@ how to remove the virtical space around the range input in IE*/
   background: linear-gradient(180deg, #2f1f60 0%, #460e62 100%);
 }
 
+.fullscreen-button {
+  display: block;
+}
+
+.fullscreen:fullscreen {
+  display: block;
+}
+
+.fullscreen {
+  display: none;
+}
+
+.not-fullscreen {
+  display: block;
+}
+
+.not-fullscreen:fullscreen {
+  display: none;
+}
+
+@media (display-mode: standalone) {
+  .fullscreen-button {
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .hello-container {
     display: grid;

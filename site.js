@@ -87,6 +87,11 @@ function initSongData() {
       song_history: false,
     },
 
+    songLinkData: {
+      now_playing: false,
+      playing_next: false,
+    },
+
     playing: false,
 
     songLink: "https://song.link/us/i/1532373384",
@@ -100,12 +105,30 @@ function initSongData() {
       sub.onmessage = function (event) {
         let data = JSON.parse(event.data);
         self.songData = data;
+        console.log({ data });
+        fetch(
+          `https://songlink-search.calebjasik.workers.dev/?q=${self.songData.now_playing.song.text}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            self.songLinkData.now_playing = data;
+          });
+
+        self.songData.song_history.forEach((item, key) => {
+          fetch(
+            `https://songlink-search.calebjasik.workers.dev/?q=${item.song.text}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              self.songLinkData.song_history[key] = data;
+            });
+        });
       };
     },
 
     openSongLink: function () {
       window.open(
-        "https://song.link/us/i/1532373384",
+        self.songLinkData.now_playing,
         "_blank",
         "noopener,noreferrer"
       );

@@ -107,7 +107,9 @@ function initSongData() {
         self.songData = data;
         console.log({ data });
         fetch(
-          `https://songlink-search.calebjasik.workers.dev/?q=${self.songData.now_playing.song.text}`
+          `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
+            self.songData.now_playing.song.text
+          )}`
         )
           .then((response) => response.json())
           .then((data) => {
@@ -116,7 +118,9 @@ function initSongData() {
 
         self.songData.song_history.forEach((item, key) => {
           fetch(
-            `https://songlink-search.calebjasik.workers.dev/?q=${item.song.text}`
+            `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
+              item.song.text
+            )}`
           )
             .then((response) => response.json())
             .then((data) => {

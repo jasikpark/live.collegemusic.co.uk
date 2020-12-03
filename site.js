@@ -201,8 +201,9 @@ function initSongData() {
         navigator
           .share({
             title: "College Music YT",
-            text: "Check out the College Music Youtube.",
-            url: "https://youtube.com/collegemusic",
+            text:
+              "I'm listening to i love you 3000 by GentleBeatz on College Music",
+            url: "https://song.link/s/2UobyorUSwvPuzFhL6YVAJ",
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
@@ -282,6 +283,7 @@ function initSearchModal() {
     loading: false,
     rowCount: 10,
     data: null,
+    songLinks: null,
     request_no: Date.now(),
 
     closeModal: function ($event) {

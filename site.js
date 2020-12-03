@@ -109,7 +109,7 @@ function initSongData() {
 
     songLinkData: {
       now_playing: false,
-      playing_next: false,
+      song_history: false,
     },
 
     playing: false,
@@ -127,12 +127,14 @@ function initSongData() {
         self.songData = data;
         self.songLinkData = {
           now_playing: false,
-          play_history: false,
+          song_history: false,
         };
 
         fetch(
           `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-            self.songData.now_playing.song.text
+            self.songData.now_playing.song.title +
+              " " +
+              self.songData.now_playing.song.artist
           )}`
         )
           .then((response) => {
@@ -150,7 +152,7 @@ function initSongData() {
         self.songData.song_history.forEach((item, key) => {
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-              item.song.text
+              item.song.title + " " + item.song.artist
             )}`
           )
             .then((response) => {

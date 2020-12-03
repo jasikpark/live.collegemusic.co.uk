@@ -29,8 +29,8 @@ function initClock() {
 function initWeather() {
   return {
     weather_icon: "",
-    weather_description: "",
-    weather_link: "",
+    weather_description: "Open Weather API",
+    weather_link: "https://openweatherapi.org",
     getWeather: function () {
       const self = this;
       function updateWeather() {

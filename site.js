@@ -44,7 +44,13 @@ function initWeather() {
           })
           .catch((e) => console.log(e.message || e.toString()))
           .then((data) => {
-            if (data.latitude && data.longitude) {
+            const fourOhFour = "Not%20Found";
+            if (
+              data.latitude &&
+              data.latitude !== fourOhFour &&
+              data.longitude &&
+              data.longitude !== fourOhFour
+            ) {
               fetch(
                 `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
               )

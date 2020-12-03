@@ -17,7 +17,7 @@
                 <span x-cloak x-data="initWeather()" x-init="getWeather">
                     <a :href="weather_link" target="_blank" rel="noreferrer noopener">
                         <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
-                        <span class="sr-only focus:not-sr-only" x-text="weather_description"></span>
+                        <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>
                 </span>
                 <button x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" class="text-white inline fullscreen-button">

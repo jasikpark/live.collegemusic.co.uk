@@ -410,7 +410,6 @@ Spruce.store("youtube", {
 });
 
 function onYouTubeIframeAPIReady() {
-  console.log("api ready");
   Spruce.reset("youtube", {
     player: new YT.Player("player", {
       height: "390",

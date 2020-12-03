@@ -1,11 +1,1 @@
-<svg width="1403" height="136" viewBox="0 0 1403 136" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-        d="M0 27.0006C0 27.0006 232.224 -52.8951 491.918 62.1843C751.611 177.264 1055.32 -94.5865 1305.34 75.4124C1555.36 245.411 1242.28 222.351 1242.28 222.351L0 208.261V27.0006Z"
-        fill="url(#paint0_linear)" />
-    <defs>
-        <linearGradient id="paint0_linear" x1="285.102" y1="0" x2="285.102" y2="132.554" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#E024F2" />
-            <stop offset="1" stop-color="#BD10E0" stop-opacity="0.01" />
-        </linearGradient>
-    </defs>
-</svg>
+<svg fill="none" height="136" viewBox="0 0 1403 136" width="1403" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="285.102" x2="285.102" y1="0" y2="132.554"><stop offset="0" stop-color="#e024f2"/><stop offset="1" stop-color="#bd10e0" stop-opacity=".01"/></linearGradient><path d="m0 27.0006s232.224-79.8957 491.918 35.1837c259.693 115.0797 563.402-156.7708 813.422 13.2281 250.02 169.9986-63.06 146.9386-63.06 146.9386l-1242.28-14.09z" fill="url(#a)"/></svg>

@@ -9,6 +9,10 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
   },
   theme: {
+    gradientColorStops: (theme) => ({
+      ...theme("colors"),
+      "gray-translucent": "rgba(18, 21, 96, 0.17)",
+    }),
     extend: {
       width: { 7: "1.75rem", 72: "18rem", 116: "29rem", 232: "58rem" },
       height: { 7: "1.75rem" },

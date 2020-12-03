@@ -246,7 +246,9 @@ how to remove the virtical space around the range input in IE*/
 .song-block {
   min-height: calc(90px - 1rem);
   scroll-snap-align: start;
-  background: linear-gradient(to bottom, transparent, rgba(18, 21, 96, 0.17));
+  @apply bg-gradient-to-b;
+  @apply from-transparent;
+  @apply to-gray-translucent;
 }
 
 .song-block-container {

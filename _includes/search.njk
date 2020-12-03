@@ -26,7 +26,9 @@
 
         <button @click="$refs.search.focus()" class="sr-only focus:not-sr-only">Back to search</button>
         <p class="p-4" x-show="data?.total === 0 && !loading">No songs found. Try searching again, or using different keywords.</p>
+        <img class="p-4" x-show="loading" alt="" src="/static/loader-oval.svg">
         <p class="p-4" x-show="loading">Loading...</p>
+
         <div x-show="data?.total > 0 && !loading" class="rounded-b-lg grid grid-cols-1 sm:grid-cols-2 h-auto overflow-hidden w-full">
             <template x-if="data?.total > 0 && !loading" x-for="song in data.rows">
                 <div class="song-block">

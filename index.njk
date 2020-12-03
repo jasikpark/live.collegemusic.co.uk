@@ -132,7 +132,7 @@
                     </div>
                     <div class="overflow-y-scroll rounded-b-lg song-block-container">
                         <div x-show="!songData.song_history" class="h-full w-full flex justify-center items-center bg-gradient-to-b from-transparent to-gray-translucent">
-                            <img src="/static/loader-oval.svg" width="32" height="32">
+                            <img src="/static/loader-oval.svg" alt="" width="32" height="32">
                         </div>
                         <template x-if="songData.song_history" x-for="song in songData.song_history" :key="song">
                             <div class="song-block">

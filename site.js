@@ -35,13 +35,27 @@ function initWeather() {
       const self = this;
       function updateWeather() {
         fetch("https://geolocation-db.com/json/")
-          .then((response) => response.json())
+          .then((response) => {
+            if (response.ok) {
+              response.json();
+            } else {
+              throw Error("Location data did not load");
+            }
+          })
+          .catch((e) => console.log(e.message || e.toString()))
           .then((data) => {
             if (data.latitude && data.longitude) {
               fetch(
                 `https://api.openweathermap.org/data/2.5/weather?appid=3074e25313624bc7213df098d33cd414&lat=${data.latitude}&lon=${data.longitude}`
               )
-                .then((response) => response.json())
+                .then((response) => {
+                  if (response.ok) {
+                    response.json();
+                  } else {
+                    throw Error("Weather data did not load");
+                  }
+                })
+                .catch((e) => console.log(e.message || e.toString()))
                 .then((data) => {
                   self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
                   self.weather_description = data.weather[0].description;

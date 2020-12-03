@@ -42,7 +42,6 @@ function initWeather() {
               throw Error("Location data did not load");
             }
           })
-          .catch((e) => console.log(e.message || e.toString()))
           .then((data) => {
             const fourOhFour = "Not%20Found";
             if (
@@ -61,16 +60,17 @@ function initWeather() {
                     throw Error("Weather data did not load");
                   }
                 })
-                .catch((e) => console.log(e.message || e.toString()))
                 .then((data) => {
                   self.weather_icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
                   self.weather_description = data.weather[0].description;
                   self.weather_link = `https://openweathermap.org/city/${data.id}`;
-                });
+                })
+                .catch((e) => console.log(e.message || e.toString()));
             } else {
               return;
             }
-          });
+          })
+          .catch((e) => console.log(e.message || e.toString()));
       }
       updateWeather();
       setInterval(() => {

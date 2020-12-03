@@ -125,6 +125,10 @@ function initSongData() {
       sub.onmessage = function (event) {
         let data = JSON.parse(event.data);
         self.songData = data;
+        self.songLinkData = {
+          now_playing: false,
+          play_history: false,
+        };
 
         fetch(
           `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(

@@ -45,16 +45,16 @@
         <meta name="msapplication-config" content="/browserconfig.xml?v=kPLgG3mqdx">
         <meta name="theme-color" content="#2F1F60">
 
+        <link rel="stylesheet" href="/style.css?v={% version %}"/>
         <link rel="preconnect" href="https://openweathermap.org"/>
         <link rel="preconnect" href="https://geolocation-db.com"/>
         <link rel="preconnect" href="https://youtube.com"/>
         <link rel="preconnect" href="https://www.gstatic.com"/>
         <link rel="preconnect" href="https://apis.google.com"/>
-        <link rel="stylesheet" href="/style.css?v={% version %}"/>
-        <link rel="preload" href="/js/spruce.umd.js?v={% version %}"/>
-        <link rel="preload" href="/js/site.js?v={% version %}"/>
-        <link rel="preload" href="/js/alpine.js?v={% version %}"/>
-        <link rel="preload" href="https://www.youtube.com/iframe_api"/>
+        <link rel="preload" as="script" href="/js/spruce.umd.js?v={% version %}"/>
+        <link rel="preload" as="script" href="/js/site.js?v={% version %}"/>
+        <link rel="preload" as="script" href="/js/alpine.js?v={% version %}"/>
+        <link rel="preload" as="script" href="https://www.youtube.com/iframe_api"/>
         <script>
             var tag = document.createElement("script");
             tag.id = "iframe-api";

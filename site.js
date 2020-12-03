@@ -37,7 +37,7 @@ function initWeather() {
         fetch("https://geolocation-db.com/json/")
           .then((response) => {
             if (response.ok) {
-              response.json();
+              return response.json();
             } else {
               throw Error("Location data did not load");
             }
@@ -45,6 +45,7 @@ function initWeather() {
           .then((data) => {
             const fourOhFour = "Not%20Found";
             if (
+              data &&
               data.latitude &&
               data.latitude !== fourOhFour &&
               data.longitude &&
@@ -55,7 +56,7 @@ function initWeather() {
               )
                 .then((response) => {
                   if (response.ok) {
-                    response.json();
+                    return response.json();
                   } else {
                     throw Error("Weather data did not load");
                   }
@@ -109,7 +110,7 @@ function initSongData() {
 
     songLinkData: {
       now_playing: false,
-      song_history: false,
+      song_history: [false, false, false, false, false],
     },
 
     playing: false,
@@ -123,49 +124,63 @@ function initSongData() {
         "wss://api.collegemusic.co.uk/static/api/live/nowplaying/cm"
       );
       sub.onmessage = function (event) {
-        let data = JSON.parse(event.data);
-        self.songData = data;
-        self.songLinkData = {
-          now_playing: false,
-          song_history: false,
-        };
+        let newSongData = JSON.parse(event.data);
+        let oldNowPlaying = self.songData.now_playing;
+        self.songData = newSongData;
 
-        fetch(
-          `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-            self.songData.now_playing.song.title +
-              " " +
-              self.songData.now_playing.song.artist
-          )}`
-        )
-          .then((response) => {
-            if (response.ok) {
-              response.json();
-            } else {
-              throw Error("Location data did not load");
-            }
-          })
-          .then((data) => {
-            self.songLinkData.now_playing = data;
-          })
-          .catch((e) => console.log(e.message || e.toString()));
-
-        self.songData.song_history.forEach((item, key) => {
+        if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-              item.song.title + " " + item.song.artist
+              self.songData.now_playing.song.title +
+                " " +
+                self.songData.now_playing.song.artist
             )}`
           )
             .then((response) => {
               if (response.ok) {
-                response.json();
+                return response.json();
               } else {
-                throw Error("Location data did not load");
+                throw Error("Failed to fetch now_playing song link");
               }
             })
             .then((data) => {
-              self.songLinkData.song_history[key] = data;
+              if (data?.pageUrl) {
+                self.songLinkData.now_playing = data;
+              } else {
+                self.songLinkData.now_playing = false;
+              }
+              console.log({ data });
             })
             .catch((e) => console.log(e.message || e.toString()));
+
+          self.songData.song_history.forEach((item, key) => {
+            fetch(
+              `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
+                item.song.title + " " + item.song.artist
+              )}`
+            )
+              .then((response) => {
+                if (response.ok) {
+                  return response.json();
+                } else {
+                  throw Error("Failed to fetch song_history song links");
+                }
+              })
+              .then((data) => {
+                if (data?.pageUrl) {
+                  self.songLinkData.song_history[key] = data;
+                } else {
+                  self.songLinkData.song_history[key] = false;
+                }
+                console.log(
+                  `song ${key}: ${self.songLinkData.song_history[key]?.pageUrl}`
+                );
+              })
+              .catch((e) => console.log(e.message || e.toString()));
+          });
+        }
+        self.songLinkData.song_history.forEach((item, key) => {
+          console.log(`song ${key}: ${item?.pageUrl}`);
         });
       };
       sub.onerror = function () {

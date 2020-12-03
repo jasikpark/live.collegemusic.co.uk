@@ -15,7 +15,7 @@
                     <time :datetime="unix" x-text="time" class="text-white inline"></time>
                 </span>
                 <span x-cloak x-data="initWeather()" x-init="getWeather">
-                    <a :href="weather_link" target="_blank" rel="noreferrer noopener">
+                    <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener">
                         <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>
@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="pl-3 sm:pl-4 self-start flex justify-center align-center space-x-3">
-                            <a title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData.now_playing">
+                            <a title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData.now_playing" href="https://song.link">
                                 <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="#002251" stroke-width="0.8"/>
                                 </svg>

@@ -148,6 +148,9 @@ function initSongData() {
             });
         });
       };
+      sub.onerror = function (event) {
+        console.log("Could not connect to websocket");
+      };
     },
 
     openSongLink: function () {

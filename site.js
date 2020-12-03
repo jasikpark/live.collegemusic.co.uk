@@ -131,10 +131,17 @@ function initSongData() {
             self.songData.now_playing.song.text
           )}`
         )
-          .then((response) => response.json())
+          .then((response) => {
+            if (response.ok) {
+              response.json();
+            } else {
+              throw Error("Location data did not load");
+            }
+          })
           .then((data) => {
             self.songLinkData.now_playing = data;
-          });
+          })
+          .catch((e) => console.log(e.message || e.toString()));
 
         self.songData.song_history.forEach((item, key) => {
           fetch(
@@ -142,10 +149,17 @@ function initSongData() {
               item.song.text
             )}`
           )
-            .then((response) => response.json())
+            .then((response) => {
+              if (response.ok) {
+                response.json();
+              } else {
+                throw Error("Location data did not load");
+              }
+            })
             .then((data) => {
               self.songLinkData.song_history[key] = data;
-            });
+            })
+            .catch((e) => console.log(e.message || e.toString()));
         });
       };
       sub.onerror = function () {

@@ -73,7 +73,7 @@
         <div id="content" class="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:space-y-0 lg:space-x-8 pb-8 px-2 sm:px-8">
             <div x-data="initSongData()" x-init="getSongData" class="space-y-4 w-full lg:w-116">
                 <div class="rounded-lg flex align-center now-playing">
-                    <img :src="songData.now_playing.song.art" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
+                    <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
                     <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-30 sm:pl-32">
                         <button class="hidden sm:block" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
                             <svg aria-label="paused" :class="{ 'hidden': $store.youtube.state === 1, 'block': $store.youtube.state !== 1 }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">

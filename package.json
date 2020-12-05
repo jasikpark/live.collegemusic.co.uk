@@ -25,7 +25,7 @@
     "husky": "4.3.4",
     "postcss-clean": "1.1.0",
     "postcss-cli": "8.3.0",
-    "tailwindcss": "1.9.6",
+    "tailwindcss": "2.0.1",
     "tldjs": "2.3.1"
   },
   "dependencies": {}

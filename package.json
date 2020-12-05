@@ -21,7 +21,7 @@
     "@ryangjchandler/spruce": "2.2.2",
     "alpinejs": "2.7.3",
     "autoprefixer": "10.0.4",
-    "cssnano": "^4.1.10",
+    "cssnano": "4.1.10",
     "env-var": "7.0.0",
     "html-minifier": "4.0.0",
     "husky": "4.3.4",

@@ -13,16 +13,20 @@ html {
   --scrollbarBG: rgb(0, 0, 0, 0.1);
   --thumbBG: rgb(0, 0, 0, 0.4);
 }
+
 body::-webkit-scrollbar {
   width: 11px;
 }
+
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
+
 body::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
 }
+
 body::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
   border-radius: 6px;
@@ -36,9 +40,11 @@ input[type="range"] {
   background-color: transparent;
   -webkit-appearance: none;
 }
+
 input[type="range"]:focus {
   outline: none;
 }
+
 input[type="range"]::-webkit-slider-runnable-track {
   background: #9013fe;
   border: 0.2px solid #010101;
@@ -47,6 +53,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   height: 7px;
   cursor: pointer;
 }
+
 input[type="range"]::-webkit-slider-thumb {
   margin-top: -5.2px;
   width: 17px;
@@ -57,9 +64,11 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
 }
+
 input[type="range"]:focus::-webkit-slider-runnable-track {
   background: #9c2cfe;
 }
+
 input[type="range"]::-moz-range-progress {
   background: #9013fe;
   border: 0.2px solid #010101;
@@ -68,6 +77,7 @@ input[type="range"]::-moz-range-progress {
   height: 7px;
   cursor: pointer;
 }
+
 input[type="range"]::-moz-range-track {
   background: #000;
   border: 0.2px solid #010101;
@@ -76,6 +86,7 @@ input[type="range"]::-moz-range-track {
   height: 7px;
   cursor: pointer;
 }
+
 input[type="range"]::-moz-range-thumb {
   width: 17px;
   height: 17px;
@@ -84,6 +95,7 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 17px;
   cursor: pointer;
 }
+
 input[type="range"]::-ms-track {
   background: transparent;
   border-color: transparent;
@@ -93,16 +105,19 @@ input[type="range"]::-ms-track {
   height: 7px;
   cursor: pointer;
 }
+
 input[type="range"]::-ms-fill-lower {
   background: #8401f6;
   border: 0.2px solid #010101;
   border-radius: 10px;
 }
+
 input[type="range"]::-ms-fill-upper {
   background: #000;
   border: 0.2px solid #010101;
   border-radius: 10px;
 }
+
 input[type="range"]::-ms-thumb {
   width: 17px;
   height: 17px;
@@ -110,22 +125,27 @@ input[type="range"]::-ms-thumb {
   border: 0;
   border-radius: 17px;
   cursor: pointer;
-  margin-top: 0px;
-  /*Needed to keep the Edge thumb centred*/
+  margin-top: 0;
+
+  /* Needed to keep the Edge thumb centered */
 }
+
 input[type="range"]:focus::-ms-fill-lower {
   background: #9013fe;
 }
+
 input[type="range"]:focus::-ms-fill-upper {
   background: #000;
 }
-/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
-how to remove the virtical space around the range input in IE*/
+
+/* TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE */
 @supports (-ms-ime-align: auto) {
   /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
   input[type="range"] {
     margin: 0;
-    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+
+    /* Edge starts the margin from the thumb, not the track as other browsers do */
   }
 }
 
@@ -246,6 +266,7 @@ how to remove the virtical space around the range input in IE*/
 .song-block {
   min-height: calc(90px - 1rem);
   scroll-snap-align: start;
+
   @apply bg-gradient-to-b;
   @apply from-transparent;
   @apply to-gray-translucent;
@@ -340,24 +361,27 @@ how to remove the virtical space around the range input in IE*/
 }
 
 @tailwind components;
-
 @tailwind utilities;
 
 @layer utilities {
   @responsive {
     @variants hover, focus {
       .text-shadow-sm {
-        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
       }
+
       .text-shadow {
-        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       }
+
       .drop-shadow {
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
       }
+
       .drop-shadow-white {
-        filter: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.25));
+        filter: drop-shadow(0 4px 4px rgba(255, 255, 255, 0.25));
       }
+
       .backdrop-blur {
         backdrop-filter: blur(4px);
       }

@@ -143,6 +143,7 @@ function initSongData() {
                 throw Error("Failed to fetch now_playing song link");
               }
             })
+            .catch((e) => console.log(e.message || e.toString()))
             .then((data) => {
               if (data?.pageUrl) {
                 self.songLinkData.now_playing = data;
@@ -150,8 +151,7 @@ function initSongData() {
                 self.songLinkData.now_playing = false;
               }
               console.log({ data });
-            })
-            .catch((e) => console.log(e.message || e.toString()));
+            });
 
           self.songData.song_history.forEach((item, key) => {
             fetch(
@@ -166,6 +166,7 @@ function initSongData() {
                   throw Error("Failed to fetch song_history song links");
                 }
               })
+              .catch((e) => console.log(e.message || e.toString()))
               .then((data) => {
                 if (data?.pageUrl) {
                   self.songLinkData.song_history[key] = data;
@@ -175,8 +176,7 @@ function initSongData() {
                 console.log(
                   `song ${key}: ${self.songLinkData.song_history[key]?.pageUrl}`
                 );
-              })
-              .catch((e) => console.log(e.message || e.toString()));
+              });
           });
         }
         self.songLinkData.song_history.forEach((item, key) => {

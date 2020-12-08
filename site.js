@@ -148,7 +148,6 @@ function initSongData() {
               } else {
                 self.songLinkData.now_playing = false;
               }
-              console.log({ data });
             });
 
           self.songData.song_history.forEach((item, key) => {
@@ -171,15 +170,9 @@ function initSongData() {
                 } else {
                   self.songLinkData.song_history[key] = false;
                 }
-                console.log(
-                  `song ${key}: ${self.songLinkData.song_history[key]?.pageUrl}`
-                );
               });
           });
         }
-        self.songLinkData.song_history.forEach((item, key) => {
-          console.log(`song ${key}: ${item?.pageUrl}`);
-        });
       };
       sub.onerror = function () {
         console.log("Could not connect to websocket");

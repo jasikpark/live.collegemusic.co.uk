@@ -48,6 +48,11 @@
                         </svg>
                         <span class="sr-only">Click to get out of fullscreen</span></div>
                 </button>
+                <button x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
+                    <svg aria-hidden="true" title="Refresh" class="h-6 w-6" stroke="currentColor" width="28" height="28" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="none">
+                        <path xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                    <span class="sr-only">Refresh</span></button>
             </span>
         </header>
 

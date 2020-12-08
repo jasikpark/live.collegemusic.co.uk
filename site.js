@@ -131,9 +131,7 @@ function initSongData() {
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-              self.songData.now_playing.song.title +
-                " " +
-                self.songData.now_playing.song.artist
+              `track:"${self.songData.now_playing.song.title}"artist:"${self.songData.now_playing.song.artist}"`
             )}`
           )
             .then((response) => {
@@ -156,7 +154,7 @@ function initSongData() {
           self.songData.song_history.forEach((item, key) => {
             fetch(
               `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-                item.song.title + " " + item.song.artist
+                `track:"${item.song.title}"artist:"${item.song.artist}"`
               )}`
             )
               .then((response) => {

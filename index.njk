@@ -4,7 +4,7 @@
 
 {% block content %}
     <main class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
-        <header class="flex flex-wrap justify-between items-center w-full pt-2 sm:pt-8 px-2 sm:px-8 relative">
+        <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative">
             <button @click.prevent="const v = document.getElementById('video'); v.addq" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                 Skip to video
             </button>
@@ -14,9 +14,15 @@
                 <span x-data="initClock()" x-init="startClock">
                     <time :datetime="unix" x-text="time" class="text-white inline"></time>
                 </span>
-                <span x-cloak x-data="initWeather()" x-init="getWeather">
+                <button x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
+                    <svg aria-hidden="true" title="Refresh" class="h-6 w-6" stroke="currentColor" width="28" height="28" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="none">
+                        <path xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                    <span class="sr-only">Refresh</span>
+                </button>
+                <span x-cloak x-data="initWeather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden flex justify-center items-center ">
                     <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener">
-                        <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline h-8 drop-shadow-white">
+                        <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline object-cover h-12 w-12">
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>
                 </span>
@@ -48,11 +54,6 @@
                         </svg>
                         <span class="sr-only">Click to get out of fullscreen</span></div>
                 </button>
-                <button x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
-                    <svg aria-hidden="true" title="Refresh" class="h-6 w-6" stroke="currentColor" width="28" height="28" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="none">
-                        <path xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                    </svg>
-                    <span class="sr-only">Refresh</span></button>
             </span>
         </header>
 

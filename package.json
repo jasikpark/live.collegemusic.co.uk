@@ -25,7 +25,7 @@
     "env-var": "7.0.0",
     "html-minifier": "4.0.0",
     "husky": "4.3.5",
-    "postcss": "8.2.0",
+    "postcss": "8.2.1",
     "postcss-cli": "8.3.0",
     "stylelint": "13.8.0",
     "stylelint-config-standard": "20.0.0",

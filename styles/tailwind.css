@@ -364,6 +364,12 @@ how to remove the virtical space around the range input in IE */
 @tailwind utilities;
 
 @layer utilities {
+  @media (display-mode: standalone) {
+    .standalone\:inline {
+      display: inline;
+    }
+  }
+
   @responsive {
     @variants hover, focus {
       .text-shadow-sm {

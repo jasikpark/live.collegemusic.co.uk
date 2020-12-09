@@ -131,9 +131,7 @@ function initSongData() {
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-              self.songData.now_playing.song.title +
-                " " +
-                self.songData.now_playing.song.artist
+              `track:"${self.songData.now_playing.song.title}"artist:"${self.songData.now_playing.song.artist}"`
             )}`
           )
             .then((response) => {
@@ -143,20 +141,19 @@ function initSongData() {
                 throw Error("Failed to fetch now_playing song link");
               }
             })
+            .catch((e) => console.log(e.message || e.toString()))
             .then((data) => {
               if (data?.pageUrl) {
                 self.songLinkData.now_playing = data;
               } else {
                 self.songLinkData.now_playing = false;
               }
-              console.log({ data });
-            })
-            .catch((e) => console.log(e.message || e.toString()));
+            });
 
           self.songData.song_history.forEach((item, key) => {
             fetch(
               `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-                item.song.title + " " + item.song.artist
+                `track:"${item.song.title}"artist:"${item.song.artist}"`
               )}`
             )
               .then((response) => {
@@ -166,22 +163,16 @@ function initSongData() {
                   throw Error("Failed to fetch song_history song links");
                 }
               })
+              .catch((e) => console.log(e.message || e.toString()))
               .then((data) => {
                 if (data?.pageUrl) {
                   self.songLinkData.song_history[key] = data;
                 } else {
                   self.songLinkData.song_history[key] = false;
                 }
-                console.log(
-                  `song ${key}: ${self.songLinkData.song_history[key]?.pageUrl}`
-                );
-              })
-              .catch((e) => console.log(e.message || e.toString()));
+              });
           });
         }
-        self.songLinkData.song_history.forEach((item, key) => {
-          console.log(`song ${key}: ${item?.pageUrl}`);
-        });
       };
       sub.onerror = function () {
         console.log("Could not connect to websocket");
@@ -431,6 +422,7 @@ function onYouTubeIframeAPIReady() {
     player: new YT.Player("player", {
       height: "390",
       width: "640",
+      target: document.querySelector("link[rel='canonical']").href,
       videoId: "MCkTebktHVc",
       playerVars: { playsinline: 1 },
       events: {

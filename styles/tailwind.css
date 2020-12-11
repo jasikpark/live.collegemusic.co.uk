@@ -380,6 +380,10 @@ how to remove the virtical space around the range input in IE */
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       }
 
+      .overflow-fade {
+        text-overflow: fade;
+      }
+
       .drop-shadow {
         filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
       }

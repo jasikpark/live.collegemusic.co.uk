@@ -103,12 +103,13 @@
                             </svg>
                         </button>
 
-                        <div class="sm:pl-4 min-w-0 flex-1" id="now-playing-song-details">
-                            <p class="text-gray-700 text-shadow-sm font-semibold truncate overflow-fade" x-text="songData.now_playing.song.title">--</p>
-                            <p class="text-gray-100 text-shadow-sm font-semibold truncate overflow-fade" x-text="songData.now_playing.song.artist">--</p>
+                        <div class="sm:ml-4 p-1 min-w-0 flex-1 truncate-and-animate" id="now-playing-song-details">
+                            <div class="fade"></div>
+                            <p class="text-gray-700 text-shadow-sm font-semibold truncate overflow-clip" -text="songData.now_playing.song.title">;asdkljf;alskdjf;alskdjf;asldkjf;aslkdfj;alskdfja;ldkjfa;dslkfj;aslkdjfa;lskdfj;alsdkfj;alskfja;lsdkfja;sdkfj;</p>
+                            <p class="text-gray-100 text-shadow-sm font-semibold truncate overflow-clip" -text="songData.now_playing.song.artist">--</p>
                         </div>
 
-                        <div class="pl-3 sm:pl-4 self-start flex justify-center align-center space-x-3">
+                        <div class="ml-3 sm:ml-4 self-start flex justify-center align-center space-x-3">
                             <a x-show="songLinkData.now_playing" :hidden="!songLinkData.now_playing" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.now_playing?.pageUrl || 'javascript:void(0)'" href="https://song.link">
                                 <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
@@ -149,9 +150,10 @@
                             <div class="song-block">
                                 <div class="flex w-full align-center space-x-3 sm:space-x-4 p-3 sm:px-4">
                                     <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art" src="/static/default_album_art.png"/>
-                                    <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1">
-                                        <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate overflow-fade" x-text="song.song.title">Delightful</p>
-                                        <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate overflow-fade" x-text="song.song.artist">Refeeld</p>
+                                    <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 truncate-and-animate">
+                                        <div class="fade"></div>
+                                        <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate overflow-clip" x-text="song.song.title">Delightful</p>
+                                        <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate overflow-clip" x-text="song.song.artist">Refeeld</p>
                                     </div>
                                     <div class="self-start flex justify-center align-center space-x-3">
                                         <a x-show="songLinkData?.song_history[index]?.pageUrl" :hidden="!songLinkData?.song_history[index]?.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.song_history[index]?.pageUrl || 'javascript:void(0)'">

@@ -274,7 +274,7 @@ how to remove the virtical space around the range input in IE */
 }
 
 .kyle-mcevoy {
-  background-color: #4fc2e8;
+  background: #4fc2e8;
   background: url("/static/kyle_mcevoy.png") bottom center no-repeat;
   background: url("/static/kyle_mcevoy.png") bottom center no-repeat,
     linear-gradient(
@@ -288,7 +288,7 @@ how to remove the virtical space around the range input in IE */
 }
 
 .kalaido {
-  background-color: #f0dac4;
+  background: #f0dac4;
   background: url("/static/kalaido.png") bottom center no-repeat;
   background: url("/static/kalaido.png") bottom center no-repeat, #f0dac4;
 }
@@ -299,14 +299,14 @@ how to remove the virtical space around the range input in IE */
 }
 
 .wei {
-  background-color: #f8b6b3;
+  background: #f8b6b3;
   background: url("/static/wei.png") bottom center no-repeat;
   background: url("/static/wei.png") bottom center no-repeat, #f8b6b3;
   background-size: cover;
 }
 
 .santpoort {
-  background-color: #f8b6b3;
+  background: #f8b6b3;
   background: url("/static/santpoort.png") bottom center no-repeat;
   background: url("/static/santpoort.png") bottom center no-repeat,
     linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
@@ -314,19 +314,19 @@ how to remove the virtical space around the range input in IE */
 
 .santpoort::before {
   content: "";
-  background-color: #f8b6b3;
+  background: #f8b6b3;
   background: linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
 }
 
 .eillah {
-  background-color: #f372e6;
+  background: #f372e6;
   background: url("/static/eillah.png") bottom center no-repeat;
   background: url("/static/eillah.png") bottom center no-repeat,
     linear-gradient(180deg, #eae9ff 0%, #f372e6 95.31%, #43488e 100%);
 }
 
 .brillon {
-  background-color: #f8b6b3;
+  background: #f8b6b3;
   background: url("/static/brillon.png") bottom center no-repeat;
   background: url("/static/brillon.png") bottom center no-repeat, #f8b6b3;
   background-size: cover;

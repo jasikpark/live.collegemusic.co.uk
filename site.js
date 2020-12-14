@@ -411,14 +411,32 @@ function initFullscreen() {
 Spruce.store("search", { open: false });
 
 Spruce.store("youtube", {
+  apiReady: false,
+  player: false,
   state: -1,
   volume: 25,
   muted: false,
   ready: false,
 });
 
+/**
+ * @returns {boolean}
+ */
+function IsYoutubeReady() {
+  const youtube = Spruce.store("youtube");
+  if (!youtube.playerReady && YT) {
+    onYouTubeIframeAPIReady();
+    return true;
+  } else {
+    setTimeout(IsYoutubeReady, 1000);
+  }
+}
+
+setTimeout(IsYoutubeReady, 1000);
+
 function onYouTubeIframeAPIReady() {
   Spruce.reset("youtube", {
+    playerReady: true,
     player: new YT.Player("player", {
       height: "390",
       width: "640",

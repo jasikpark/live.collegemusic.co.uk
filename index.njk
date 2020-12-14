@@ -104,7 +104,8 @@
                         </button>
 
                         <div class="sm:ml-4 p-1 min-w-0 flex-1 truncate-and-animate" id="now-playing-song-details">
-                            <div class="fade"></div>
+                            <div class="fade-l"></div>
+                            <div class="fade-r"></div>
                             <p class="text-gray-700 text-shadow-sm font-semibold truncate overflow-clip" -text="songData.now_playing.song.title">;asdkljf;alskdjf;alskdjf;asldkjf;aslkdfj;alskdfja;ldkjfa;dslkfj;aslkdjfa;lskdfj;alsdkfj;alskfja;lsdkfja;sdkfj;</p>
                             <p class="text-gray-100 text-shadow-sm font-semibold truncate overflow-clip" -text="songData.now_playing.song.artist">--</p>
                         </div>
@@ -150,8 +151,9 @@
                             <div class="song-block">
                                 <div class="flex w-full align-center space-x-3 sm:space-x-4 p-3 sm:px-4">
                                     <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art" src="/static/default_album_art.png"/>
-                                    <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 truncate-and-animate">
-                                        <div class="fade"></div>
+                                    <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 px-1 truncate-and-animate">
+                                        <div class="fade-l"></div>
+                                        <div class="fade-r"></div>
                                         <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate overflow-clip" x-text="song.song.title">Delightful</p>
                                         <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate overflow-clip" x-text="song.song.artist">Refeeld</p>
                                     </div>

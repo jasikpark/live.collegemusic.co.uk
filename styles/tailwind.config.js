@@ -140,5 +140,29 @@ module.exports = {
     backgroundColor: ["group-focus", "active"],
     backgroundOpacity: ["group-focus", "active"],
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("tailwind-easing-gradients")({
+      variants: ["responsive"],
+      // required
+      gradients: {
+        ex1: ["#a4e", "#03d"], // must be two colors
+        ex2: { easing: "ease-in-out", steps: 5, color: ["#4ae", "#0da"] },
+        ex3: {
+          easing: "cubic-bezier(0.48, 0.3, 0.64, 1)",
+          color: ["#4ae", "#0da"],
+        },
+        ex4: { easing: "steps(4, skip-none)", color: ["#4ae", "#0da"] },
+        "song-fade": { easing: "ease-in", color: ["rgba(0,0,0,0)", "#000"] },
+      },
+      directions: {
+        71.61: "71.61deg",
+        hmmmm: "69deg",
+        t: "to top",
+        b: "to bottom",
+        l: "to left",
+        r: "to right",
+      },
+    }),
+  ],
 };

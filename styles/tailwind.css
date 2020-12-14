@@ -196,41 +196,13 @@ how to remove the virtical space around the range input in IE */
 }
 
 .video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
   max-width: 100%;
   min-width: 298px;
-}
-
-.video-container embed,
-.video-container iframe,
-.video-container object {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .chat-container {
-  position: relative;
-  padding-bottom: 100%;
-  height: 0;
-  overflow: hidden;
   max-width: 100%;
   min-width: 298px;
-}
-
-.chat-container embed,
-.chat-container iframe,
-.chat-container object {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .now-playing {

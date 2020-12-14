@@ -140,5 +140,5 @@ module.exports = {
     backgroundColor: ["group-focus", "active"],
     backgroundOpacity: ["group-focus", "active"],
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };

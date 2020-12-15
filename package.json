@@ -20,7 +20,7 @@
     "@commitlint/config-conventional": "11.0.0",
     "@ryangjchandler/spruce": "2.2.2",
     "@tailwindcss/aspect-ratio": "0.2.0",
-    "alpinejs": "2.7.3",
+    "alpinejs": "2.8.0",
     "autoprefixer": "10.1.0",
     "cssnano": "4.1.10",
     "env-var": "7.0.0",

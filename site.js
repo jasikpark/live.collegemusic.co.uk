@@ -327,7 +327,7 @@ function initSearchModal() {
       }
       self.loading = true;
       self.prev_query = self.query;
-      const url = `https://cors-anywhere.herokuapp.com/https://api.collegemusic.co.uk/api/station/1/requests?current=1&rowCount=${
+      const url = `https://live-collegemusic-co-uk.netlify.app/api/station/1/requests?current=1&rowCount=${
         self.rowCount
       }&searchPhrase=${encodeURI(self.query)}&_=${self.request_no}`;
 

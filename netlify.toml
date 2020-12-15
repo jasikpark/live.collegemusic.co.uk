@@ -19,3 +19,10 @@ X-Frame-Options = "DENY"
 X-XSS-Protection = "1; mode=block"
 X-Content-Type-Options = "nosniff"
 Content-Security-Policy = "frame-origin 'none';"
+
+[[redirects]]
+    from = "/api"
+    to = "https://api.collegemusic.com/api"
+    status = 200
+    force = true
+    headers = {X-From = "Netlify"}

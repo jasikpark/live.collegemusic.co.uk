@@ -22,7 +22,7 @@ Content-Security-Policy = "frame-origin 'none';"
 
 [[redirects]]
 from = "/api/*"
-to = "https://api.collegemusic.com/api/:splat"
+to = "https://api.collegemusic.co.uk/api/:splat"
 status = 200
 force = true
 headers = { X-From = "Netlify" }

@@ -227,15 +227,15 @@ how to remove the virtical space around the range input in IE */
 }
 
 .truncate-and-animate {
-  @apply rounded-lg shadow-sm bg-black relative;
+  @apply rounded-lg relative;
 }
 
 .truncate-and-animate .fade-l {
-  @apply rounded-lg bg-easing-l-song-fade absolute top-0 left-0 w-8 h-full;
+  @apply rounded-lg bg-easing-l-song-fade-white absolute top-0 left-0 w-8 h-full;
 }
 
 .truncate-and-animate .fade-r {
-  @apply rounded-lg bg-easing-r-song-fade absolute top-0 right-0 w-8 h-full;
+  @apply rounded-lg bg-easing-r-song-fade-white absolute top-0 right-0 w-8 h-full;
 }
 
 .play-history {

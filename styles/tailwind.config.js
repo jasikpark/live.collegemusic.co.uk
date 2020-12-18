@@ -154,6 +154,10 @@ module.exports = {
         },
         ex4: { easing: "steps(4, skip-none)", color: ["#4ae", "#0da"] },
         "song-fade": { easing: "ease-in", color: ["rgba(0,0,0,0)", "#000"] },
+        "song-fade-white": {
+          easing: "ease-in",
+          color: ["rgba(255,255,255,0)", "#fff"],
+        },
       },
       directions: {
         71.61: "71.61deg",

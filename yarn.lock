@@ -5218,7 +5218,7 @@ table@^6.0.3:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
-tailwind-easing-gradients@^1.0.2:
+tailwind-easing-gradients@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/tailwind-easing-gradients/-/tailwind-easing-gradients-1.0.2.tgz#f21d6b2b153ecf418a8895805c5e760a0929d74a"
   integrity sha512-q4NNbxoCsQP8kL/i+kOD43Bdyvz/Ok/nC98jLOc6l8H7x3LbV2HK9hvSnB/fwK8jp6FNfFBUmHuiCa0QV5rG2A==

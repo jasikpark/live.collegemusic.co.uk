@@ -27,5 +27,9 @@
         "declaration-colon-newline-after": null,
         "declaration-block-trailing-semicolon": null,
         "no-descending-specificity": null
-    }
+    },
+    "exclude": [
+        "_tmp",
+        "_site"
+    ]
 }

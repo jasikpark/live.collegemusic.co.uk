@@ -424,7 +424,7 @@ Spruce.store("youtube", {
  */
 function IsYoutubeReady() {
   const youtube = Spruce.store("youtube");
-  if (!youtube.playerReady && YT) {
+  if (!youtube.playerReady && YT.loaded) {
     onYouTubeIframeAPIReady();
     return true;
   } else {

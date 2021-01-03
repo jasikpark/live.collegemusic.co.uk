@@ -149,11 +149,9 @@
                             <div class="song-block">
                                 <div class="flex w-full align-center space-x-3 sm:space-x-4 p-3 sm:px-4">
                                     <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art" src="/static/default_album_art.png"/>
-                                    <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 px-1 truncate-and-animate">
-                                        <div class="fade-l hidden"></div>
-                                        <div class="fade-r"></div>
-                                        <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate overflow-clip" x-text="song.song.title">Delightful</p>
-                                        <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate overflow-clip" x-text="song.song.artist">Refeeld</p>
+                                    <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 px-1">
+                                        <p class="text-gray-700 text-shadow-sm font-semibold text-left truncate overflow-clip truncate-and-animate" x-text="song.song.title">Delightful</p>
+                                        <p class="text-gray-100 text-shadow-sm font-semibold text-left truncate overflow-clip truncate-and-animate" x-text="song.song.artist">Refeeld</p>
                                     </div>
                                     <div class="self-start flex justify-center align-center space-x-3">
                                         <a x-show="songLinkData?.song_history[index]?.pageUrl" :hidden="!songLinkData?.song_history[index]?.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.song_history[index]?.pageUrl || 'javascript:void(0)'">

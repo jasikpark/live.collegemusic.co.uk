@@ -227,6 +227,8 @@ how to remove the virtical space around the range input in IE */
 }
 
 .truncate-and-animate {
+  transform: translateX(0);
+
   @apply relative;
 }
 

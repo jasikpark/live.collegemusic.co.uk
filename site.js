@@ -129,6 +129,18 @@ function initSongData() {
         self.songData = newSongData;
 
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
+          // Contruct a Web Animations API Object for each song that is long enough here.
+
+          const truncateAndAnimate = Array.from(
+            document.querySelectorAll(".truncate-and-animate")
+          )
+            .filter((x) => {
+              x.offsetWidth > x.clientWidth;
+            })
+            .forEach((x) => {
+              x.animate([0, 100], { duration: 500 });
+            });
+
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
               `track:"${self.songData.now_playing.song.title}"artist:"${self.songData.now_playing.song.artist}"`
@@ -424,7 +436,7 @@ Spruce.store("youtube", {
  */
 function IsYoutubeReady() {
   const youtube = Spruce.store("youtube");
-  if (!youtube.playerReady && YT.loaded) {
+  if (!youtube.playerReady && YT && YT.loaded) {
     onYouTubeIframeAPIReady();
     return true;
   } else {

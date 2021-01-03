@@ -103,11 +103,9 @@
                             </svg>
                         </button>
 
-                        <div class="sm:ml-4 px-1 min-w-0 flex-1 truncate-and-animate" id="now-playing-song-details">
-                            <div class="fade-l hidden"></div>
-                            <div class="fade-r"></div>
-                            <p class="text-gray-700 text-shadow-sm font-semibold truncate overflow-clip" -text="songData.now_playing.song.title">hello i am very long text put here so that you can see the overflow</p>
-                            <p class="text-gray-100 text-shadow-sm font-semibold truncate overflow-clip" -text="songData.now_playing.song.artist">hello i am very long text put here so that you can see the overflow</p>
+                        <div class="sm:ml-4 px-1 min-w-0 flex-1" id="now-playing-song-details">
+                            <p x-ref="nowPlayingTitle" class="text-gray-700 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" x-text="songData.now_playing.song.title">--</p>
+                            <p x-ref="nowPlayingArtist" class="text-gray-100 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" x-text="songData.now_playing.song.artist">--</p>
                         </div>
 
                         <div class="ml-3 sm:ml-4 self-start flex justify-center align-center space-x-3">

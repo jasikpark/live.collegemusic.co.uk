@@ -136,9 +136,11 @@ module.exports = {
     },
   },
   variants: {
-    textColor: ["group-focus", "active"],
-    backgroundColor: ["group-focus", "active"],
-    backgroundOpacity: ["group-focus", "active"],
+    extend: {
+      textColor: ["group-focus", "active"],
+      backgroundColor: ["group-focus", "active"],
+      backgroundOpacity: ["group-focus", "active"],
+    },
   },
   plugins: [
     require("@tailwindcss/aspect-ratio"),

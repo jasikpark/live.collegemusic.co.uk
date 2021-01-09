@@ -417,6 +417,19 @@ function initFullscreen() {
         cancelFullScreen.call(doc);
       }
     },
+    /**
+     * @returns {boolean}
+     */
+    isFullscreen: function () {
+      var doc = window.document;
+      var docEl = doc.documentElement;
+      return (
+        !doc.fullscreenElement &&
+        !doc.mozFullScreenElement &&
+        !doc.webkitFullscreenElement &&
+        !doc.msFullscreenElement
+      );
+    },
   };
 }
 

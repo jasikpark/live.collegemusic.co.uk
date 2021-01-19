@@ -30,7 +30,7 @@
     "postcss-cli": "8.3.1",
     "prettier": "2.2.1",
     "prettier-plugin-toml": "0.3.1",
-    "stylelint": "13.8.0",
+    "stylelint": "13.9.0",
     "stylelint-config-standard": "20.0.0",
     "tailwind-easing-gradients": "1.0.2",
     "tailwindcss": "2.0.2",

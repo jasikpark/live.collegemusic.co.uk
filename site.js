@@ -133,25 +133,29 @@ function initSongData() {
 
           const truncateAndAnimate = Array.from(
             document.querySelectorAll(".truncate-and-animate")
-          ).filter((x) => {
+          );
+
+          for (const el in truncateAndAnimate) {
+            // Cancel all of the old animations
+            if (el.animation) {
+              el.animation.cancel();
+            }
+          }
+
+          const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {
             // Get all elements that are currently truncated.
-            console.log(
-              `element ${x.textContent} has ${x.scrollWidth} > ${
-                x.clientWidth
-              } == ${x.scrollWidth > x.clientWidth}`
-            );
             return x.scrollWidth > x.clientWidth;
           });
-          console.log(truncateAndAnimate);
-          truncateAndAnimate.forEach((x) => {
-            console.log(`too beeg: ${x.textContent}`);
-            x.style.color = "red";
-            const el = x.firstElementChild || x;
-            el.animate(
+          console.log(filterTruncateAndAnimate);
+          filterTruncateAndAnimate.forEach((x) => {
+            // Animate either the element or the first child of the element
+            const el = x?.firstElementChild || x;
+
+            const animation = el.animate(
               [
-                { color: "red", transform: "translateX(0)", offset: 0 },
-                { color: "red", transform: "translateX(0)", offset: 0.6 },
-                { color: "blue", transform: "translateX(-50%)", offset: 1 },
+                { transform: "translateX(0)", offset: 0 },
+                { transform: "translateX(0)", offset: 0.6 },
+                { transform: "translateX(-50%)", offset: 1 },
               ],
               { duration: 20000, iterations: Infinity, easing: "linear" }
             );

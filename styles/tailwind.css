@@ -232,6 +232,10 @@ how to remove the virtical space around the range input in IE */
   @apply relative;
 }
 
+.blarg::after {
+  content: "--a;ddskfja;sdlkfa;ldskfjja;sdlkfja;sdldkfja;lsdkfja;slkfa;lsdkfja;lskdfja;lsdkfja;lsdkfja;slkfja;sldkfja;sldkdfja;sdlkfjas;ddlkfjasd;ldfkjasl;caleb";
+}
+
 .truncate-and-animate::before {
   content: "";
   display: none;

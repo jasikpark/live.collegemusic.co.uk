@@ -163,6 +163,10 @@ function initSongData() {
             animation.oncancel = () => {
               this.style.setProperty("--content", "");
             };
+            animation.onfinish = () => {
+              this.animation = null;
+              this.style.setProperty("--content", "");
+            };
           });
 
           fetch(

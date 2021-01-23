@@ -150,15 +150,18 @@ function initSongData() {
           filterTruncateAndAnimate.forEach((x) => {
             // Animate either the element or the first child of the element
             const el = x?.firstElementChild || x;
-
+            x.style.setProperty("--content", `"${el.textContent}"`);
             const animation = el.animate(
               [
                 { transform: "translateX(0)", offset: 0 },
-                { transform: "translateX(0)", offset: 0.6 },
+                { transform: "translateX(0)", offset: 0.5 },
                 { transform: "translateX(-50%)", offset: 1 },
               ],
               { duration: 20000, iterations: Infinity, easing: "linear" }
             );
+            animation.oncancel = () => {
+              this.style.setPropery("--content", "");
+            };
           });
 
           fetch(

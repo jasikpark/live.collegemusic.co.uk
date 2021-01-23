@@ -140,6 +140,10 @@ function initSongData() {
             if (el.animation) {
               el.animation.cancel();
             }
+
+            if (el.style.getPropertyValue("--content") != "") {
+              el.style.setProperty("--content", "");
+            }
           }
 
           const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {

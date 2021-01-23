@@ -151,6 +151,7 @@ function initSongData() {
             // Animate either the element or the first child of the element
             const el = x?.firstElementChild || x;
             x.style.setProperty("--content", `"${el.textContent}"`);
+            // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
             const animation = el.animate(
               [
                 { transform: "translateX(0)", offset: 0 },
@@ -160,7 +161,7 @@ function initSongData() {
               { duration: 20000, iterations: Infinity, easing: "linear" }
             );
             animation.oncancel = () => {
-              this.style.setPropery("--content", "");
+              this.style.setProperty("--content", "");
             };
           });
 

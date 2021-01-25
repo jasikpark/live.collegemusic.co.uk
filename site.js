@@ -129,53 +129,7 @@ function initSongData() {
         self.songData = newSongData;
 
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
-          // Construct a Web Animations API Object for each song that is long enough here.
-
-          const truncateAndAnimate = Array.from(
-            document.querySelectorAll(".truncate-and-animate")
-          );
-
-          for (const index in truncateAndAnimate) {
-            // Cancel all of the old animations
-            var el = truncateAndAnimate[index];
-            if (el.animation) {
-              el.animation.cancel();
-            }
-
-            if (
-              window.getComputedStyle(el, null).getPropertyValue("--content") !=
-              ""
-            ) {
-              el.style.setProperty("--content", "");
-            }
-          }
-
-          const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {
-            // Get all elements that are currently truncated.
-            return x.scrollWidth > x.clientWidth;
-          });
-          console.log(filterTruncateAndAnimate);
-          filterTruncateAndAnimate.forEach((x) => {
-            // Animate either the element or the first child of the element
-            const el = x?.firstElementChild || x;
-            x.style.setProperty("--content", `"${el.textContent}"`);
-            // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
-            const animation = el.animate(
-              [
-                { transform: "translateX(0)", offset: 0 },
-                { transform: "translateX(0)", offset: 0.5 },
-                { transform: "translateX(-50%)", offset: 1 },
-              ],
-              { duration: 20000, iterations: Infinity, easing: "linear" }
-            );
-            animation.oncancel = () => {
-              this.style.setProperty("--content", "");
-            };
-            animation.onfinish = () => {
-              this.animation = null;
-              this.style.setProperty("--content", "");
-            };
-          });
+          animateSongDetails();
 
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
@@ -266,6 +220,56 @@ function initSongData() {
     },
   };
 }
+
+function animateSongDetails() {
+  // Construct a Web Animations API Object for each song that is long enough here.
+
+  const truncateAndAnimate = Array.from(
+    document.querySelectorAll(".truncate-and-animate")
+  );
+
+  for (const index in truncateAndAnimate) {
+    // Cancel all of the old animations
+    const x = truncateAndAnimate[index];
+    const el = x?.firstElementChild || x;
+    if (el.animation) {
+      el.animation.cancel();
+    }
+
+    el.style.setProperty("--content", "");
+  }
+
+  const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {
+    // Get all elements that are currently truncated.
+    return x.scrollWidth > x.clientWidth;
+  });
+  console.log(filterTruncateAndAnimate);
+  filterTruncateAndAnimate.forEach((x) => {
+    // Animate either the element or the first child of the element
+    const el = x?.firstElementChild || x;
+    x.style.setProperty("--content", `"${el.textContent}"`);
+    // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
+    // Let's work with a good default.. and have an upper bound too.
+    const duration = Math.min(el.scrollWidth * 10, 100000);
+    const animation = el.animate(
+      [
+        { transform: "translateX(0)", offset: 0 },
+        { transform: "translateX(0)", offset: 0.5 },
+        { transform: "translateX(-50%)", offset: 1 },
+      ],
+      { duration: duration, iterations: Infinity, easing: "linear" }
+    );
+    animation.oncancel = () => {
+      this.style.setProperty("--content", "");
+    };
+    animation.onfinish = () => {
+      this.animation = null;
+      this.style.setProperty("--content", "");
+    };
+  });
+}
+
+window.addEventListener("DOMContentLoaded", animateSongDetails);
 
 function initVolumeControl() {
   return {

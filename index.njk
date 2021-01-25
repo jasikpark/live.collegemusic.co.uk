@@ -103,11 +103,11 @@
                             </svg>
                         </button>
 
-                        <div class="sm:ml-4 mx-1 min-w-0 flex-1 bg-t-white-clear-white rounded-sm" id="now-playing-song-details">
-                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-6 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
-                                <span class="absolute" x-text="songData.now_playing.song.title">--</span></p>
-                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-6 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
-                                <span class="absolute" x-text="songData.now_playing.song.artist">--</span></p>
+                        <div class="sm:ml-4 mx-1 min-w-0 flex-1 bg-t-white-clear-white rounded-lg shadow-lg overflow-hidden" id="now-playing-song-details">
+                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                                <span class="absolute px-2 pt-1" x-text="songData.now_playing.song.title">--</span></p>
+                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                                <span class="absolute px-2 pb-1" x-text="songData.now_playing.song.artist">--</span></p>
                         </div>
 
                         <div class="ml-3 sm:ml-4 self-start flex justify-center align-center space-x-3">

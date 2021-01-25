@@ -227,8 +227,6 @@ how to remove the virtical space around the range input in IE */
 }
 
 .truncate-and-animate {
-  transform: translateX(0);
-
   @apply relative;
 }
 
@@ -363,6 +361,21 @@ how to remove the virtical space around the range input in IE */
     .standalone\:inline {
       display: inline;
     }
+  }
+
+  .bg-t-white-clear-white {
+    background: linear-gradient(
+      to top,
+      rgba(18, 21, 96, 0.17),
+      rgba(18, 21, 96, 0.1),
+      rgba(18, 21, 96, 0.05),
+      rgba(18, 21, 96, 0.02),
+      rgba(18, 21, 96, 0.01),
+      rgba(18, 21, 96, 0.02),
+      rgba(18, 21, 96, 0.05),
+      rgba(18, 21, 96, 0.1),
+      rgba(18, 21, 96, 0.17)
+    );
   }
 
   @responsive {

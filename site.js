@@ -129,7 +129,10 @@ function initSongData() {
         self.songData = newSongData;
 
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
-          animateSongDetails();
+          console.log(
+            "called 'animateSongDetails' from sub.onmessage if statement"
+          );
+          requestIdleCallback(animateSongDetails, { timeout: 1000 });
 
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
@@ -243,7 +246,10 @@ function animateSongDetails() {
     // Get all elements that are currently truncated.
     return x.scrollWidth > x.clientWidth;
   });
+  console.log("---");
+  console.log(truncateAndAnimate);
   console.log(filterTruncateAndAnimate);
+  console.log("---");
   filterTruncateAndAnimate.forEach((x) => {
     // Animate either the element or the first child of the element
     const el = x?.firstElementChild || x;
@@ -269,7 +275,9 @@ function animateSongDetails() {
   });
 }
 
-window.addEventListener("DOMContentLoaded", animateSongDetails);
+window.addEventListener("DOMContentLoaded", () =>
+  requestIdleCallback(animateSongDetails, { timeout: 1000 })
+);
 
 function initVolumeControl() {
   return {

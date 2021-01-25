@@ -104,8 +104,10 @@
                         </button>
 
                         <div class="sm:ml-4 mx-1 min-w-0 flex-1 bg-t-white-clear-white rounded-sm" id="now-playing-song-details">
-                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-6 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" ><span class="absolute" x-tex t="songData.now_playing.song.title">--asdlkfa;skjfa;lskdjf;laskdjf;laskdjf;laksdjf;laksdjf;laksjf;laksjf;lkadsjf;alksdjf;askljf;alskdjfa;sdlkfja;dskfj</span></p>
-                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-6 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" ><span class="absolute" x-text="songData.now_playing.song.artist">--</span></p>
+                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-6 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                                <span class="absolute" x-text="songData.now_playing.song.title">--</span></p>
+                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-6 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                                <span class="absolute" x-text="songData.now_playing.song.artist">--</span></p>
                         </div>
 
                         <div class="ml-3 sm:ml-4 self-start flex justify-center align-center space-x-3">
@@ -150,8 +152,10 @@
                                 <div class="flex w-full align-center space-x-3 sm:space-x-4 p-3 sm:px-4">
                                     <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art" src="/static/default_album_art.png"/>
                                     <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 mx-1 bg-t-white-clear-white rounded-sm">
-                                        <p class="text-gray-700 text-shadow-sm h-6 font-semibold text-left truncate overflow-clip truncate-and-animate"><span class="absolute" x-te xt="song.song.title">--a;sdlkfa;sdkf;alskdf;alskjf;alskjf;alksdjf;lakjf;sakjdf;aksdjf;aksdjf;askjf;alksjf;lasjf;laskjf;laksjf;laskjf;askjf;alskjf;alsdkjf</span></p>
-                                        <p class="text-gray-100 text-shadow-sm h-6 font-semibold text-left truncate overflow-clip truncate-and-animate"><span class="absolute" x-text="song.song.artist">--</span></p>
+                                        <p class="text-gray-700 text-shadow-sm h-6 font-semibold text-left truncate overflow-clip truncate-and-animate">
+                                            <span class="absolute" x-text="song.song.title">--</span></p>
+                                        <p class="text-gray-100 text-shadow-sm h-6 font-semibold text-left truncate overflow-clip truncate-and-animate">
+                                            <span class="absolute" x-text="song.song.artist">--</span></p>
                                     </div>
                                     <div class="self-start flex justify-center align-center space-x-3">
                                         <a x-show="songLinkData?.song_history[index]?.pageUrl" :hidden="!songLinkData?.song_history[index]?.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.song_history[index]?.pageUrl || 'javascript:void(0)'">

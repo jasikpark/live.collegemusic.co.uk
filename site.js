@@ -135,13 +135,17 @@ function initSongData() {
             document.querySelectorAll(".truncate-and-animate")
           );
 
-          for (const el in truncateAndAnimate) {
+          for (const index in truncateAndAnimate) {
             // Cancel all of the old animations
+            var el = truncateAndAnimate[index];
             if (el.animation) {
               el.animation.cancel();
             }
 
-            if (el.style.getPropertyValue("--content") != "") {
+            if (
+              window.getComputedStyle(el, null).getPropertyValue("--content") !=
+              ""
+            ) {
               el.style.setProperty("--content", "");
             }
           }

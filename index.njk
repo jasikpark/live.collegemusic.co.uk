@@ -150,7 +150,7 @@
                         <template x-if="songData.song_history" x-for="(song, index) in songData.song_history" :key="index">
                             <div class="song-block">
                                 <div class="flex w-full align-center space-x-3 sm:space-x-4 p-3 sm:px-4">
-                                    <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-12 w-12" :src="song.song.art" src="/static/default_album_art.png"/>
+                                    <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-14 w-14" :src="song.song.art" src="/static/default_album_art.png"/>
                                     <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 mx-1 bg-t-white-clear-white rounded-lg shadow-lg overflow-hidden">
                                         <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
                                             <span class="absolute px-2 pt-1" x-text="song.song.title">--</span></p>

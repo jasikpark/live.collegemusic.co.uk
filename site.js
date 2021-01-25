@@ -231,6 +231,7 @@ function animateSongDetails() {
     document.querySelectorAll(".truncate-and-animate")
   );
 
+  // Reset the state of all elements we are watching for truncation
   for (const index in truncateAndAnimate) {
     // Cancel all of the old animations
     const x = truncateAndAnimate[index];

@@ -245,6 +245,7 @@ how to remove the virtical space around the range input in IE */
 .truncate-and-animate :first-child::after {
   content: var(--content);
   user-select: none;
+  padding-left: 0.5rem;
 }
 
 .truncate-and-animate::before {

@@ -240,7 +240,7 @@ function animateSongDetails() {
       el.animation.cancel();
     }
 
-    el.style.setProperty("--content", "");
+    el.style.setProperty("--content", null);
   }
 
   const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {
@@ -262,7 +262,7 @@ function animateSongDetails() {
       [
         { transform: "translateX(0)", offset: 0 },
         { transform: "translateX(0)", offset: 0.5 },
-        { transform: "translateX(-50%)", offset: 1 },
+        { transform: "translateX(calc(-50% + 0.5rem))", offset: 1 },
       ],
       { duration: duration, iterations: Infinity, easing: "linear" }
     );

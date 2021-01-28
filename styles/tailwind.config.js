@@ -158,7 +158,7 @@ module.exports = {
         "song-fade": { easing: "ease-in", color: ["rgba(0,0,0,0)", "#000"] },
         "song-fade-white": {
           easing: "ease-in",
-          color: ["rgba(18, 21, 96, 0)", "rgba(18, 21, 96, 0.17)"],
+          color: ["rgba(18, 21, 96, 0)", "rgba(18, 21, 96, 0.10)"],
         },
       },
       directions: {

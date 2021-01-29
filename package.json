@@ -21,7 +21,7 @@
     "@ryangjchandler/spruce": "2.5.3",
     "@tailwindcss/aspect-ratio": "0.2.0",
     "alpinejs": "2.8.0",
-    "autoprefixer": "10.2.3",
+    "autoprefixer": "10.2.4",
     "cssnano": "4.1.10",
     "env-var": "7.0.0",
     "html-minifier": "4.0.0",

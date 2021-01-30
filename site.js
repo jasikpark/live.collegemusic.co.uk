@@ -269,13 +269,19 @@ function animateSongDetails() {
       { duration: duration, iterations: Infinity, easing: "linear" }
     );
     el.animation.oncancel = () => {
-      console.log("called animation cancel");
-      animation.effect.target.style.setProperty("--content", null);
+      console.log(`called animation cancel on: ${el.animation}`);
+      el.animation.effect.target.style.setProperty("--content", null);
     };
+    el.addEventListener("animationcancel", (event) => {
+      event.target.style.setProperty("--content", null);
+    });
     el.animation.onfinish = () => {
       console.log("called animation finish");
-      animation.effect.target.style.setProperty("--content", null);
+      el.animation.effect.target.style.setProperty("--content", null);
     };
+    el.addEventListener("animationend", () => {
+      event.target.style.setProperty("--content", null);
+    });
   });
 }
 

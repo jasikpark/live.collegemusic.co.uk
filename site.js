@@ -243,8 +243,6 @@ function animateSongDetails() {
     if (el.animation) {
       el.animation.cancel();
     }
-
-    el.style.setProperty("--content", null);
   }
 
   const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {
@@ -262,7 +260,7 @@ function animateSongDetails() {
     // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
     // Let's work with a good default.. and have an upper bound too.
     const duration = Math.min(el.scrollWidth * 20, 100000);
-    const animation = el.animate(
+    el.animation = el.animate(
       [
         { transform: "translateX(0)", offset: 0 },
         { transform: "translateX(0)", offset: 0.5 },
@@ -270,11 +268,11 @@ function animateSongDetails() {
       ],
       { duration: duration, iterations: Infinity, easing: "linear" }
     );
-    animation.oncancel = () => {
+    el.animation.oncancel = () => {
       console.log("called animation cancel");
       animation.effect.target.style.setProperty("--content", null);
     };
-    animation.onfinish = () => {
+    el.animation.onfinish = () => {
       console.log("called animation finish");
       animation.effect.target.style.setProperty("--content", null);
     };

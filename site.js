@@ -127,7 +127,11 @@ function initSongData() {
         let newSongData = JSON.parse(event.data);
         let oldNowPlaying = self.songData.now_playing;
         self.songData = newSongData;
-
+        console.log(
+          `new_id: ${newSongData.now_playing.song.id} !== old_id: ${
+            oldNowPlaying.song.id
+          } -> ${newSongData.now_playing.song.id !== oldNowPlaying.song.id}`
+        );
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           console.log(
             "called 'animateSongDetails' from sub.onmessage if statement"
@@ -267,11 +271,12 @@ function animateSongDetails() {
       { duration: duration, iterations: Infinity, easing: "linear" }
     );
     animation.oncancel = () => {
-      this.style.setProperty("--content", "");
+      console.log("called animation cancel");
+      animation.effect.target.style.setProperty("--content", null);
     };
     animation.onfinish = () => {
-      this.animation = null;
-      this.style.setProperty("--content", "");
+      console.log("called animation finish");
+      animation.effect.target.style.setProperty("--content", null);
     };
   });
 }

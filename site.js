@@ -243,6 +243,7 @@ function animateSongDetails() {
     if (el.animation) {
       el.animation.cancel();
     }
+    el.style.setProperty("--content", null);
   }
 
   const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {

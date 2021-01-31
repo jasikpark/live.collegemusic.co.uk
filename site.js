@@ -207,6 +207,7 @@ function initSongData() {
       sub.onerror = function () {
         console.log("Could not connect to websocket");
       };
+      requestIdleCallback(animateSongDetails, { timeout: 1000 });
     },
 
     openSongLink: function () {
@@ -306,10 +307,6 @@ function animateSongDetails() {
     });
   });
 }
-
-window.addEventListener("DOMContentLoaded", () =>
-  requestIdleCallback(animateSongDetails, { timeout: 1000 })
-);
 
 function initVolumeControl() {
   return {

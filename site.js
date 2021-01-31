@@ -287,10 +287,11 @@ function animateSongDetails() {
       [
         { transform: "translateX(0)", offset: 0 },
         { transform: "translateX(0)", offset: 0.5 },
-        { transform: "translateX(calc(-50% + 0.5rem))", offset: 1 },
+        { transform: "translateX(calc(-50% + 0.25rem))", offset: 1 },
       ],
       { duration: duration, iterations: Infinity, easing: "linear" }
     );
+    /** eh? 
     el.animation.oncancel = () => {
       console.log(`called animation cancel on: ${el.animation}, ${el}`);
       el.animation.effect.target.style.setProperty("--content", null);
@@ -305,6 +306,7 @@ function animateSongDetails() {
     el.addEventListener("animationend", () => {
       event.target.style.setProperty("--content", null);
     });
+    */
   });
 }
 

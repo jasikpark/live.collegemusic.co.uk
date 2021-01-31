@@ -104,9 +104,9 @@
                         </button>
 
                         <div class="sm:ml-4 mx-1 min-w-0 flex-1 bg-t-white-clear-white rounded-lg shadow-lg overflow-hidden" id="now-playing-song-details">
-                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate pseudo-rounded-t" >
                                 <span class="absolute px-2 pt-1" x-text="songData.now_playing.song.title">--</span></p>
-                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate pseudo-rounded-b" >
                                 <span class="absolute px-2 pb-1" x-text="songData.now_playing.song.artist">--</span></p>
                         </div>
 
@@ -152,9 +152,9 @@
                                 <div class="flex w-full align-center space-x-3 sm:space-x-4 p-3 sm:px-4">
                                     <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-14 w-14" :src="song.song.art" src="/static/default_album_art.png"/>
                                     <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 mx-1 bg-t-white-clear-white rounded-lg shadow-lg overflow-hidden">
-                                        <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
+                                        <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate pseudo-rounded-t">
                                             <span class="absolute px-2 pt-1" x-text="song.song.title">--</span></p>
-                                        <p class="text-gray-100 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
+                                        <p class="text-gray-100 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate pseudo-rounded-b">
                                             <span class="absolute px-2 pb-1" x-text="song.song.artist">--</span></p>
                                     </div>
                                     <div class="self-start flex justify-center align-center space-x-3">

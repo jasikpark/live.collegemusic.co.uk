@@ -291,7 +291,7 @@ function animateSongDetails() {
       { duration: duration, iterations: Infinity, easing: "linear" }
     );
     el.animation.oncancel = () => {
-      console.log(`called animation cancel on: ${el.animation}`);
+      console.log(`called animation cancel on: ${el.animation}, ${el}`);
       el.animation.effect.target.style.setProperty("--content", null);
     };
     el.addEventListener("animationcancel", (event) => {

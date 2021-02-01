@@ -80,8 +80,8 @@
             <div x-data="initSongData()" x-init="getSongData" class="space-y-4 w-full lg:w-116">
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
-                    <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-30 sm:pl-32">
-                        <button class="hidden sm:block" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
+                    <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-27 sm:pl-28">
+                        <button class="hidden sm:block sm:ml-3" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
                             <svg aria-label="paused" :class="{ 'hidden': $store.youtube.state === 1, 'block': $store.youtube.state !== 1 }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
                                 <defs>
@@ -103,14 +103,14 @@
                             </svg>
                         </button>
 
-                        <div class="sm:ml-4 min-w-0 flex-1 overflow-hidden" id="now-playing-song-details">
-                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate pseudo-rounded-t" >
+                        <div class="ml-1 min-w-0 flex-1 overflow-hidden" id="now-playing-song-details">
+                            <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
                                 <span class="absolute mx-3 pt-1" x-text="songData.now_playing.song.title">--</span></p>
-                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate pseudo-rounded-b" >
+                            <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
                                 <span class="absolute mx-3 pb-1" x-text="songData.now_playing.song.artist">--</span></p>
                         </div>
 
-                        <div class="ml-3 sm:ml-4 self-start flex justify-center align-center space-x-3">
+                        <div class="ml-1 self-start flex justify-center align-center space-x-3">
                             <a x-show="songLinkData.now_playing" :hidden="!songLinkData.now_playing" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.now_playing?.pageUrl || 'javascript:void(0)'" href="https://song.link">
                                 <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
@@ -152,9 +152,9 @@
                                 <div class="flex w-full align-center space-x-1 p-3 sm:px-4">
                                     <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-14 w-14" :src="song.song.art" src="/static/default_album_art.png"/>
                                     <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 overflow-hidden">
-                                        <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate pseudo-rounded-t">
+                                        <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
                                             <span class="absolute mx-3 pt-1" x-text="song.song.title">--</span></p>
-                                        <p class="text-gray-100 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate pseudo-rounded-b">
+                                        <p class="text-gray-100 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
                                             <span class="absolute mx-3 pb-1" x-text="song.song.artist">--</span></p>
                                     </div>
                                     <div class="self-start flex justify-center align-center space-x-3">

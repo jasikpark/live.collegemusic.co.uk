@@ -154,7 +154,17 @@ function initSongData() {
             "called 'animateSongDetails' from sub.onmessage if statement"
           );
           requestIdleCallback(animateSongDetails, { timeout: 1000 });
-
+          // Log missing song data to console
+          if (
+            self.songData.now_playing.song.title === "" ||
+            self.songData.now_playing.song.artist === "" ||
+            self.songData.now_playing.song.title === undefined ||
+            self.songData.now_playing.song.artist === undefined
+          ) {
+            console.log(
+              `Missing Song Data: id ${self.songData.now_playing.song.id} title ${self.songData.now_playing.song.title} artist ${self.songData.now_playing.song.artist}`
+            );
+          }
           fetch(
             `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
               `track:"${self.songData.now_playing.song.title}"artist:"${self.songData.now_playing.song.artist}"`

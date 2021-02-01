@@ -5,7 +5,7 @@ const FOCUSABLE_SELECTORS =
 window.requestIdleCallback =
   window.requestIdleCallback ||
   function (cb) {
-    var start = Date.now();
+    const start = Date.now();
     return setTimeout(function () {
       cb({
         didTimeout: false,
@@ -139,7 +139,7 @@ function initSongData() {
     songLink: "https://song.link/us/i/1532373384",
 
     getSongData: function () {
-      var self = this;
+      let self = this;
 
       let sub = new WebSocket(
         "wss://api.collegemusic.co.uk/static/api/live/nowplaying/cm"
@@ -245,7 +245,7 @@ function initSongData() {
     },
 
     togglePlayback: function () {
-      var self = this;
+      let self = this;
       const player = self.$store.youtube.player;
       if (self.$store.youtube.state === 1) {
         player.pauseVideo();
@@ -317,12 +317,12 @@ function initVolumeControl() {
       window.requestAnimationFrame(updateVolume);
     },
     adjustVolume: function () {
-      var self = this;
+      let self = this;
       self.$store.youtube.player.setVolume(self.$store.youtube.volume);
       self.$store.youtube.muted = false;
     },
     toggleMute: function () {
-      var self = this;
+      let self = this;
       if (self.$store.youtube.muted) {
         self.$store.youtube.player.unMute();
       } else {
@@ -335,7 +335,7 @@ function initVolumeControl() {
 function initSearchButton() {
   return {
     focusSearchModal: function () {
-      var self = this;
+      let self = this;
       const main = document.getElementsByTagName("main")[0];
 
       main.setAttribute("inert", "true");
@@ -362,7 +362,7 @@ function initSearchModal() {
     request_no: Date.now(),
 
     closeModal: function ($event) {
-      var self = this;
+      let self = this;
       const openButton = document.getElementById("open-search");
       const main = document.getElementsByTagName("main")[0];
 
@@ -377,7 +377,7 @@ function initSearchModal() {
       openButton.focus();
     },
     tabEvent: function ($event) {
-      var self = this;
+      let self = this;
       if (self.$store.search.open === false) {
         return;
       }
@@ -401,7 +401,7 @@ function initSearchModal() {
       }
     },
     fetchSearch: function () {
-      var self = this;
+      let self = this;
       if (self.query.trim() === "") {
         this.data = null;
         return false;
@@ -452,10 +452,10 @@ function initArtistHero() {
 function initFullscreen() {
   return {
     canFullscreen: function () {
-      var doc = window.document;
-      var docEl = doc.documentElement;
+      let doc = window.document;
+      let docEl = doc.documentElement;
 
-      var requestFullScreen =
+      let requestFullScreen =
         docEl.requestFullscreen ||
         docEl.mozRequestFullScreen ||
         docEl.webkitRequestFullScreen ||
@@ -464,15 +464,15 @@ function initFullscreen() {
       return requestFullScreen;
     },
     toggleFullscreen: function () {
-      var doc = window.document;
-      var docEl = doc.documentElement;
+      let doc = window.document;
+      let docEl = doc.documentElement;
 
-      var requestFullScreen =
+      let requestFullScreen =
         docEl.requestFullscreen ||
         docEl.mozRequestFullScreen ||
         docEl.webkitRequestFullScreen ||
         docEl.msRequestFullscreen;
-      var cancelFullScreen =
+      let cancelFullScreen =
         doc.exitFullscreen ||
         doc.mozCancelFullScreen ||
         doc.webkitExitFullscreen ||
@@ -493,8 +493,8 @@ function initFullscreen() {
      * @returns {boolean}
      */
     isFullscreen: function () {
-      var doc = window.document;
-      var docEl = doc.documentElement;
+      let doc = window.document;
+      let docEl = doc.documentElement;
       return (
         !doc.fullscreenElement &&
         !doc.mozFullScreenElement &&

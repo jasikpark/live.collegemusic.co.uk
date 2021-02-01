@@ -273,6 +273,8 @@ function animateSongDetails() {
       el.animation.cancel();
     }
     el.style.setProperty("--content", null);
+    // Unset mask on parent
+    x.classList.remove("animating");
   }
 
   const filterTruncateAndAnimate = truncateAndAnimate.filter((x) => {
@@ -288,6 +290,8 @@ function animateSongDetails() {
       // Animate either the element or the first child of the element
       const el = x?.firstElementChild || x;
       el.style.setProperty("--content", `"${el.textContent}"`);
+      // Set mask on parent
+      x.classList.add("animating");
       // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
       // Let's work with a good default.. and have an upper bound too.
       const duration = Math.min(el.scrollWidth * 20, 100000);
@@ -295,7 +299,7 @@ function animateSongDetails() {
         [
           { transform: "translateX(0)", offset: 0 },
           { transform: "translateX(0)", offset: 0.5 },
-          { transform: "translateX(calc(-50% + 0.25rem))", offset: 1 },
+          { transform: "translateX(calc(-50% - 0.25rem))", offset: 1 },
         ],
         { duration: duration, iterations: Infinity, easing: "linear" }
       );

@@ -5,7 +5,7 @@
 {% block content %}
     <main class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative">
-            <button @click.prevent="const v = document.getElementById('video'); v.addq" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+            <button type="button" @click.prevent="const v = document.getElementById('video'); v.addq" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                 Skip to video
             </button>
             <h1 class="text-white inline">College Music |
@@ -14,7 +14,7 @@
                 <span x-data="initClock()" x-init="startClock">
                     <time :datetime="unix" x-text="time" class="text-white inline"></time>
                 </span>
-                <button x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
+                <button type="button" x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
                     <svg aria-hidden="true" title="Refresh" class="h-6 w-6" stroke="currentColor" width="28" height="28" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="none">
                         <path xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
@@ -26,7 +26,7 @@
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>
                 </span>
-                <button x-cloak x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline fullscreen-button">
+                <button type="button" x-cloak x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline fullscreen-button">
                     <div class="not-fullscreen">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" title="Click to go fullscreen" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -59,7 +59,7 @@
 
         <div class="hello-container space-y-4 lg:space-y-0 px-2 sm:px-8">
             <div class="">
-                <button id="video" @click.prevent="document.getElementById('chat').focus()" @keydown.enter="document.getElementById('chat').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+                <button type="button" id="video" @click.prevent="document.getElementById('chat').focus()" @keydown.enter="document.getElementById('chat').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                     Skip to chat
                 </button>
                 <div class="video-container aspect-w-16 aspect-h-9">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="hidden sm:block">
-                <button id="chat" @click.prevent="document.getElementById('content').focus()" @keydown.enter="document.getElementById('content').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
+                <button type="button" id="chat" @click.prevent="document.getElementById('content').focus()" @keydown.enter="document.getElementById('content').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
                     Skip to content
                 </button>
                 <div class="chat-container aspect-w-1 aspect-h-1">
@@ -81,7 +81,7 @@
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
                     <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-27 sm:pl-28">
-                        <button class="hidden sm:block sm:ml-3" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
+                        <button type="button" class="hidden sm:block sm:ml-3" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
                             <svg aria-label="paused" :class="{ 'hidden': $store.youtube.state === 1, 'block': $store.youtube.state !== 1 }" class="block drop-shadow w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
                                 <defs>
@@ -122,13 +122,13 @@
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
                                 </svg>
                             </div>
-                            <button title="Share song" @click="shareSong()">
+                            <button type="button" title="Share song" @click="shareSong()">
                                 <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
                                 </svg>
                                 <span class="sr-only focus:not-sr-only">Share song</span>
                             </button>
-                            <button title="Love the song" @click="alert('you loved it')">
+                            <button type="button" title="Love the song" @click="alert('you loved it')">
                                 <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="currentColor"/>
                                 </svg>
@@ -169,13 +169,13 @@
                                                 <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
                                             </svg>
                                         </div>
-                                        <button title="Share song" @click="shareSong()">
+                                        <button type="button" title="Share song" @click="shareSong()">
                                             <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
                                             </svg>
                                             <span class="sr-only focus:not-sr-only">Share song</span>
                                         </button>
-                                        <button title="Love the song" @click="alert('you loved it')">
+                                        <button type="button" title="Love the song" @click="alert('you loved it')">
                                             <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="currentColor"/>
                                             </svg>
@@ -194,7 +194,7 @@
                 <div x-data="initVolumeControl()" x-init="startVolume" class="hidden sm:flex group space-x-3 justify-end ">
                     <input class="w-3/4" x-model:value="$store.youtube.volume"  @input="adjustVolume" type="range" min="0" max="100" value="25" id="volume">
                     <label for="volume">
-                        <button @click="toggleMute" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
+                        <button type="button" @click="toggleMute" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
 
                             <!-- new icons -->
                             <svg aria-hidden="true" id="muted" class="hidden" :class="{ 'hidden': !$store.youtube.muted && $store.youtube.volume > 0, 'block': $store.youtube.muted || $store.youtube.volume === 0 }" width="24" height="17" viewbox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -221,7 +221,7 @@
                     </label>
                 </div>
                 <div class="grid grid-flow-row grid-cols-2 sm:pt-2 lg:grid-cols-1 xl:grid-cols-2 gap-2">
-                    <button class="group flex justify-end content-center gap-2 text-white hover:text-red-500 focus:text-red-500 active:text-red-700">
+                    <button type="button" class="group flex justify-end content-center gap-2 text-white hover:text-red-500 focus:text-red-500 active:text-red-700">
                         <span class="p-1">Favorites</span>
                         <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25  group-hover:bg-red-400 group-hover:bg-opacity-25 group-focus:bg-red-400 group-focus:bg-opacity-25">
                             <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,7 +246,7 @@
                             </div>
                         </div   >
                     </a>
-                    <button class="group flex justify-end content-center gap-2 text-white hover:text-orange-500 focus:text-orange-500 active:text-orange-700">
+                    <button type="button" class="group flex justify-end content-center gap-2 text-white hover:text-orange-500 focus:text-orange-500 active:text-orange-700">
                         <span class="p-1">Popular</span>
                         <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-orange-400 group-hover:bg-opacity-25 group-focus:bg-orange-400 group-focus:bg-opacity-25">
                             <svg aria-hidden="true" class="inline" width="13" height="26" viewbox="0 0 13 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +263,7 @@
                         </div>
                     </button>
 
-                    <button  x-data="initSearchButton()"id="open-search" @click="focusSearchModal" class="group flex justify-end gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
+                    <button type="button"  x-data="initSearchButton()"id="open-search" @click="focusSearchModal" class="group flex justify-end gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
                         <span class="p-1">Search</span>
                         <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
                             <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

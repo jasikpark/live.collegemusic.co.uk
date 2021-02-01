@@ -204,6 +204,7 @@ function initSongData() {
         console.log("Could not connect to websocket");
       };
       requestIdleCallback(animateSongDetails, { timeout: 1000 });
+      // Call animateSongDetails on debounced window resize
       let timeout = false;
       window.addEventListener("resize", () => {
         clearTimeout(timeout);

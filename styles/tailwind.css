@@ -243,32 +243,21 @@ how to remove the vertical space around the range input in IE */
   @apply relative;
 }
 
+.animating {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) 0.5rem,
+    rgba(0, 0, 0, 1) calc(100% - 0.5rem),
+    rgba(0, 0, 0, 0) 100%
+  );
+  will-change: transform;
+}
+
 .truncate-and-animate :first-child::after {
   content: var(--content);
   user-select: none;
-  padding-left: 0.5rem;
-}
-
-.truncate-and-animate::before {
-  content: "";
-
-  @apply bg-easing-l-song-fade-white absolute top-0 left-0 w-8 h-full;
-}
-
-.truncate-and-animate::after {
-  content: "";
-
-  @apply bg-easing-r-song-fade-white absolute top-0 right-0 w-8 h-full;
-}
-
-.pseudo-rounded-t::before,
-.pseudo-rounded-t::after {
-  @apply rounded-t-lg;
-}
-
-.pseudo-rounded-b::before,
-.pseudo-rounded-b::after {
-  @apply rounded-b-lg;
+  padding-left: 0.25rem;
 }
 
 .play-history {

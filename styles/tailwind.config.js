@@ -132,7 +132,7 @@ module.exports = {
     extend: {
       width: { 116: "29rem", 232: "58rem" },
       zIndex: { "-10": "-10" },
-      padding: { 30: "7.5rem", "1/8": "12.5%", "1/4": "25%" },
+      padding: { 27: "6.75rem", 30: "7.5rem", "1/8": "12.5%", "1/4": "25%" },
     },
   },
   variants: {

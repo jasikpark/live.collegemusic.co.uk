@@ -71,7 +71,7 @@
                     Skip to content
                 </button>
                 <div class="chat-container aspect-w-1 aspect-h-1">
-                    <iframe title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" :src="window.matchMedia('(min-width: 640px)').matches ? 'https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain={% hostname %}&dark_theme=1' : ''" src="" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
+                    <iframe title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" :src="window.matchMedia('(min-width: 640px)').matches ? `https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain=${ window.location.hostname }&dark_theme=1` : ''" src="" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>
             </div>
         </div>

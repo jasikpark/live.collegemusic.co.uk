@@ -1,4 +1,5 @@
 {
+  "lang": "en-us",
   "name": "College Music | Lofi Hip Hop Radio",
   "short_name": "College Music",
   "start_url": "/",
@@ -23,5 +24,6 @@
   "theme_color": "#2F1F60",
   "background_color": "#2F1F60",
   "display": "standalone",
+  "orientation": "any",
   "scope": "/"
 }

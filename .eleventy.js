@@ -77,4 +77,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./site.js": "./js/site.js",
   });
+
+  eleventyConfig.addPassthroughCopy({
+    "./assets/js/pwabuilder-sw-register.js": "./pwabuilder-sw-register.js",
+  });
+
+  eleventyConfig.addPassthroughCopy({
+    "./assets/js/pwabuilder-sw.js": "./pwabuilder-sw.js",
+  });
 };

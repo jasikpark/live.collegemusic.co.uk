@@ -251,6 +251,7 @@ how to remove the vertical space around the range input in IE */
     rgba(0, 0, 0, 1) calc(100% - 0.5rem),
     rgba(0, 0, 0, 0) 100%
   );
+  will-change: transform;
 }
 
 .truncate-and-animate :first-child::after {

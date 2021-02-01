@@ -148,11 +148,7 @@ function initSongData() {
         let newSongData = JSON.parse(event.data);
         let oldNowPlaying = self.songData.now_playing;
         self.songData = newSongData;
-        console.log(
-          `new_id: ${newSongData.now_playing.song.id} !== old_id: ${
-            oldNowPlaying.song.id
-          } -> ${newSongData.now_playing.song.id !== oldNowPlaying.song.id}`
-        );
+
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           console.log(
             "called 'animateSongDetails' from sub.onmessage if statement"
@@ -208,6 +204,15 @@ function initSongData() {
         console.log("Could not connect to websocket");
       };
       requestIdleCallback(animateSongDetails, { timeout: 1000 });
+      let timeout = false;
+      window.addEventListener("resize", () => {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+          requestIdleCallback(animateSongDetails, { timeout: 1000 });
+        });
+        250;
+      });
     },
 
     openSongLink: function () {
@@ -261,6 +266,7 @@ function animateSongDetails() {
   for (const index in truncateAndAnimate) {
     // Cancel all of the old animations
     const x = truncateAndAnimate[index];
+    // Get either the element or the first child of the element
     const el = x?.firstElementChild || x;
     if (el.animation) {
       el.animation.cancel();
@@ -276,37 +282,23 @@ function animateSongDetails() {
   console.log(truncateAndAnimate);
   console.log(filterTruncateAndAnimate);
   console.log("---");
-  filterTruncateAndAnimate.forEach((x) => {
-    // Animate either the element or the first child of the element
-    const el = x?.firstElementChild || x;
-    el.style.setProperty("--content", `"${el.textContent}"`);
-    // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
-    // Let's work with a good default.. and have an upper bound too.
-    const duration = Math.min(el.scrollWidth * 20, 100000);
-    el.animation = el.animate(
-      [
-        { transform: "translateX(0)", offset: 0 },
-        { transform: "translateX(0)", offset: 0.5 },
-        { transform: "translateX(calc(-50% + 0.25rem))", offset: 1 },
-      ],
-      { duration: duration, iterations: Infinity, easing: "linear" }
-    );
-    /** eh? 
-    el.animation.oncancel = () => {
-      console.log(`called animation cancel on: ${el.animation}, ${el}`);
-      el.animation.effect.target.style.setProperty("--content", null);
-    };
-    el.addEventListener("animationcancel", (event) => {
-      event.target.style.setProperty("--content", null);
+  requestAnimationFrame(() => {
+    filterTruncateAndAnimate.forEach((x) => {
+      // Animate either the element or the first child of the element
+      const el = x?.firstElementChild || x;
+      el.style.setProperty("--content", `"${el.textContent}"`);
+      // We may have to calculate both the total amount of time to show the length of the element at a reasonable speed + what percentage of that is 2 seconds of waiting at the start.
+      // Let's work with a good default.. and have an upper bound too.
+      const duration = Math.min(el.scrollWidth * 20, 100000);
+      el.animation = el.animate(
+        [
+          { transform: "translateX(0)", offset: 0 },
+          { transform: "translateX(0)", offset: 0.5 },
+          { transform: "translateX(calc(-50% + 0.25rem))", offset: 1 },
+        ],
+        { duration: duration, iterations: Infinity, easing: "linear" }
+      );
     });
-    el.animation.onfinish = () => {
-      console.log("called animation finish");
-      el.animation.effect.target.style.setProperty("--content", null);
-    };
-    el.addEventListener("animationend", () => {
-      event.target.style.setProperty("--content", null);
-    });
-    */
   });
 }
 

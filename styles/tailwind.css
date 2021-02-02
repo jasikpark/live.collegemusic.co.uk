@@ -5,8 +5,12 @@
     @apply hidden;
   }
 
-  :focus:not(:focus-visible) {
-    @apply outline-none ring-2 ring-current;
+  .js-focus-visible :focus:not(.focus-visible) {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    @apply outline-none ring ring-white rounded-sm;
   }
 
   /** styling the scrollbar **/

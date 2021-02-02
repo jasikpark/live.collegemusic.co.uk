@@ -75,6 +75,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy({
+    "./node_modules/focus-visible/dist/focus-visible.min.js":
+      "./js/focus-visible.min.js",
+  });
+
+  eleventyConfig.addPassthroughCopy({
     "./site.js": "./js/site.js",
   });
 

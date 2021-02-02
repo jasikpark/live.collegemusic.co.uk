@@ -144,6 +144,8 @@ module.exports = {
       backgroundOpacity: ["group-focus", "active"],
       padding: ["focus"],
       margin: ["focus"],
+      ringWidth: ["focus-within", "focus-visible"],
+      inset: ["focus"],
     },
   },
   plugins: [

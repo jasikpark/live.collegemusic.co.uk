@@ -3,8 +3,8 @@
 {% block title %}{% this_is_dev_server %}College Music{% endblock %}
 
 {% block content %}
-    <main class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
-        <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative">
+    <main id="main" class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
+        <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative text-white">
             <h1 class="text-white inline">College Music |
                 <span class="font-semibold">Lofi Hip Hop Radio</span></h1>
             <span class="flex flex-wrap items-center space-x-2 h-8">
@@ -17,7 +17,7 @@
                     </svg>
                     <span class="sr-only">Refresh</span>
                 </button>
-                <span x-cloak x-data="initWeather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center ">
+                <span x-cloak x-data="initWeather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring ring-white rounded-sm">
                     <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener">
                         <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline absolute -top-2 left-0 object-cover h-12 w-12">
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
@@ -277,37 +277,37 @@
                 </h2>
                 <div class="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-4">
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero kyle-mcevoy">
-                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
+                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kyle McEvoy</h3>
                             <span class="px-2 text-center text-shadow-sm">1,636k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero kalaido">
-                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
+                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kalaido</h3>
                             <span class="px-2 text-center text-shadow-sm">594k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero wei">
-                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
+                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">WEI</h3>
                             <span class="px-2 text-center text-shadow-sm">170k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero santpoort">
-                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
+                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Santpoort</h3>
                             <span class="px-2 text-center text-shadow-sm">586k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero eillah">
-                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
+                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Eillah</h3>
                             <span class="px-2 text-center text-shadow-sm">9,679 monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero brillon">
-                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
+                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">brillon.</h3>
                             <span class="px-2 text-center text-shadow-sm">2,001k monthly listeners</span>
                         </a>
@@ -315,8 +315,8 @@
                 </div>
             </div>
         </div>
-        <div class="relative">
-            <a href="#" class="skip-link">Back to top</a>
+        <div class="z-20">
+            <a href="#main" class="skip-link focus:bottom-0 focus:top-auto">Back to top</a>
         </div>
         <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute max-w-none left-0 bottom-0 -z-10"/>
         <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute max-w-none -left-6 bottom-0 -z-10"/>

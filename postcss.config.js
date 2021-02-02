@@ -9,5 +9,6 @@ module.exports = {
           }),
         ]
       : []),
+    require(`postcss-focus-visible`),
   ],
 };

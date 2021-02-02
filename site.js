@@ -572,3 +572,21 @@ function onPlayerStateChange() {
 function onPlayerReady() {
   Spruce.store("youtube").ready = true;
 }
+
+// Make button-links funtion like buttons
+(function () {
+  "use strict";
+  function a11yClick(link) {
+    link.addEventListener("keydown", function (event) {
+      var code = event.charCode || event.keyCode;
+      if (code === 32) {
+        event.preventDefault();
+        link.click();
+      }
+    });
+  }
+  var a11yLink = document.querySelectorAll('a[role="button"]');
+  for (var i = 0; i < a11yLink.length; i++) {
+    a11yClick(a11yLink[i]);
+  }
+})();

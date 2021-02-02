@@ -14,6 +14,8 @@ module.exports = {
       black: "#000",
       white: "#fff",
 
+      primary: "#2F1F60",
+
       gray: {
         100: "#f7fafc",
         200: "#edf2f7",
@@ -140,6 +142,8 @@ module.exports = {
       textColor: ["group-focus", "active"],
       backgroundColor: ["group-focus", "active"],
       backgroundOpacity: ["group-focus", "active"],
+      padding: ["focus"],
+      margin: ["focus"],
     },
   },
   plugins: [

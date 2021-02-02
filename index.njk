@@ -5,9 +5,6 @@
 {% block content %}
     <main class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative">
-            <button type="button" @click.prevent="const v = document.getElementById('video'); v.addq" @keydown.enter="console.log('man...'); document.getElementById('video').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
-                Skip to video
-            </button>
             <h1 class="text-white inline">College Music |
                 <span class="font-semibold">Lofi Hip Hop Radio</span></h1>
             <span class="flex flex-wrap items-center space-x-2 h-8">
@@ -58,18 +55,14 @@
         </header>
 
         <div class="hello-container space-y-4 lg:space-y-0 px-2 sm:px-8">
-            <div class="">
-                <button type="button" id="video" @click.prevent="document.getElementById('chat').focus()" @keydown.enter="document.getElementById('chat').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
-                    Skip to chat
-                </button>
+            <div id="video" class="relative">
+                <a href="#chat" class="skip-link">Skip to Chat</a>
                 <div class="video-container aspect-w-16 aspect-h-9">
                     <div title="Youtube video radio stream" class="rounded-sm" id="player"></div>
                 </div>
             </div>
-            <div class="hidden sm:block">
-                <button type="button" id="chat" @click.prevent="document.getElementById('content').focus()" @keydown.enter="document.getElementById('content').focus()" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">
-                    Skip to content
-                </button>
+            <div id="chat" class="hidden sm:block relative">
+                <a href="#content" class="skip-link">Skip to Content</a>
                 <div class="chat-container aspect-w-1 aspect-h-1">
                     <iframe title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" :src="window.matchMedia('(min-width: 640px)').matches ? `https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain=${ window.location.hostname }&dark_theme=1` : ''" src="" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>
@@ -229,8 +222,8 @@
                             </svg>
                         </div>
                     </button>
-                    <a href="https://collegemusic.fanlink.to/lofi" target="_blank" rel="noreferrer noopener">
-                        <div class="group flex justify-end content-center gap-2 text-white hover:text-green-500 focus:text-green-500 active:text-green-700">
+                    <a href="https://collegemusic.fanlink.to/lofi" target="_blank" rel="noreferrer noopener" role="button" draggable="false" class="group text-white hover:text-green-500 focus:text-green-500 active:text-green-700">
+                        <div class="flex justify-end content-center gap-2">
                             <span class="p-1">Full Playlist</span>
                             <div class="h-8 w-8 p-1 text-center rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-green-400 group-hover:bg-opacity-25 group-focus:bg-green-400 group-focus:bg-opacity-25">
                                 <svg aria-hidden="true" class="inline" width="15" height="11" viewbox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,7 +237,7 @@
                                     </defs>
                                 </svg>
                             </div>
-                        </div   >
+                        </div>
                     </a>
                     <button type="button" class="group flex justify-end content-center gap-2 text-white hover:text-orange-500 focus:text-orange-500 active:text-orange-700">
                         <span class="p-1">Popular</span>
@@ -284,37 +277,37 @@
                 </h2>
                 <div class="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-4">
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero kyle-mcevoy">
-                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
+                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kyle McEvoy</h3>
                             <span class="px-2 text-center text-shadow-sm">1,636k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero kalaido">
-                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
+                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kalaido</h3>
                             <span class="px-2 text-center text-shadow-sm">594k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero wei">
-                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
+                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">WEI</h3>
                             <span class="px-2 text-center text-shadow-sm">170k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero santpoort">
-                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
+                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Santpoort</h3>
                             <span class="px-2 text-center text-shadow-sm">586k monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero eillah">
-                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
+                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Eillah</h3>
                             <span class="px-2 text-center text-shadow-sm">9,679 monthly listeners</span>
                         </a>
                     </div>
                     <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero brillon">
-                        <a class="flex flex-col justify-start items-center" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
+                        <a class="flex flex-col justify-start items-center outline-none" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">brillon.</h3>
                             <span class="px-2 text-center text-shadow-sm">2,001k monthly listeners</span>
                         </a>
@@ -322,8 +315,9 @@
                 </div>
             </div>
         </div>
-
-        <a href="#" class="sr-only focus:not-sr-only focus:text-white focus:absolute focus:top-0 focus:right-0">Back to top</a>
+        <div class="relative">
+            <a href="#" class="skip-link">Back to top</a>
+        </div>
         <img id="pink-wave" alt="" src="/static/pink-wave.svg" class="absolute max-w-none left-0 bottom-0 -z-10"/>
         <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute max-w-none -left-6 bottom-0 -z-10"/>
         <img id="blue-wave" alt="" src="/static/blue-wave.svg" class="absolute max-w-none -right-12 bottom-0 -z-10"/>

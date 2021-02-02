@@ -5,7 +5,7 @@
 }
 
 :focus:not(:focus-visible) {
-  outline: none;
+  @apply outline-none ring-2 ring-current;
 }
 
 /** styling the scrollbar **/
@@ -149,6 +149,14 @@ how to remove the vertical space around the range input in IE */
 
     /* Edge starts the margin from the thumb, not the track as other browsers do */
   }
+}
+
+.skip-link {
+  @apply sr-only outline-none rounded-sm inline-block focus:ring-2 focus:ring-current focus:not-sr-only focus:p-1 focus:my-1 focus:text-white focus:bg-primary;
+}
+
+.skip-link:focus {
+  @apply absolute top-1 left-1 z-10 w-auto min-w-max;
 }
 
 .background {
@@ -310,6 +318,10 @@ how to remove the vertical space around the range input in IE */
   @apply scale-110;
 }
 
+.artist-hero:focus-within {
+  @apply ring-2 ring-current;
+}
+
 .kyle-mcevoy {
   background: #4fc2e8;
   background: url("/static/kyle_mcevoy.png") bottom center no-repeat;
@@ -377,21 +389,6 @@ how to remove the vertical space around the range input in IE */
     .standalone\:inline {
       display: inline;
     }
-  }
-
-  .bg-t-white-clear-white {
-    background: linear-gradient(
-      to top,
-      rgba(18, 21, 96, 0.1),
-      rgba(18, 21, 96, 0.07),
-      rgba(18, 21, 96, 0.05),
-      rgba(18, 21, 96, 0.02),
-      rgba(18, 21, 96, 0.01),
-      rgba(18, 21, 96, 0.02),
-      rgba(18, 21, 96, 0.05),
-      rgba(18, 21, 96, 0.07),
-      rgba(18, 21, 96, 0.1)
-    );
   }
 
   @responsive {

@@ -12,6 +12,8 @@
 html {
   --scrollbarBG: rgb(0, 0, 0, 0.1);
   --thumbBG: rgb(0, 0, 0, 0.4);
+
+  background-color: #2f1f60;
 }
 
 body::-webkit-scrollbar {

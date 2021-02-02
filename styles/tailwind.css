@@ -1,384 +1,386 @@
 @tailwind base;
 
-[x-cloak] {
-  @apply hidden;
-}
-
-:focus:not(:focus-visible) {
-  @apply outline-none ring-2 ring-current;
-}
-
-/** styling the scrollbar **/
-html {
-  --scrollbarBG: rgb(0, 0, 0, 0.1);
-  --thumbBG: rgb(0, 0, 0, 0.4);
-
-  background-color: #2f1f60;
-}
-
-body::-webkit-scrollbar {
-  width: 11px;
-}
-
-body {
-  scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
-  border-radius: 6px;
-  border: 3px solid var(--scrollbarBG);
-}
-
-/** styling the volume slider **/
-input[type="range"] {
-  width: 100%;
-  margin: 5px 0;
-  background-color: transparent;
-  -webkit-appearance: none;
-}
-
-input[type="range"]:focus {
-  outline: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  background: #9013fe;
-  border: 0.2px solid #010101;
-  border-radius: 5px;
-  width: 100%;
-  height: 7px;
-  cursor: pointer;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  margin-top: -5.2px;
-  width: 17px;
-  height: 17px;
-  background: #9fa2fb;
-  border: 0;
-  border-radius: 17px;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-
-input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #9c2cfe;
-}
-
-input[type="range"]::-moz-range-progress {
-  background: #9013fe;
-  border: 0.2px solid #010101;
-  border-radius: 5px;
-  width: 100%;
-  height: 7px;
-  cursor: pointer;
-}
-
-input[type="range"]::-moz-range-track {
-  background: #000;
-  border: 0.2px solid #010101;
-  border-radius: 5px;
-  width: 100%;
-  height: 7px;
-  cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 17px;
-  height: 17px;
-  background: #9fa2fb;
-  border: 0;
-  border-radius: 17px;
-  cursor: pointer;
-}
-
-input[type="range"]::-ms-track {
-  background: transparent;
-  border-color: transparent;
-  border-width: 6px 0;
-  color: transparent;
-  width: 100%;
-  height: 7px;
-  cursor: pointer;
-}
-
-input[type="range"]::-ms-fill-lower {
-  background: #8401f6;
-  border: 0.2px solid #010101;
-  border-radius: 10px;
-}
-
-input[type="range"]::-ms-fill-upper {
-  background: #000;
-  border: 0.2px solid #010101;
-  border-radius: 10px;
-}
-
-input[type="range"]::-ms-thumb {
-  width: 17px;
-  height: 17px;
-  background: #9fa2fb;
-  border: 0;
-  border-radius: 17px;
-  cursor: pointer;
-  margin-top: 0;
-
-  /* Needed to keep the Edge thumb centered */
-}
-
-input[type="range"]:focus::-ms-fill-lower {
-  background: #9013fe;
-}
-
-input[type="range"]:focus::-ms-fill-upper {
-  background: #000;
-}
-
-/* TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
-how to remove the vertical space around the range input in IE */
-@supports (-ms-ime-align: auto) {
-  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-  input[type="range"] {
-    margin: 0;
-
-    /* Edge starts the margin from the thumb, not the track as other browsers do */
+@layer base {
+  [x-cloak] {
+    @apply hidden;
   }
-}
 
-.skip-link {
-  @apply sr-only outline-none rounded-sm inline-block focus:ring-2 focus:ring-current focus:not-sr-only focus:p-1 focus:my-1 focus:text-white focus:bg-primary;
-}
+  :focus:not(:focus-visible) {
+    @apply outline-none ring-2 ring-current;
+  }
 
-.skip-link:focus {
-  @apply absolute top-1 left-1 z-10 w-auto min-w-max;
-}
+  /** styling the scrollbar **/
+  html {
+    --scrollbarBG: rgb(0, 0, 0, 0.1);
+    --thumbBG: rgb(0, 0, 0, 0.4);
 
-.background {
-  background: linear-gradient(71.61deg, #693a88 -2.65%, #37416d 90.64%);
-}
+    background-color: #2f1f60;
+  }
 
-.framing {
-  background: linear-gradient(180deg, #2f1f60 0%, #460e62 100%);
-}
+  body::-webkit-scrollbar {
+    width: 11px;
+  }
 
-.fullscreen-button {
-  display: block;
-}
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
 
-.fullscreen {
-  display: none;
-}
+  body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
 
-.not-fullscreen {
-  display: block;
-}
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+  }
 
-:root:fullscreen .fullscreen {
-  display: block;
-}
+  /** styling the volume slider **/
+  input[type="range"] {
+    width: 100%;
+    margin: 5px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+  }
 
-:root:fullscreen .not-fullscreen {
-  display: none;
-}
+  input[type="range"]:focus {
+    outline: none;
+  }
 
-@media (display-mode: standalone) {
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: #9013fe;
+    border: 0.2px solid #010101;
+    border-radius: 5px;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    margin-top: -5.2px;
+    width: 17px;
+    height: 17px;
+    background: #9fa2fb;
+    border: 0;
+    border-radius: 17px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+
+  input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #9c2cfe;
+  }
+
+  input[type="range"]::-moz-range-progress {
+    background: #9013fe;
+    border: 0.2px solid #010101;
+    border-radius: 5px;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-track {
+    background: #000;
+    border: 0.2px solid #010101;
+    border-radius: 5px;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 17px;
+    height: 17px;
+    background: #9fa2fb;
+    border: 0;
+    border-radius: 17px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+    color: transparent;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-ms-fill-lower {
+    background: #8401f6;
+    border: 0.2px solid #010101;
+    border-radius: 10px;
+  }
+
+  input[type="range"]::-ms-fill-upper {
+    background: #000;
+    border: 0.2px solid #010101;
+    border-radius: 10px;
+  }
+
+  input[type="range"]::-ms-thumb {
+    width: 17px;
+    height: 17px;
+    background: #9fa2fb;
+    border: 0;
+    border-radius: 17px;
+    cursor: pointer;
+    margin-top: 0;
+
+    /* Needed to keep the Edge thumb centered */
+  }
+
+  input[type="range"]:focus::-ms-fill-lower {
+    background: #9013fe;
+  }
+
+  input[type="range"]:focus::-ms-fill-upper {
+    background: #000;
+  }
+
+  /* TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the vertical space around the range input in IE */
+  @supports (-ms-ime-align: auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type="range"] {
+      margin: 0;
+
+      /* Edge starts the margin from the thumb, not the track as other browsers do */
+    }
+  }
+
+  .skip-link {
+    @apply sr-only outline-none rounded-sm inline-block focus:ring-2 focus:ring-current focus:not-sr-only focus:p-1 focus:my-1 focus:text-white focus:bg-primary;
+  }
+
+  .skip-link:focus {
+    @apply absolute top-1 left-1 z-10 w-auto min-w-max;
+  }
+
+  .background {
+    background: linear-gradient(71.61deg, #693a88 -2.65%, #37416d 90.64%);
+  }
+
+  .framing {
+    background: linear-gradient(180deg, #2f1f60 0%, #460e62 100%);
+  }
+
   .fullscreen-button {
+    display: block;
+  }
+
+  .fullscreen {
     display: none;
   }
-}
 
-@media (min-width: 1024px) {
-  .hello-container {
-    display: grid;
-    grid-template-columns: 64fr 36fr;
-    gap: 2rem;
-    max-width: 70vw;
-    max-width: calc(
-      (350px * 2.9423868313) + 2rem
-    ); /* this is setting the height of the video and chat by proxy since they are percentages based off the width */
+  .not-fullscreen {
+    display: block;
   }
-}
 
-.video-container {
-  max-width: 100%;
-  min-width: 298px;
-}
+  :root:fullscreen .fullscreen {
+    display: block;
+  }
 
-.chat-container {
-  max-width: 100%;
-  min-width: 298px;
-}
+  :root:fullscreen .not-fullscreen {
+    display: none;
+  }
 
-.now-playing {
-  position: relative;
-  background: linear-gradient(180deg, #8dc4fc 0%, #e0c3fc 100%);
-  height: 5.4rem;
-  margin-top: 1.5rem;
-  scrollbar-gutter: stable force;
-}
+  @media (display-mode: standalone) {
+    .fullscreen-button {
+      display: none;
+    }
+  }
 
-.now-playing::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  width: 100%;
+  @media (min-width: 1024px) {
+    .hello-container {
+      display: grid;
+      grid-template-columns: 64fr 36fr;
+      gap: 2rem;
+      max-width: 70vw;
+      max-width: calc(
+        (350px * 2.9423868313) + 2rem
+      ); /* this is setting the height of the video and chat by proxy since they are percentages based off the width */
+    }
+  }
 
-  @apply bg-gradient-to-b;
-  @apply from-transparent;
-  @apply to-gray-translucent;
-}
+  .video-container {
+    max-width: 100%;
+    min-width: 298px;
+  }
 
-.now-playing-album-art {
-  position: absolute;
-  height: 6rem;
-  width: 6rem;
-  bottom: 0.5rem;
-  left: 0.75rem;
-}
+  .chat-container {
+    max-width: 100%;
+    min-width: 298px;
+  }
 
-@media (min-width: 640px) {
+  .now-playing {
+    position: relative;
+    background: linear-gradient(180deg, #8dc4fc 0%, #e0c3fc 100%);
+    height: 5.4rem;
+    margin-top: 1.5rem;
+    scrollbar-gutter: stable force;
+  }
+
+  .now-playing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+
+    @apply bg-gradient-to-b;
+    @apply from-transparent;
+    @apply to-gray-translucent;
+  }
+
   .now-playing-album-art {
-    left: 1rem;
+    position: absolute;
+    height: 6rem;
+    width: 6rem;
+    bottom: 0.5rem;
+    left: 0.75rem;
   }
-}
 
-.truncate-and-animate {
-  @apply relative;
-}
-
-.animating {
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 1) 0.5rem,
-    rgba(0, 0, 0, 1) calc(100% - 0.5rem),
-    rgba(0, 0, 0, 0) 100%
-  );
-  will-change: transform;
-}
-
-.truncate-and-animate :first-child::after {
-  content: var(--content);
-  user-select: none;
-  padding-left: 0.25rem;
-}
-
-.play-history {
-  background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
-  height: 12rem;
-  scrollbar-gutter: stable;
-}
-
-.play-history-header {
-  background: rgba(18, 21, 96, 0.17);
-}
-
-.song-block {
-  min-height: 5rem;
-  scroll-snap-align: start;
-
-  @apply bg-gradient-to-b;
-  @apply from-transparent;
-  @apply to-gray-translucent;
-}
-
-.song-block-container {
-  height: 10rem;
-  scroll-snap-type: y mandatory;
-}
-
-@media (min-width: 1024px) {
-  .artist-spotlight {
-    max-width: 25rem;
+  @media (min-width: 640px) {
+    .now-playing-album-art {
+      left: 1rem;
+    }
   }
-}
 
-.artist-spotlight h2 svg {
-  left: 0.925rem;
-  top: -0.575rem;
-}
+  .truncate-and-animate {
+    @apply relative;
+  }
 
-.artist-hero {
-  min-height: 130px;
-  color: white;
-  transition: all 0.2s ease-in-out;
-}
-
-.artist-hero:hover,
-.artist-hero:focus-within {
-  @apply shadow-2xl;
-  @apply transform;
-  @apply scale-110;
-}
-
-.artist-hero:focus-within {
-  @apply ring-2 ring-current;
-}
-
-.kyle-mcevoy {
-  background: #4fc2e8;
-  background: url("/static/kyle_mcevoy.png") bottom center no-repeat;
-  background: url("/static/kyle_mcevoy.png") bottom center no-repeat,
-    linear-gradient(
-      89.71deg,
-      #4fc2e8 0.35%,
-      #4fc2e8 31.97%,
-      #41b0d8 85.87%,
-      #36a8ce 99.86%
+  .animating {
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 1) 0.5rem,
+      rgba(0, 0, 0, 1) calc(100% - 0.5rem),
+      rgba(0, 0, 0, 0) 100%
     );
-  background-size: cover;
-}
+    will-change: transform;
+  }
 
-.kalaido {
-  background: #f0dac4;
-  background: url("/static/kalaido.png") bottom center no-repeat;
-  background: url("/static/kalaido.png") bottom center no-repeat, #f0dac4;
-}
+  .truncate-and-animate :first-child::after {
+    content: var(--content);
+    user-select: none;
+    padding-left: 0.25rem;
+  }
 
-.kalaido::before {
-  content: "";
-  background-color: #f0dac4;
-}
+  .play-history {
+    background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
+    height: 12rem;
+    scrollbar-gutter: stable;
+  }
 
-.wei {
-  background: #f8b6b3;
-  background: url("/static/wei.png") bottom center no-repeat;
-  background: url("/static/wei.png") bottom center no-repeat, #f8b6b3;
-  background-size: cover;
-}
+  .play-history-header {
+    background: rgba(18, 21, 96, 0.17);
+  }
 
-.santpoort {
-  background: #f8b6b3;
-  background: url("/static/santpoort.png") bottom center no-repeat;
-  background: url("/static/santpoort.png") bottom center no-repeat,
-    linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
-}
+  .song-block {
+    min-height: 5rem;
+    scroll-snap-align: start;
 
-.santpoort::before {
-  content: "";
-  background: #f8b6b3;
-  background: linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
-}
+    @apply bg-gradient-to-b;
+    @apply from-transparent;
+    @apply to-gray-translucent;
+  }
 
-.eillah {
-  background: #f372e6;
-  background: url("/static/eillah.png") bottom center no-repeat;
-  background: url("/static/eillah.png") bottom center no-repeat,
-    linear-gradient(180deg, #eae9ff 0%, #f372e6 95.31%, #43488e 100%);
-}
+  .song-block-container {
+    height: 10rem;
+    scroll-snap-type: y mandatory;
+  }
 
-.brillon {
-  background: #f8b6b3;
-  background: url("/static/brillon.png") bottom center no-repeat;
-  background: url("/static/brillon.png") bottom center no-repeat, #f8b6b3;
-  background-size: cover;
+  @media (min-width: 1024px) {
+    .artist-spotlight {
+      max-width: 25rem;
+    }
+  }
+
+  .artist-spotlight h2 svg {
+    left: 0.925rem;
+    top: -0.575rem;
+  }
+
+  .artist-hero {
+    min-height: 130px;
+    color: white;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .artist-hero:hover,
+  .artist-hero:focus-within {
+    @apply shadow-2xl;
+    @apply transform;
+    @apply scale-110;
+  }
+
+  .artist-hero:focus-within {
+    @apply ring-2 ring-current;
+  }
+
+  .kyle-mcevoy {
+    background: #4fc2e8;
+    background: url("/static/kyle_mcevoy.png") bottom center no-repeat;
+    background: url("/static/kyle_mcevoy.png") bottom center no-repeat,
+      linear-gradient(
+        89.71deg,
+        #4fc2e8 0.35%,
+        #4fc2e8 31.97%,
+        #41b0d8 85.87%,
+        #36a8ce 99.86%
+      );
+    background-size: cover;
+  }
+
+  .kalaido {
+    background: #f0dac4;
+    background: url("/static/kalaido.png") bottom center no-repeat;
+    background: url("/static/kalaido.png") bottom center no-repeat, #f0dac4;
+  }
+
+  .kalaido::before {
+    content: "";
+    background-color: #f0dac4;
+  }
+
+  .wei {
+    background: #f8b6b3;
+    background: url("/static/wei.png") bottom center no-repeat;
+    background: url("/static/wei.png") bottom center no-repeat, #f8b6b3;
+    background-size: cover;
+  }
+
+  .santpoort {
+    background: #f8b6b3;
+    background: url("/static/santpoort.png") bottom center no-repeat;
+    background: url("/static/santpoort.png") bottom center no-repeat,
+      linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
+  }
+
+  .santpoort::before {
+    content: "";
+    background: #f8b6b3;
+    background: linear-gradient(180deg, #f8b6b3 0%, #7d5d5c 100%);
+  }
+
+  .eillah {
+    background: #f372e6;
+    background: url("/static/eillah.png") bottom center no-repeat;
+    background: url("/static/eillah.png") bottom center no-repeat,
+      linear-gradient(180deg, #eae9ff 0%, #f372e6 95.31%, #43488e 100%);
+  }
+
+  .brillon {
+    background: #f8b6b3;
+    background: url("/static/brillon.png") bottom center no-repeat;
+    background: url("/static/brillon.png") bottom center no-repeat, #f8b6b3;
+    background-size: cover;
+  }
 }
 
 @tailwind components;

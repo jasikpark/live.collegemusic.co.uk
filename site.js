@@ -419,9 +419,6 @@ function initSearchModal() {
         this.data = null;
         return false;
       }
-      if (self.query.trim() === self.prev_query.trim()) {
-        return false;
-      }
       self.loading = true;
       self.prev_query = self.query;
       const url = `https://live-collegemusic-co-uk.netlify.app/api/station/1/requests?current=1&rowCount=${

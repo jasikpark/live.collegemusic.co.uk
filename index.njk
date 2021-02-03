@@ -19,8 +19,8 @@
                     </svg>
                     <span class="sr-only">Refresh</span>
                 </button>
-                <span x-cloak x-data="initWeather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring ring-white rounded-sm">
-                    <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener">
+                <span x-cloak x-data="initWeather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring-4 ring-white  rounded-sm">
+                    <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener" class="focus-visible:ring-0 focus-visible:ring-offset-0">
                         <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline absolute -top-2 left-0 object-cover h-12 w-12">
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>

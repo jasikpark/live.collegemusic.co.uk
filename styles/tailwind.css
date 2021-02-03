@@ -18,7 +18,7 @@
     --scrollbarBG: rgb(0, 0, 0, 0.1);
     --thumbBG: rgb(0, 0, 0, 0.4);
 
-    background-color: #2f1f60;
+    @apply bg-primary;
   }
 
   body::-webkit-scrollbar {
@@ -170,32 +170,6 @@ how to remove the vertical space around the range input in IE */
 
   .framing {
     background: linear-gradient(180deg, #2f1f60 0%, #460e62 100%);
-  }
-
-  .fullscreen-button {
-    display: block;
-  }
-
-  .fullscreen {
-    display: none;
-  }
-
-  .not-fullscreen {
-    display: block;
-  }
-
-  :root:fullscreen .fullscreen {
-    display: block;
-  }
-
-  :root:fullscreen .not-fullscreen {
-    display: none;
-  }
-
-  @media (display-mode: standalone) {
-    .fullscreen-button {
-      display: none;
-    }
   }
 
   @media (min-width: 1024px) {
@@ -395,6 +369,18 @@ how to remove the vertical space around the range input in IE */
     .standalone\:inline {
       display: inline;
     }
+
+    .standalone\:hidden {
+      display: none;
+    }
+  }
+
+  :root:fullscreen .fullscreen\:block {
+    display: block;
+  }
+
+  :root:fullscreen .fullscreen\:hidden {
+    display: none;
   }
 
   @responsive {

@@ -25,8 +25,8 @@
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>
                 </span>
-                <button type="button" x-cloak x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline fullscreen-button">
-                    <div class="not-fullscreen">
+                <button type="button" x-cloak x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline standalone:hidden">
+                    <div class="block fullscreen:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" title="Click to go fullscreen" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <polyline points="16 4 20 4 20 8"/>
@@ -39,7 +39,7 @@
                             <line x1="4" y1="4" x2="10" y2="10"/>
                         </svg>
                         <span class="sr-only">Click to go fullscreen</span></div>
-                    <div class="fullscreen">
+                    <div class="hidden fullscreen:block">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" title="Click to get out of fullscreen" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <polyline points="5 9 9 9 9 5"/>

@@ -157,7 +157,11 @@ how to remove the vertical space around the range input in IE */
   }
 
   button:focus {
-    @apply outline-none ring ring-white rounded-sm;
+    @apply outline-none;
+  }
+
+  a:any-link:focus {
+    @apply outline-none;
   }
 
   .skip-link {
@@ -227,17 +231,6 @@ how to remove the vertical space around the range input in IE */
 
   .truncate-and-animate {
     @apply relative;
-  }
-
-  .animating {
-    mask-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0,
-      rgba(0, 0, 0, 1) 0.5rem,
-      rgba(0, 0, 0, 1) calc(100% - 0.5rem),
-      rgba(0, 0, 0, 0) 100%
-    );
-    will-change: transform;
   }
 
   .truncate-and-animate :first-child::after {
@@ -357,6 +350,18 @@ how to remove the vertical space around the range input in IE */
     background: url("/static/brillon.png") bottom center no-repeat, #f8b6b3;
     background-size: cover;
   }
+}
+
+/* JS Added classes that would be removed by PostCSS Purge */
+.animating {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) 0.5rem,
+    rgba(0, 0, 0, 1) calc(100% - 0.5rem),
+    rgba(0, 0, 0, 0) 100%
+  );
+  will-change: transform;
 }
 
 @tailwind components;

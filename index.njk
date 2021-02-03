@@ -5,8 +5,10 @@
 {% block content %}
     <main id="main" class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative text-white">
-            <h1 class="text-white inline">College Music |
-                <span class="font-semibold">Lofi Hip Hop Radio</span></h1>
+            <h1 class="text-white inline">
+                <a href="/">College Music |
+                <span class="font-semibold">Lofi Hip Hop Radio</span></a>
+            </h1>
             <span class="flex flex-wrap items-center space-x-2 h-8">
                 <span x-data="initClock()" x-init="startClock">
                     <time :datetime="unix" x-text="time" class="text-white inline"></time>

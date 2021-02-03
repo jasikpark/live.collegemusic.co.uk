@@ -145,7 +145,9 @@ module.exports = {
       padding: ["focus"],
       margin: ["focus"],
       ringWidth: ["focus-within", "focus-visible"],
+      ringColor: ["focus-within", "focus-visible"],
       inset: ["focus"],
+      transform: ["motion-reduce"],
     },
   },
   plugins: [

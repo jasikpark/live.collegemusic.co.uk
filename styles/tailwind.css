@@ -1,18 +1,18 @@
 @tailwind base;
 
+[x-cloak] {
+  @apply hidden;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  @apply outline-none;
+}
+
+:focus-visible {
+  @apply outline-none ring ring-white rounded-sm;
+}
+
 @layer base {
-  [x-cloak] {
-    @apply hidden;
-  }
-
-  .js-focus-visible :focus:not(.focus-visible) {
-    @apply outline-none;
-  }
-
-  :focus-visible {
-    @apply outline-none ring ring-white rounded-sm;
-  }
-
   /** styling the scrollbar **/
   html {
     --scrollbarBG: rgb(0, 0, 0, 0.1);

@@ -5,7 +5,7 @@
                 <h1 class="text-lg font-bold text-gray-700">Search</h1>
             </label>
             <div class="space-y-1 min-w-0 sm:flex sm:space-y-0 sm:space-x-2 sm:items-center">
-                <div class="flex-1 flex space-x-1">
+                <div class="flex-1 flex space-x-2">
                     <input type="search" results="5" incremental="true" x-ref="search" id="search-input" placeholder="Search" name="Search" x-model:value="query" @change="fetchSearch" @search="fetchSearch" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-xl w-full flex-1 inline-block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
                     <button type="submit" @click="fetchSearch" class="rounded-xl border bg-white bg-opacity-50 h-10 w-10 p-2 hover:text-blue-600 hover:bg-blue-200 hover:bg-opacity-50 focus:text-blue-600 focus:bg-blue-200 focus:bg-opacity-50 active:text-blue-700 active:bg-white">Go</button>
                 </div>

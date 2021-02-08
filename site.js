@@ -549,7 +549,7 @@ function onYouTubeIframeAPIReady() {
       width: "640",
       target: window.location.origin,
       videoId: "MCkTebktHVc",
-      playerVars: { playsinline: 1 },
+      playerVars: { playsinline: 1, rel: 0 },
       events: {
         onStateChange: onPlayerStateChange,
         onReady: onPlayerReady,

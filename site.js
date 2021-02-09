@@ -150,9 +150,6 @@ function initSongData() {
         self.songData = newSongData;
 
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
-          console.log(
-            "called 'animateSongDetails' from sub.onmessage if statement"
-          );
           requestIdleCallback(animateSongDetails, { timeout: 1000 });
           // Log missing song data to console
           if (
@@ -165,48 +162,74 @@ function initSongData() {
               `Missing Song Data: id ${self.songData.now_playing.song.id} title ${self.songData.now_playing.song.title} artist ${self.songData.now_playing.song.artist}`
             );
           }
-          fetch(
-            `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-              `track:"${self.songData.now_playing.song.title}"artist:"${self.songData.now_playing.song.artist}"`
-            )}`
-          )
-            .then((response) => {
-              if (response.ok) {
-                return response.json();
-              } else {
-                throw Error("Failed to fetch now_playing song link");
-              }
-            })
-            .catch((e) => console.log(e.message || e.toString()))
-            .then((data) => {
-              if (data?.pageUrl) {
-                self.songLinkData.now_playing = data;
-              } else {
-                self.songLinkData.now_playing = false;
-              }
-            });
-
-          self.songData.song_history.forEach((item, key) => {
+          if (
+            self.$store.songLinks[self.songData.now_playing.song.id] ||
+            self.$store.songLinks[self.songData.now_playing.song.id] === null
+          ) {
+            self.songLinkData.now_playing =
+              self.$store.songLinks[self.songData.now_playing.song.id];
+          } else {
             fetch(
               `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
-                `track:"${item.song.title}"artist:"${item.song.artist}"`
+                `track:"${self.songData.now_playing.song.title}"artist:"${self.songData.now_playing.song.artist}"`
               )}`
             )
               .then((response) => {
                 if (response.ok) {
                   return response.json();
                 } else {
-                  throw Error("Failed to fetch song_history song links");
+                  throw Error("Failed to fetch now_playing song link");
                 }
               })
               .catch((e) => console.log(e.message || e.toString()))
               .then((data) => {
                 if (data?.pageUrl) {
-                  self.songLinkData.song_history[key] = data;
+                  self.songLinkData.now_playing = data;
+                  self.$store.songLinks[
+                    self.songData.now_playing.song.id
+                  ] = data;
+                  console.log(self.$store.songLinks);
                 } else {
-                  self.songLinkData.song_history[key] = false;
+                  self.songLinkData.now_playing.pageUrl = null;
+                  self.$store.songLinks[
+                    self.songData.now_playing.song.id
+                  ] = null;
                 }
               });
+          }
+
+          self.songData.song_history.forEach((item, key) => {
+            if (
+              self.$store.songLinks[item.song.id] ||
+              self.$store.songLinks[item.song.id] === null
+            ) {
+              self.songLinkData.song_history[key] =
+                self.$store.songLinks[item.song.id];
+            } else {
+              fetch(
+                `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
+                  `track:"${item.song.title}"artist:"${item.song.artist}"`
+                )}`
+              )
+                .then((response) => {
+                  if (response.ok) {
+                    return response.json();
+                  } else {
+                    throw Error("Failed to fetch song_history song links");
+                  }
+                })
+                .catch((e) => console.log(e.message || e.toString()))
+                .then((data) => {
+                  if (data?.pageUrl) {
+                    self.songLinkData.song_history[key] = data;
+                    self.$store.songLinks[item.song.id] = data;
+                    console.log(self.$store.songLinks);
+                  } else {
+                    self.songLinkData.song_history[key] = null;
+                    self.$store.songLinks[item.song.id] = null;
+                  }
+                });
+            }
           });
         }
       };
@@ -291,10 +314,6 @@ function animateSongDetails() {
     // Get all elements that are currently truncated.
     return x.scrollWidth > x.clientWidth;
   });
-  console.log("---");
-  console.log(truncateAndAnimate);
-  console.log(filterTruncateAndAnimate);
-  console.log("---");
 
   filterTruncateAndAnimate.forEach((x) => {
     // Animate either the element or the first child of the element
@@ -514,6 +533,8 @@ function initFullscreen() {
     },
   };
 }
+
+Spruce.store("songLinks", {});
 
 Spruce.store("search", { open: false });
 

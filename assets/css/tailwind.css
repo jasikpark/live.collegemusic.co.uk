@@ -288,7 +288,7 @@ how to remove the vertical space around the range input in IE */
     min-height: 130px;
     transition: all 0.2s ease-in-out;
 
-    @apply text-white rounded-lg;
+    @apply text-white rounded-lg cursor-pointer;
   }
 
   .artist-hero:hover,

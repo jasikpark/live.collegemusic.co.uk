@@ -113,8 +113,14 @@ window.initSongData = () => {
     },
 
     songLinkData: {
-      now_playing: false,
-      song_history: [false, false, false, false, false],
+      now_playing: { pageUrl: false },
+      song_history: [
+        { pageUrl: false },
+        { pageUrl: false },
+        { pageUrl: false },
+        { pageUrl: false },
+        { pageUrl: false },
+      ],
     },
 
     playing: false,

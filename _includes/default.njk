@@ -67,10 +67,7 @@
         <link rel="preconnect" href="https://youtube.com"/>
         <link rel="preconnect" href="https://www.gstatic.com"/>
         <link rel="preconnect" href="https://apis.google.com"/>
-        <link rel="preconnect" as="script" href="/js/spruce.umd.js?v={% version %}"/>
-        <link rel="preconnect" as="script" href="/js/site.js?v={% version %}"/>
-        <link rel="preconnect" as="script" href="/js/alpine.js?v={% version %}"/>
-        <link rel="preconnect" as="script" href="/js/focus-visible.min.js?v={% version %}"/>
+       
         <link rel="preconnect" as="script" href="https://www.youtube.com/iframe_api"/>
         <script>
             var tag = document.createElement("script");
@@ -81,19 +78,14 @@
                 .parentNode
                 .insertBefore(tag, firstScriptTag);
         </script>
+        <script type="module" src="/js/site.js?v={% version %}"></script>
         <script type="module" src="/pwabuilder-sw-register.js?v={% version %}"></script>
 
         {% block head %}{% endblock %}
     </head>
-    <body x-data :class="{ 'overflow-hidden': $store.search.open, 'overflow-auto': !$store.search.open }" class="overflow-auto sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
+    <body class="overflow-auto sm:min-h-screen sm:flex sm:justify-center sm:items-center background">
         {% block content %}
             {{ content | safe }}
         {% endblock %}
-
-        <script src="/js/spruce.umd.js?v={% version %}"></script>
-        <script src="/js/alpine.js?v={% version %}"></script>
-        <script src="/js/focus-visible.min.js?v={% version %}"></script>
-        <script src="/js/site.js?v={% version %}"></script>
-
     </body>
 </html>

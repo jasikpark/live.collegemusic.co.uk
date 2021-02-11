@@ -61,10 +61,6 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy({
-    "./node_modules/alpinejs/dist/alpine.js": "./js/alpine.js",
-  });
-
-  eleventyConfig.addPassthroughCopy({
     "./node_modules/@ryangjchandler/spruce/dist/spruce.umd.js":
       "./js/spruce.umd.js",
   });
@@ -74,14 +70,9 @@ module.exports = function (eleventyConfig) {
       "./js/spruce.umd.js.map",
   });
 
-  eleventyConfig.addPassthroughCopy({
-    "./node_modules/focus-visible/dist/focus-visible.min.js":
-      "./js/focus-visible.min.js",
-  });
+  eleventyConfig.addWatchTarget("./_tmp/site.js");
 
-  eleventyConfig.addPassthroughCopy({
-    "./site.js": "./js/site.js",
-  });
+  eleventyConfig.addPassthroughCopy({ "./_tmp/site.js": "./js/site.js" });
 
   eleventyConfig.addPassthroughCopy({
     "./assets/js/pwabuilder-sw-register.js": "./pwabuilder-sw-register.js",

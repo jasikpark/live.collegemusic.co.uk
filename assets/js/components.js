@@ -1,28 +1,11 @@
+import LRUCache from "mnemonist/lru-cache";
+
+console.log(LRUCache);
+
 const FOCUSABLE_SELECTORS =
   "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
 
-// Shim requestIdleCallback()
-window.requestIdleCallback =
-  window.requestIdleCallback ||
-  function (cb) {
-    const start = Date.now();
-    return setTimeout(function () {
-      cb({
-        didTimeout: false,
-        timeRemaining: function () {
-          return Math.max(0, 50 - (Date.now() - start));
-        },
-      });
-    }, 1);
-  };
-
-window.cancelIdleCallback =
-  window.cancelIdleCallback ||
-  function (id) {
-    clearTimeout(id);
-  };
-
-function initClock() {
+window.initClock = () => {
   return {
     time: new Intl.DateTimeFormat("default", {
       weekday: "short",
@@ -45,9 +28,9 @@ function initClock() {
       }, 1000);
     },
   };
-}
+};
 
-function initWeather() {
+window.initWeather = () => {
   return {
     weather_icon: "",
     weather_description: "Open Weather API",
@@ -100,9 +83,9 @@ function initWeather() {
       }, 30 * 60 * 1000);
     },
   };
-}
+};
 
-function initSongData() {
+window.initSongData = () => {
   return {
     songData: {
       now_playing: {
@@ -287,9 +270,9 @@ function initSongData() {
       }
     },
   };
-}
+};
 
-function animateSongDetails() {
+window.animateSongDetails = () => {
   // Construct a Web Animations API Object for each song that is long enough here.
 
   const truncateAndAnimate = Array.from(
@@ -333,9 +316,9 @@ function animateSongDetails() {
       { duration: duration, iterations: Infinity, easing: "linear" }
     );
   });
-}
+};
 
-function initVolumeControl() {
+window.initVolumeControl = () => {
   return {
     startVolume: function () {
       const self = this;
@@ -362,17 +345,20 @@ function initVolumeControl() {
       }
     },
   };
-}
+};
 
-function initSearchButton() {
+window.initSearchButton = () => {
   return {
     focusSearchModal: function () {
       let self = this;
       const main = document.getElementsByTagName("main")[0];
+      const body = document.getElementsByTagName("body")[0];
 
       main.setAttribute("inert", "true");
       console.log("before open " + self.$store.search.open);
       self.$store.search.open = true;
+      body.classList.remove("overflow-auto");
+      body.classList.add("overflow-hidden");
       console.log("after open " + self.$store.search.open);
       const modal = document.getElementById("search-modal");
 
@@ -381,9 +367,9 @@ function initSearchButton() {
       self.$nextTick(() => button.focus());
     },
   };
-}
+};
 
-function initSearchModal() {
+window.initSearchModal = () => {
   return {
     query: "",
     prev_query: "",
@@ -397,6 +383,7 @@ function initSearchModal() {
       let self = this;
       const openButton = document.getElementById("open-search");
       const main = document.getElementsByTagName("main")[0];
+      const body = document.getElementsByTagName("body")[0];
 
       if (openButton.contains($event.target)) {
         return false;
@@ -406,6 +393,8 @@ function initSearchModal() {
       self.$store.search.open = false;
       main.removeAttribute("inert");
       console.log("after close " + self.$store.search.open);
+      body.classList.remove("overflow-hidden");
+      body.classList.add("overflow-auto");
       openButton.focus();
     },
     tabEvent: function ($event) {
@@ -459,9 +448,9 @@ function initSearchModal() {
       self.request_no += 1;
     },
   };
-}
+};
 
-function initArtistHero() {
+window.initArtistHero = () => {
   return {
     setupArtistLink: function ($el) {
       let up,
@@ -476,9 +465,9 @@ function initArtistHero() {
       };
     },
   };
-}
+};
 
-function initFullscreen() {
+window.initFullscreen = () => {
   return {
     canFullscreen: function () {
       let doc = window.document;
@@ -532,7 +521,7 @@ function initFullscreen() {
       );
     },
   };
-}
+};
 
 Spruce.store("songLinks", {});
 
@@ -550,7 +539,7 @@ Spruce.store("youtube", {
 /**
  * @returns {boolean}
  */
-function IsYoutubeReady() {
+window.IsYoutubeReady = () => {
   const youtube = Spruce.store("youtube");
   if (!youtube.playerReady && YT && YT.loaded) {
     onYouTubeIframeAPIReady();
@@ -558,11 +547,11 @@ function IsYoutubeReady() {
   } else {
     setTimeout(IsYoutubeReady, 1000);
   }
-}
+};
 
 setTimeout(IsYoutubeReady, 1000);
 
-function onYouTubeIframeAPIReady() {
+window.onYouTubeIframeAPIReady = () => {
   Spruce.reset("youtube", {
     playerReady: true,
     player: new YT.Player("player", {
@@ -581,33 +570,15 @@ function onYouTubeIframeAPIReady() {
     muted: false,
     ready: false,
   });
-}
+};
 
-function onPlayerStateChange() {
+window.onPlayerStateChange = () => {
   console.log("state changed");
   Spruce.store("youtube").state = Spruce.store(
     "youtube"
   ).player.getPlayerState();
-}
+};
 
 function onPlayerReady() {
   Spruce.store("youtube").ready = true;
 }
-
-// Make button-links funtion like buttons
-(function () {
-  "use strict";
-  function a11yClick(link) {
-    link.addEventListener("keydown", function (event) {
-      var code = event.charCode || event.keyCode;
-      if (code === 32) {
-        event.preventDefault();
-        link.click();
-      }
-    });
-  }
-  var a11yLink = document.querySelectorAll('a[role="button"]');
-  for (var i = 0; i < a11yLink.length; i++) {
-    a11yClick(a11yLink[i]);
-  }
-})();

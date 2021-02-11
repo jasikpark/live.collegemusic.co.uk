@@ -6,8 +6,8 @@
   "author": "Caleb Jasik <calebjasik@jasik.xyz>",
   "license": "MIT",
   "scripts": {
-    "start": "BASE_URL='http://localhost:8080' eleventy --serve & postcss styles/tailwind.css --o _tmp/style.css --watch",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/tailwind.css --o _site/style.css"
+    "start": "BASE_URL='http://localhost:8080' eleventy --serve & postcss assets/css/tailwind.css --o _tmp/style.css --watch & esbuild assets/js/site.js --bundle --watch --outfile='_tmp/site.js'",
+    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css & esbuild site.js --bundle --minify --outfile='_site/site.js'"
   },
   "husky": {
     "hooks": {
@@ -18,13 +18,10 @@
     "@11ty/eleventy": "0.11.1",
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
-    "@ryangjchandler/spruce": "2.6.3",
-    "@tailwindcss/aspect-ratio": "0.2.0",
-    "alpinejs": "2.8.0",
     "autoprefixer": "10.2.4",
     "cssnano": "4.1.10",
     "env-var": "7.0.0",
-    "focus-visible": "5.2.0",
+    "esbuild": "0.8.43",
     "html-minifier": "4.0.0",
     "husky": "4.3.8",
     "postcss": "8.2.4",
@@ -34,11 +31,15 @@
     "prettier-plugin-toml": "0.3.1",
     "stylelint": "13.9.0",
     "stylelint-config-standard": "20.0.0",
-    "tailwind-easing-gradients": "1.0.2",
-    "tailwindcss": "2.0.2",
     "tldjs": "2.3.1"
   },
   "dependencies": {
-    "mnemonist": "0.38.1"
+    "@ryangjchandler/spruce": "2.6.3",
+    "@tailwindcss/aspect-ratio": "0.2.0",
+    "alpinejs": "2.8.0",
+    "focus-visible": "5.2.0",
+    "mnemonist": "0.38.1",
+    "tailwind-easing-gradients": "1.0.2",
+    "tailwindcss": "2.0.2"
   }
 }

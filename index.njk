@@ -66,7 +66,7 @@
             <div id="chat" class="hidden sm:block relative">
                 <a href="#content" class="skip-link">Skip to Content</a>
                 <div class="chat-container aspect-w-1 aspect-h-1">
-                    <iframe title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" :src="window.matchMedia('(min-width: 640px)').matches ? `https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain=${ window.location.hostname }&dark_theme=1` : ''" src="" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
+                    <iframe x-data title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" :src="window.matchMedia('(min-width: 640px)').matches ? `https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain=${ window.location.hostname }&dark_theme=1` : ''" src="" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
@@ -278,38 +278,38 @@
                     Artist Spotlight
                 </h2>
                 <div class="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-4">
-                    <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero kyle-mcevoy">
-                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
+                    <div x-data @click="$refs.link.click()" height="130px" class="rounded-lg artist-hero kyle-mcevoy">
+                        <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kyle McEvoy</h3>
                             <span class="px-2 text-center text-shadow-sm">1,636k monthly listeners</span>
                         </a>
                     </div>
-                    <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero kalaido">
-                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
+                    <div x-data @click="$refs.link.click()" height="130px" class="rounded-lg artist-hero kalaido">
+                        <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Kalaido</h3>
                             <span class="px-2 text-center text-shadow-sm">594k monthly listeners</span>
                         </a>
                     </div>
-                    <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero wei">
-                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
+                    <div x-data @click="$refs.link.click()" height="130px" class="rounded-lg artist-hero wei">
+                        <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">WEI</h3>
                             <span class="px-2 text-center text-shadow-sm">170k monthly listeners</span>
                         </a>
                     </div>
-                    <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero santpoort">
-                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
+                    <div x-data @click="$refs.link.click()" height="130px" class="rounded-lg artist-hero santpoort">
+                        <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Santpoort</h3>
                             <span class="px-2 text-center text-shadow-sm">586k monthly listeners</span>
                         </a>
                     </div>
-                    <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero eillah">
-                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
+                    <div x-data @click="$refs.link.click()" height="130px" class="rounded-lg artist-hero eillah">
+                        <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">Eillah</h3>
                             <span class="px-2 text-center text-shadow-sm">9,679 monthly listeners</span>
                         </a>
                     </div>
-                    <div x-data="initArtistHero()" x-init="setupArtistLink($el)" height="130px" class="rounded-lg artist-hero brillon">
-                        <a class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
+                    <div x-data @click="$refs.link.click()" height="130px" class="rounded-lg artist-hero brillon">
+                        <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU">
                             <h3 class="font-semibold px-2 text-center text-shadow-sm">brillon.</h3>
                             <span class="px-2 text-center text-shadow-sm">2,001k monthly listeners</span>
                         </a>

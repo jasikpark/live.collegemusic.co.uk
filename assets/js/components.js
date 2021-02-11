@@ -456,23 +456,6 @@ window.initSearchModal = () => {
   };
 };
 
-window.initArtistHero = () => {
-  return {
-    setupArtistLink: function ($el) {
-      let up,
-        down,
-        link = $el.querySelector("a");
-      $el.onmousedown = () => (down = +new Date());
-      $el.onmouseup = () => {
-        up = +new Date();
-        if (up - down < 200) {
-          link.click();
-        }
-      };
-    },
-  };
-};
-
 window.initFullscreen = () => {
   return {
     canFullscreen: function () {

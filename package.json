@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "BASE_URL='http://localhost:8080' eleventy --serve & postcss assets/css/tailwind.css --o _tmp/style.css --watch & esbuild assets/js/site.js --bundle --watch --outfile='_tmp/site.js'",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css & esbuild site.js --bundle --minify --outfile='_site/site.js'"
+    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css & esbuild assets/js/site.js --bundle --minify --outfile='_site/site.js'"
   },
   "husky": {
     "hooks": {

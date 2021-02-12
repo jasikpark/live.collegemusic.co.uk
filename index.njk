@@ -10,7 +10,7 @@
                 <span class="font-semibold">Lofi Hip Hop Radio</span></a>
             </h1>
             <span class="flex flex-wrap items-center space-x-2 h-8">
-                <span x-data="initClock()" x-init="startClock">
+                <span x-data="liveCM.components.clock()" x-init="startClock">
                     <time :datetime="unix" x-text="time" class="text-white inline"></time>
                 </span>
                 <button type="button" x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
@@ -19,13 +19,13 @@
                     </svg>
                     <span class="sr-only">Refresh</span>
                 </button>
-                <span x-cloak x-data="initWeather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring-4 ring-white  rounded-sm">
+                <span x-cloak x-data="liveCM.components.weather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring-4 ring-white  rounded-sm">
                     <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener" class="focus-visible:ring-0">
                         <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline absolute -top-2 left-0 object-cover h-12 w-12">
                         <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
                     </a>
                 </span>
-                <button type="button" x-cloak x-data="initFullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline standalone:hidden">
+                <button type="button" x-cloak x-data="liveCM.components.fullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline standalone:hidden">
                     <div class="block fullscreen:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" title="Click to go fullscreen" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -72,7 +72,7 @@
         </div>
 
         <div id="content" class="flex flex-col space-y-4 lg:flex-row lg:justify-between lg:space-y-0 lg:space-x-8 pb-8 px-2 sm:px-8">
-            <div x-data="initSongData()" x-init="getSongData" class="space-y-4 w-full lg:w-116">
+            <div x-data="liveCM.components.songData()" x-init="getSongData" class="space-y-4 w-full lg:w-116">
                 <div class="rounded-lg flex align-center now-playing">
                     <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
                     <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-27 sm:pl-28">
@@ -186,7 +186,7 @@
             </div>
 
             <div id="controls" class="flex flex-col justify-start p-2 sm:pt-4 text-white w-full lg:w-72">
-                <div x-data="initVolumeControl()" x-init="startVolume" class="hidden sm:flex group space-x-3 justify-end ">
+                <div x-data="liveCM.components.volume()" x-init="startVolume" class="hidden sm:flex group space-x-3 justify-end ">
                     <input class="w-3/4" x-model:value="$store.youtube.volume"  @input="adjustVolume" type="range" min="0" max="100" value="25" id="volume">
                     <label for="volume">
                         <button type="button" @click="toggleMute" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">
@@ -257,7 +257,7 @@
                         </div>
                     </button>
 
-                    <button type="button"  x-data="initSearchButton()"id="open-search" @click="focusSearchModal" class="group flex justify-end gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
+                    <button type="button" x-data="liveCM.components.searchButton" id="open-search" @click="focusSearchModal" class="group flex justify-end gap-2 text-white hover:text-blue-500 focus:text-blue-500 active:text-blue-700">
                         <span class="p-1">Search</span>
                         <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25 group-hover:bg-blue-400 group-hover:bg-opacity-25 group-focus:bg-blue-400 group-focus:bg-opacity-25">
                             <svg aria-hidden="true" class="inline" width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,7 +1,5 @@
 import LRUCache from "mnemonist/lru-cache";
 
-console.log(LRUCache);
-
 const FOCUSABLE_SELECTORS =
   "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
 
@@ -151,12 +149,10 @@ window.initSongData = () => {
               `Missing Song Data: id ${self.songData.now_playing.song.id} title ${self.songData.now_playing.song.title} artist ${self.songData.now_playing.song.artist}`
             );
           }
-          if (
-            self.$store.songLinks[self.songData.now_playing.song.id] ||
-            self.$store.songLinks[self.songData.now_playing.song.id] === null
-          ) {
-            self.songLinkData.now_playing =
-              self.$store.songLinks[self.songData.now_playing.song.id];
+          if (self.$store.songLinks.has(self.songData.now_playing.song.id)) {
+            self.songLinkData.now_playing = self.$store.songLinks.get(
+              self.songData.now_playing.song.id
+            );
           } else {
             fetch(
               `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
@@ -174,26 +170,26 @@ window.initSongData = () => {
               .then((data) => {
                 if (data?.pageUrl) {
                   self.songLinkData.now_playing = data;
-                  self.$store.songLinks[
-                    self.songData.now_playing.song.id
-                  ] = data;
+                  self.$store.songLinks.set(
+                    self.songData.now_playing.song.id,
+                    data
+                  );
                   console.log(self.$store.songLinks);
                 } else {
                   self.songLinkData.now_playing.pageUrl = null;
-                  self.$store.songLinks[
-                    self.songData.now_playing.song.id
-                  ] = null;
+                  self.$store.songLinks.set(
+                    self.songData.now_playing.song.id,
+                    null
+                  );
                 }
               });
           }
 
           self.songData.song_history.forEach((item, key) => {
-            if (
-              self.$store.songLinks[item.song.id] ||
-              self.$store.songLinks[item.song.id] === null
-            ) {
-              self.songLinkData.song_history[key] =
-                self.$store.songLinks[item.song.id];
+            if (self.$store.songLinks.has(item.song.id)) {
+              self.songLinkData.song_history[key] = self.$store.songLinks.get(
+                item.song.id
+              );
             } else {
               fetch(
                 `https://songlink-search.calebjasik.workers.dev/?q=${encodeURIComponent(
@@ -211,11 +207,10 @@ window.initSongData = () => {
                 .then((data) => {
                   if (data?.pageUrl) {
                     self.songLinkData.song_history[key] = data;
-                    self.$store.songLinks[item.song.id] = data;
-                    console.log(self.$store.songLinks);
+                    self.$store.songLinks.set(item.song.id, data);
                   } else {
                     self.songLinkData.song_history[key] = null;
-                    self.$store.songLinks[item.song.id] = null;
+                    self.$store.songLinks.set(item.song.id, null);
                   }
                 });
             }
@@ -512,7 +507,7 @@ window.initFullscreen = () => {
   };
 };
 
-Spruce.store("songLinks", {});
+Spruce.store("songLinks", new LRUCache(1000));
 
 Spruce.store("search", { open: false });
 

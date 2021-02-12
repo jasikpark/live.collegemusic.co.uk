@@ -174,7 +174,6 @@ window.initSongData = () => {
                     self.songData.now_playing.song.id,
                     data
                   );
-                  console.log(self.$store.songLinks);
                 } else {
                   self.songLinkData.now_playing.pageUrl = null;
                   self.$store.songLinks.set(

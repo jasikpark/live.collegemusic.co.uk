@@ -24,9 +24,8 @@
   "theme_color": "#2F1F60",
   "background_color": "#2F1F60",
   "display": "standalone",
+  "display_override": ["minimal-ui"],
   "orientation": "any",
   "scope": "/",
-  "categories": [
-    "music"
-  ]
+  "categories": ["music"]
 }

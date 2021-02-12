@@ -6,8 +6,14 @@
   "author": "Caleb Jasik <calebjasik@jasik.xyz>",
   "license": "MIT",
   "scripts": {
-    "start": "BASE_URL='http://localhost:8080' eleventy --serve & postcss assets/css/tailwind.css --o _tmp/style.css --watch & esbuild assets/js/site.js --bundle --watch --outfile='_tmp/site.js'",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css & esbuild assets/js/site.js --bundle --minify --outfile='_site/site.js'"
+    "start": "concurrently --kill-others 'yarn:start:*'",
+    "start:eleventy": "BASE_URL='http://localhost:8080' eleventy --serve",
+    "start:postcss": "postcss assets/css/tailwind.css --o _tmp/style.css --watch",
+    "start:esbuild": "esbuild assets/js/site.js --bundle --watch --summary --outfile='_tmp/site.js'",
+    "build": "concurrently --kill-others-on-fail 'yarn:build:*'",
+    "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
+    "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
+    "build:esbuild": "esbuild assets/js/site.js --bundle --summary --minify --outfile='_site/site.js'"
   },
   "husky": {
     "hooks": {
@@ -19,6 +25,7 @@
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "autoprefixer": "10.2.4",
+    "concurrently": "5.3.0",
     "cssnano": "4.1.10",
     "env-var": "7.0.0",
     "esbuild": "0.8.43",

@@ -41,10 +41,6 @@ export const SongData = () => {
       ],
     },
 
-    playing: false,
-
-    songLink: "https://song.link/us/i/1532373384",
-
     getSongData: function () {
       let self = this;
 

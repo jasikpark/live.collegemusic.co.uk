@@ -172,23 +172,20 @@ export const SongData = () => {
       if (!song) {
         return false;
       }
+      const songLink = self.$store.songLinks.peek(songId)
+        ? self.$store.songLinks.get(songId)
+        : window.location;
       if (navigator.share) {
         navigator
           .share({
             title: "College Music YT",
             text: `I'm listening to ${song.title} by ${song.artist} on College Music`,
-            url: new URL(
-              self.$store.songLinks.get(songId).pageUrl || window.location
-            ),
+            url: new URL(songLink),
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
-        window.open(
-          new URL(self.$store.songLinks.get(songId).pageUrl || window.location),
-          "_blank",
-          "noopener,noreferrer"
-        );
+        window.open(new URL(songLink), "_blank", "noopener,noreferrer");
       }
     },
 

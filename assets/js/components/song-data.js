@@ -51,7 +51,7 @@ export const SongData = () => {
         let newSongData = JSON.parse(event.data);
         let oldNowPlaying = self.songData.now_playing;
         self.songData = newSongData;
-        console.log(self.songData);
+
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           requestIdleCallback(animateSongDetails, { timeout: 1000 });
           // Log missing song data to console
@@ -168,13 +168,14 @@ export const SongData = () => {
           }
         }
       }
-      console.log(`song = ${song}`);
+      console.log({ song });
       if (!song) {
         return false;
       }
       const songLink = self.$store.songLinks.peek(songId)
-        ? self.$store.songLinks.get(songId)
+        ? self.$store.songLinks.get(songId).pageUrl
         : self.$store.youtube.player.getVideoUrl();
+      console.log({ songLink });
       if (navigator.share) {
         navigator
           .share({

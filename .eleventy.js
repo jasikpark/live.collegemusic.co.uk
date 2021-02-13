@@ -62,7 +62,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./_tmp/site.js");
 
-  eleventyConfig.addPassthroughCopy({ "./_tmp/site.js": "./js/site.js" });
+  eleventyConfig.addPassthroughCopy({ "./_tmp/site.js": "./site.js" });
 
   eleventyConfig.addPassthroughCopy({
     "./assets/js/pwabuilder-sw-register.js": "./pwabuilder-sw-register.js",

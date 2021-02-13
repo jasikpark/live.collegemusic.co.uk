@@ -41,7 +41,7 @@ export const SongData = () => {
       ],
     },
 
-    getSongData: function () {
+    getSongData() {
       let self = this;
 
       let sub = new WebSocket(
@@ -148,7 +148,7 @@ export const SongData = () => {
       });
     },
 
-    shareSong: function ($event) {
+    shareSong($event) {
       var self = this;
 
       const songId = $event.currentTarget.getAttribute("data-song-id");
@@ -190,7 +190,7 @@ export const SongData = () => {
       }
     },
 
-    togglePlayback: function () {
+    togglePlayback() {
       let self = this;
       const player = self.$store.youtube.player;
       if (self.$store.youtube.state === 1) {

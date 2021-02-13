@@ -148,28 +148,38 @@ export const SongData = () => {
       });
     },
 
-    openSongLink: function () {
-      window.open(
-        self.songLinkData.now_playing,
-        "_blank",
-        "noopener,noreferrer"
-      );
-    },
-
     shareSong: function () {
+      console.log("called shareSong");
+      const songId = this.$el.getAttribute("data-song-id");
+      // Return early if the song id value doesn't exist
+      if (!songId) {
+        return false;
+      }
+      let song;
+      if (songId === this.songData.now_playing.song.id) {
+        song = this.songData.now_playing.song;
+      } else {
+        for (const songElement of this.songData.song_history) {
+          if (songId === songElement.id) {
+            song = songElement;
+            break;
+          }
+        }
+      }
       if (navigator.share) {
         navigator
           .share({
             title: "College Music YT",
-            text:
-              "I'm listening to i love you 3000 by GentleBeatz on College Music",
-            url: "https://song.link/s/2UobyorUSwvPuzFhL6YVAJ",
+            text: `I'm listening to ${song.text} by ${song.artist} on College Music`,
+            url: new URL(
+              Spruce.store("songLinkData").get(songId) || window.location
+            ),
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
         window.open(
-          "https://youtube.com/collegemusic",
+          new URL(Spruce.store("songLinkData").get(songId) || window.location),
           "_blank",
           "noopener,noreferrer"
         );

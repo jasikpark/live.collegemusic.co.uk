@@ -51,7 +51,7 @@ export const SongData = () => {
         let newSongData = JSON.parse(event.data);
         let oldNowPlaying = self.songData.now_playing;
         self.songData = newSongData;
-
+        console.log(self.songData);
         if (newSongData.now_playing.song.id !== oldNowPlaying.song.id) {
           requestIdleCallback(animateSongDetails, { timeout: 1000 });
           // Log missing song data to console
@@ -148,38 +148,44 @@ export const SongData = () => {
       });
     },
 
-    shareSong: function () {
-      console.log("called shareSong");
-      const songId = this.$el.getAttribute("data-song-id");
+    shareSong: function ($event) {
+      var self = this;
+
+      const songId = $event.currentTarget.getAttribute("data-song-id");
+      console.log(`songId = ${songId}`);
       // Return early if the song id value doesn't exist
       if (!songId) {
         return false;
       }
       let song;
-      if (songId === this.songData.now_playing.song.id) {
-        song = this.songData.now_playing.song;
+      if (songId === self.songData.now_playing.song.id) {
+        song = self.songData.now_playing.song;
       } else {
-        for (const songElement of this.songData.song_history) {
-          if (songId === songElement.id) {
-            song = songElement;
+        for (const songElement of self.songData.song_history) {
+          if (songId === songElement.song.id) {
+            song = songElement.song;
             break;
           }
         }
+      }
+      console.log(`song = ${song}`);
+      if (!song) {
+        return false;
       }
       if (navigator.share) {
         navigator
           .share({
             title: "College Music YT",
-            text: `I'm listening to ${song.text} by ${song.artist} on College Music`,
+            text: `I'm listening to ${song.title} by ${song.artist} on College Music`,
             url: new URL(
-              Spruce.store("songLinkData").get(songId) || window.location
+              self.$store.songLinks.get(songId).pageUrl || window.location
             ),
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
         window.open(
-          new URL(Spruce.store("songLinkData").get(songId) || window.location),
+          new URL(self.$store.songLinks.get(songId).pageUrl || window.location),
           "_blank",
           "noopener,noreferrer"
         );

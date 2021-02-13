@@ -13,7 +13,8 @@
     "build": "concurrently --kill-others-on-fail 'yarn:build:*'",
     "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
     "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
-    "build:esbuild": "esbuild assets/js/site.js --bundle --summary --minify --outfile='_site/site.js'"
+    "build:esbuild": "esbuild assets/js/site.js --bundle --summary --minify --outfile='_site/site.js'",
+    "doc": "jsdoc --configure jsdoc.config.json -r -d docs"
   },
   "husky": {
     "hooks": {
@@ -31,6 +32,7 @@
     "esbuild": "0.8.44",
     "html-minifier": "4.0.0",
     "husky": "5.0.9",
+    "jsdoc": "3.6.6",
     "postcss": "8.2.6",
     "postcss-cli": "8.3.1",
     "postcss-focus-visible": "5.0.0",

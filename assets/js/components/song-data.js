@@ -174,7 +174,7 @@ export const SongData = () => {
       }
       const songLink = self.$store.songLinks.peek(songId)
         ? self.$store.songLinks.get(songId)
-        : window.location;
+        : self.$store.youtube.player.getVideoUrl();
       if (navigator.share) {
         navigator
           .share({

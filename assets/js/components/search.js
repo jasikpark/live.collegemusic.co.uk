@@ -37,7 +37,7 @@ export const SearchModal = () => {
 
     closeModal: function ($event) {
       let self = this;
-      const openButton = document.getElementById("open-search");
+      const openButton = document.getElementById("search-button");
       const main = document.getElementsByTagName("main")[0];
       const body = document.getElementsByTagName("body")[0];
 

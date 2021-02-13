@@ -23,3 +23,5 @@ window.liveCM = {
 };
 
 import "alpinejs";
+
+Window.SearchButton = SearchButton;

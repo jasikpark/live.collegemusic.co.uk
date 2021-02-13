@@ -106,18 +106,18 @@
                         </div>
 
                         <div class="ml-1 self-start flex justify-center align-center space-x-3">
-                            <a x-show="songLinkData.now_playing" :hidden="!songLinkData.now_playing" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.now_playing?.pageUrl || 'javascript:void(0)'" href="https://song.link" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                            <a x-show="songLinkData.now_playing.pageUrl" :hidden="!songLinkData.now_playing.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.now_playing?.pageUrl || 'javascript:void(0)'" href="https://song.link" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
                                 <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
                                 </svg>
                                 <span class="sr-only focus:not-sr-only">Add to playlist</span>
                             </a>
-                            <div x-show="!songLinkData.now_playing" :hidden="songLinkData.now_playing">
+                            <div x-show="!songLinkData.now_playing.pageUrl" :hidden="songLinkData.now_playing.pageUrl">
                                 <svg  class="text-gray-600 inline" aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
                                 </svg>
                             </div>
-                            <button type="button" title="Share song" @click="shareSong()" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                            <button type="button" title="Share song" @click="shareSong" data-song-id="songData.now_playing.song.id" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
                                 <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
                                 </svg>

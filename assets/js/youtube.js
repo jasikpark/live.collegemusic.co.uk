@@ -7,6 +7,8 @@ Spruce.store("youtube", {
   ready: false,
 });
 
+let YT = null;
+
 /**
  * @returns {boolean}
  */

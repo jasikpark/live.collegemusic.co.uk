@@ -1,7 +1,7 @@
 @tailwind base;
 
 [x-cloak] {
-  @apply hidden;
+  display: none !important;
 }
 
 .js-focus-visible :focus:not(.focus-visible) {

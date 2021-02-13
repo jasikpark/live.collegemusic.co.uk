@@ -6,3 +6,4 @@ package-lock.json
 _site_style.css
 # Local Netlify folder
 .netlify
+.vscode/

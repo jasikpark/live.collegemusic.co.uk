@@ -20,7 +20,7 @@ const IsYoutubeReady = () => {
   }
 };
 
-setTimeout(IsYoutubeReady, 1000);
+window.addEventListener("DOMContentLoaded", IsYoutubeReady);
 
 // Sets up the youtube api object within Spruce
 const onYouTubeIframeAPIReady = () => {

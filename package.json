@@ -31,7 +31,7 @@
     "env-var": "7.0.0",
     "esbuild": "0.8.49",
     "html-minifier": "4.0.0",
-    "husky": "5.0.9",
+    "husky": "5.1.0",
     "jsdoc": "3.6.6",
     "postcss": "8.2.6",
     "postcss-cli": "8.3.1",

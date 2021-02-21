@@ -1,0 +1,5 @@
+{% macro clock(class) %}
+<span x-data="liveCM.components.clock()" x-init="startClock">
+    <time :datetime="unix" x-text="time" class="text-white inline"></time>
+</span>
+{% endmacro %}

@@ -1,3 +1,8 @@
+{% from "components/clock.njk" import clock %}
+{% from "components/refresh-button.njk" import refreshButton %}
+{% from "components/weather.njk" import weather %}
+{% from "components/fullscreen-button.njk" import fullscreenButton %}
+
 {% extends "_includes/default.njk" %}
 
 {% block title %}{% this_is_dev_server %}College Music{% endblock %}
@@ -10,49 +15,10 @@
                 <span class="font-semibold">Lofi Hip Hop Radio</span></a>
             </h1>
             <span class="flex flex-wrap items-center space-x-2 h-8">
-                <span x-data="liveCM.components.clock()" x-init="startClock">
-                    <time :datetime="unix" x-text="time" class="text-white inline"></time>
-                </span>
-                <button type="button" x-data @click="window.location.reload()" class="text-white hidden standalone:inline">
-                    <svg aria-hidden="true" title="Refresh" class="h-6 w-6" stroke="currentColor" width="28" height="28" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="none">
-                        <path xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                    </svg>
-                    <span class="sr-only">Refresh</span>
-                </button>
-                <span x-cloak x-data="liveCM.components.weather()" x-init="getWeather" x-show="weather_icon" class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring-4 ring-white rounded-sm">
-                    <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener" class="focus-visible:ring-0">
-                        <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline absolute -top-2 left-0 object-cover h-12 w-12">
-                        <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
-                    </a>
-                </span>
-                <button type="button" x-cloak x-data="liveCM.components.fullscreen()" x-show="canFullscreen()" @click.debounce="toggleFullscreen" :title="isFullscreen() ? 'Exit full screen' : 'Full screen'" class="text-white inline standalone:hidden">
-                    <div class="block fullscreen:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" title="Click to go fullscreen" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <polyline points="16 4 20 4 20 8"/>
-                            <line x1="14" y1="10" x2="20" y2="4"/>
-                            <polyline points="8 20 4 20 4 16"/>
-                            <line x1="4" y1="20" x2="10" y2="14"/>
-                            <polyline points="16 20 20 20 20 16"/>
-                            <line x1="14" y1="14" x2="20" y2="20"/>
-                            <polyline points="8 4 4 4 4 8"/>
-                            <line x1="4" y1="4" x2="10" y2="10"/>
-                        </svg>
-                        <span class="sr-only">Click to go fullscreen</span></div>
-                    <div class="hidden fullscreen:block">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" title="Click to get out of fullscreen" class="h-6 w-6" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <polyline points="5 9 9 9 9 5"/>
-                            <line x1="3" y1="3" x2="9" y2="9"/>
-                            <polyline points="5 15 9 15 9 19"/>
-                            <line x1="3" y1="21" x2="9" y2="15"/>
-                            <polyline points="19 9 15 9 15 5"/>
-                            <line x1="15" y1="9" x2="21" y2="3"/>
-                            <polyline points="19 15 15 15 15 19"/>
-                            <line x1="15" y1="15" x2="21" y2="21"/>
-                        </svg>
-                        <span class="sr-only">Click to get out of fullscreen</span></div>
-                </button>
+                {{ clock() }}
+                {{ refreshButton() }}
+                {{ weather() }}
+                {{ fullscreenButton() }}
             </span>
         </header>
 
@@ -323,5 +289,5 @@
         <img id="purple-wave" alt="" src="/static/purple-wave.svg" class="absolute max-w-none -left-6 bottom-0 -z-10"/>
         <img id="blue-wave" alt="" src="/static/blue-wave.svg" class="absolute max-w-none -right-12 bottom-0 -z-10"/>
     </main>
-    {% include "search.njk" %}
+    {% include "components/search-modal.njk" %}
 {% endblock %}

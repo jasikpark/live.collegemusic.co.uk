@@ -1,0 +1,10 @@
+{% macro favoritesButton(class = "group flex justify-end content-center gap-2 text-white hover:text-red-500 focus:text-red-500 active:text-red-700") %}
+    <button type="button" class="{{ class }}">
+        <span class="p-1">Favorites</span>
+        <div class="h-8 w-8 p-1 rounded-full bg-gray-100 bg-opacity-25  group-hover:bg-red-400 group-hover:bg-opacity-25 group-focus:bg-red-400 group-focus:bg-opacity-25">
+            <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.83" fill-rule="evenodd" clip-rule="evenodd" d="M13.8521 1e-05C12.2406 1e-05 10.7221 0.73933 9.70833 1.9435C8.69453 0.73933 7.17604 1e-05 5.56458 1e-05C2.70911 1e-05 0.5 2.22241 0.5 5.09558C0.5 8.61511 3.62995 11.4396 8.37135 15.7958L9.70833 17L11.0453 15.7958C15.7867 11.4396 18.9167 8.6151 18.9167 5.09557C18.9167 2.22239 16.7076 0 13.8521 0V1e-05ZM10.275 14.5784L10.0891 14.751L9.70833 15.0964L9.3276 14.751L9.14166 14.5784C6.91041 12.5287 4.9802 10.7578 3.70963 9.17735C2.47005 7.64115 1.92109 6.38386 1.92109 5.09558C1.92109 4.08178 2.29296 3.15209 2.97031 2.47032C3.64323 1.78855 4.56406 1.41667 5.56458 1.41667C6.72005 1.41667 7.86666 1.95677 8.62369 2.85547L9.70833 4.14375L10.793 2.85547C11.55 1.95235 12.6966 1.41667 13.8521 1.41667C14.8526 1.41667 15.7734 1.78854 16.4508 2.47032C17.1281 3.15209 17.5 4.08621 17.5 5.09558C17.5 6.37943 16.9466 7.64115 15.7115 9.17735C14.4365 10.7578 12.5107 12.5287 10.275 14.5784Z" fill="currentColor"/>
+            </svg>
+        </div>
+    </button>
+{% endmacro %}

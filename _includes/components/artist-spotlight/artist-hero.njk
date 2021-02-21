@@ -1,0 +1,8 @@
+{% macro artistHero(class="", link="", artist="", listeners="") %}
+<div x-data @click="$refs.link.click()" height="130px" class="artist-hero {{ class }}">
+    <a x-ref="link" class="flex flex-col justify-start items-center outline-none focus-visible:ring-0" target="_blank" rel="noreferrer noopener" href="{{ link }}">
+        <h3 class="font-semibold px-2 text-center text-shadow-sm">{{ artist }}</h3>
+        <span class="px-2 text-center text-shadow-sm">{{ listeners }}</span>
+    </a>
+</div>
+{% endmacro %}

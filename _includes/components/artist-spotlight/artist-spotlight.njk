@@ -1,0 +1,20 @@
+{% from "artist-hero.njk" import artistHero %}
+
+{% macro artistSpotlight(class="flex flex-col items-center space-y-2 artist-spotlight") %}
+    <div class="{{ class }}">
+        <h2 class="text-white text-center text-xl">
+            <svg aria-hidden="true" class="inline relative left-2 -top-2 h-7 w-7" width="19" height="21" viewbox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4181 11.8543C9.23211 10.885 8.47506 9.41101 8.47506 7.75959C8.47506 6.9298 8.68288 6.15494 9.02355 5.45578L8.20863 4.64158L3.25812 9.59284C4.17846 10.3172 4.08568 11.0253 3.00874 11.7155L12.875 20.609C13.2031 20.6246 12.7157 21.1683 12.2469 20.8871L2.31624 12.0911C1.08344 12.6195 0.474827 12.1089 0.500797 10.5399C0.528997 8.87066 1.23633 8.42534 2.60792 9.17645L7.67644 4.10793L7.17471 3.60695C6.88005 3.31304 6.88005 2.83431 7.17471 2.53965L8.77639 0.937975C9.07105 0.643315 9.54977 0.643315 9.84442 0.937975L11.7742 2.86919C12.3887 2.61907 13.0574 2.47582 13.7618 2.47582C15.5 2.47582 17.0438 3.22175 18.0065 4.51837C18.0391 4.52654 10.4456 11.8662 10.4182 11.8543L10.4181 11.8543Z" fill="white"/>
+            </svg>
+                    Artist Spotlight
+                </h2>
+        <div class="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-4">
+            {{ artistHero(class="kyle-mcevoy", link="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft", artist="Kyle McEvoy", listeners="1,636k monthly listeners")}}
+            {{ artistHero(class="kalaido", link="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8", artist="Kalaido", listeners="594k monthly listeners")}}
+            {{ artistHero(class="wei", link="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw", artist="WEI", listeners="170k monthly listeners") }}
+            {{ artistHero(class="santpoort", link="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ", artist="Santpoort", listeners="586k monthly listeners")}}
+            {{ artistHero(class="eillah", link="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0", artist="Eillah", listeners="9,679 monthly listeners")}}
+            {{ artistHero(class="brillon", link="https://open.spotify.com/artist/77aATgrzmuoRjmqxPcEIHU", artist="brillon.", listeners="2,001k monthly listeners") }}
+        </div>
+    </div>
+{% endmacro %}

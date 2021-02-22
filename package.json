@@ -9,11 +9,11 @@
     "start": "concurrently --kill-others 'yarn:start:*'",
     "start:eleventy": "BASE_URL='http://localhost:8080' eleventy --serve",
     "start:postcss": "postcss assets/css/tailwind.css --o _tmp/style.css --watch",
-    "start:esbuild": "esbuild assets/js/site.js --bundle --watch --summary --outfile='_tmp/site.js'",
+    "start:esbuild": "esbuild assets/js/site.js --bundle --watch --summary --sourcemap --outfile='_tmp/site.js'",
     "build": "concurrently --kill-others-on-fail 'yarn:build:*'",
     "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
     "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
-    "build:esbuild": "esbuild assets/js/site.js --bundle --summary --minify --outfile='_site/site.js'",
+    "build:esbuild": "esbuild assets/js/site.js --bundle --summary --sourcemap --minify --outfile='_site/site.js'",
     "doc": "jsdoc --configure jsdoc.config.json -r -d docs"
   },
   "husky": {

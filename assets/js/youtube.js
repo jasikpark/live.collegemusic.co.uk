@@ -12,7 +12,7 @@ Spruce.store("youtube", {
  */
 const IsYoutubeReady = () => {
   const youtube = Spruce.store("youtube");
-  if (!youtube.playerReady && YT && YT.loaded) {
+  if (!youtube.playerReady && window.YT && window.YT.loaded) {
     onYouTubeIframeAPIReady();
     return true;
   } else {

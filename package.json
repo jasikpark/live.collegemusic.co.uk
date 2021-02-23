@@ -45,7 +45,7 @@
   "dependencies": {
     "@ryangjchandler/spruce": "2.6.3",
     "@tailwindcss/aspect-ratio": "0.2.0",
-    "alpinejs": "2.8.0",
+    "alpinejs": "2.8.1",
     "focus-visible": "5.2.0",
     "mnemonist": "0.38.1",
     "tailwind-easing-gradients": "1.0.2",

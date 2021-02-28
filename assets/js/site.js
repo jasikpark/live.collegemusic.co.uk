@@ -9,6 +9,7 @@ import { SearchButton, SearchModal } from "./components/search.js";
 import { SongData } from "./components/song-data.js";
 import { Volume } from "./components/volume.js";
 import { Weather } from "./components/weather.js";
+import { Modal } from "./mixins/modal.js";
 
 // @ts-ignore
 window.liveCM = {
@@ -20,6 +21,9 @@ window.liveCM = {
     songData: SongData,
     volume: Volume,
     weather: Weather,
+  },
+  mixins: {
+    modal: Modal,
   },
 };
 

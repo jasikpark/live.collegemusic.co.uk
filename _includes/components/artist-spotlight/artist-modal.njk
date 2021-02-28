@@ -1,39 +1,39 @@
 {% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1' }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
-        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg w-3/4 min-h-1/2 p-8 relative">
+        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-3/4 p-8 relative">
             <div class="space-y-4">
-                <div class="grid grid-flow-col">
-                    <div class="flex gap-4">
-                        <img class="rounded-full" src="/static/default_album_art.png"></img>
+                <div class="flex flex-wrap gap-8">
+                    <div class="flex flex-none items-center gap-4">
+                        <img class="h-32 w-32 rounded-full" src="/static/default_album_art.png"></img>
                         <div class="flex flex-col justify-center">
                             <div class="text-4xl font-black">Artist Name</div>
                             <div class="text-3xl">X songs, Y albums</div>
                         </div>
                     </div>
-                    <ul class="flex gap-4 p-4">
+                    <ul class="flex flex-none items-center gap-4 py-4s pr-8 overflow-x-auto">
                         <li>
                             <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
-                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                                <img class="w-24 rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
-                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                                <img class="w-24 rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
-                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                                <img class="w-24 rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
-                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                                <img class="w-24 rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
-                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                                <img class="w-24 rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
                             </a>
                         </li>
                     </ul>
@@ -59,7 +59,7 @@ construct some sublime and varied records.
                     </div>
                     <ul class="flex gap-4 pt-4">
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-lg" src="/static/default_album_art.png"></img>
+                            <img class="w-44 h-44 rounded-2xl" src="/static/default_album_art.png"></img>
                             <div class="flex justify-between w-44">
                                 <span>
                                     <div>Album title</div>
@@ -69,7 +69,7 @@ construct some sublime and varied records.
                             </div>
                         </li>
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-lg" src="/static/default_album_art.png"></img>
+                            <img class="w-44 h-44 rounded-2xl" src="/static/default_album_art.png"></img>
                             <div class="flex justify-between w-44">
                                 <span>
                                     <div>Album title</div>
@@ -79,7 +79,7 @@ construct some sublime and varied records.
                             </div>
                         </li>
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-lg" src="/static/default_album_art.png"></img>
+                            <img class="w-44 h-44 rounded-2xl" src="/static/default_album_art.png"></img>
                             <div class="flex justify-between w-44">
                                 <span>
                                     <div>Album title</div>
@@ -91,8 +91,8 @@ construct some sublime and varied records.
                     </ul>
                 </div>
             </div>
-            <button type="button" title="Close" class="absolute top-0 right-0 m-8" @click="closeModal(buttonId, storeName, $event)">
-                <svg aria-hidden="true" class="w-4 h-4" width="9" height="9" viewbox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button type="button" title="Close" class="absolute top-0 right-0 m-5 p-1" @click="closeModal(buttonId, storeName, $event)">
+                <svg aria-hidden="true" class="w-5 h-5" width="9" height="9" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.014 8.82191L4.98414 5.79205L1.95428 8.82191C1.73113 9.04506 1.36952 9.04506 1.14637 8.82191C0.923216 8.59902 0.923216 8.23715 1.14637 8.014L4.17622 4.98414L1.14637 1.95428C0.923216 1.73113 0.923216 1.36952 1.14637 1.14637C1.36952 0.923216 1.73113 0.923216 1.95428 1.14637L4.98414 4.17622L8.014 1.14637C8.23715 0.923216 8.59902 0.923216 8.82191 1.14637C9.04506 1.36952 9.04506 1.73113 8.82191 1.95428L5.79205 4.98414L8.82191 8.014C9.04506 8.23715 9.04506 8.59902 8.82191 8.82191C8.71047 8.93348 8.56427 8.98927 8.41805 8.98927C8.27183 8.98927 8.12557 8.93348 8.014 8.82191Z" fill="currentColor"/>
                 </svg>
                 <span class="sr-only focus:not-sr-only">Close the modal</span>

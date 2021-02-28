@@ -1,6 +1,6 @@
 export const Volume = () => {
   return {
-    startVolume: function () {
+    startVolume() {
       const self = this;
       function updateVolume() {
         if (self.$store.youtube.ready) {
@@ -11,12 +11,12 @@ export const Volume = () => {
       }
       window.requestAnimationFrame(updateVolume);
     },
-    adjustVolume: function () {
+    adjustVolume() {
       let self = this;
       self.$store.youtube.player.setVolume(self.$store.youtube.volume);
       self.$store.youtube.muted = false;
     },
-    toggleMute: function () {
+    toggleMute() {
       let self = this;
       if (self.$store.youtube.muted) {
         self.$store.youtube.player.unMute();

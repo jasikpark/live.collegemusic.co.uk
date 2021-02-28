@@ -1,5 +1,6 @@
 import LRUCache from "mnemonist/lru-cache";
 import { animateSongDetails } from "../animate-song-details.js";
+import Spruce from "@ryangjchandler/spruce";
 
 Spruce.store("songLinks", new LRUCache(1000));
 
@@ -137,7 +138,7 @@ export const SongData = () => {
       };
       requestIdleCallback(animateSongDetails, { timeout: 1000 });
       // Call animateSongDetails on debounced window resize
-      let timeout = false;
+      let timeout;
       window.addEventListener("resize", () => {
         clearTimeout(timeout);
 
@@ -172,21 +173,22 @@ export const SongData = () => {
       if (!song) {
         return false;
       }
-      const songLink = self.$store.songLinks.peek(songId)
+      const songLink = (self.$store.songLinks.peek(songId)
         ? self.$store.songLinks.get(songId).pageUrl
-        : self.$store.youtube.player.getVideoUrl();
+        : self.$store.youtube.player.getVideoUrl()
+      ).toString();
       console.log({ songLink });
       if (navigator.share) {
         navigator
           .share({
             title: "College Music YT",
             text: `I'm listening to ${song.title} by ${song.artist} on College Music`,
-            url: new URL(songLink),
+            url: songLink,
           })
           .then(() => console.log("Successful share"))
           .catch((error) => console.log("Error sharing", error));
       } else {
-        window.open(new URL(songLink), "_blank", "noopener,noreferrer");
+        window.open(songLink, "_blank", "noopener,noreferrer");
       }
     },
 

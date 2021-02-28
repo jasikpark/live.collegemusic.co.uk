@@ -6,7 +6,7 @@ export const Clock = () => {
       minute: "2-digit",
     }).format(),
     unix: new Date().toISOString(),
-    startClock: function () {
+    startClock() {
       const self = this;
       function updateClock() {
         self.time = new Intl.DateTimeFormat("default", {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "focus-visible";
 
 // Shim requestIdleCallback()
@@ -24,6 +25,10 @@ window.cancelIdleCallback =
 // Make button-links function like buttons
 (function () {
   "use strict";
+  /**
+   *
+   * @param {Element} link
+   */
   function a11yClick(link) {
     link.addEventListener("keydown", function (event) {
       var code = event.charCode || event.keyCode;

@@ -10,6 +10,7 @@ import { SongData } from "./components/song-data.js";
 import { Volume } from "./components/volume.js";
 import { Weather } from "./components/weather.js";
 
+// @ts-ignore
 window.liveCM = {
   components: {
     clock: Clock,

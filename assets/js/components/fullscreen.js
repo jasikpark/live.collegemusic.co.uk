@@ -1,6 +1,6 @@
 export const Fullscreen = () => {
   return {
-    canFullscreen: function () {
+    canFullscreen() {
       let doc = window.document;
       let docEl = doc.documentElement;
 
@@ -12,7 +12,7 @@ export const Fullscreen = () => {
 
       return requestFullScreen;
     },
-    toggleFullscreen: function () {
+    toggleFullscreen() {
       let doc = window.document;
       let docEl = doc.documentElement;
 
@@ -41,7 +41,7 @@ export const Fullscreen = () => {
     /**
      * @returns {boolean}
      */
-    isFullscreen: function () {
+    isFullscreen() {
       let doc = window.document;
       let docEl = doc.documentElement;
       return (

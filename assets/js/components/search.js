@@ -1,3 +1,5 @@
+import Spruce from "@ryangjchandler/spruce";
+
 const FOCUSABLE_SELECTORS =
   "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
 
@@ -5,7 +7,7 @@ Spruce.store("search", { open: false });
 
 export const SearchButton = () => {
   return {
-    focusSearchModal: function () {
+    focusSearchModal() {
       let self = this;
       const main = document.getElementsByTagName("main")[0];
       const body = document.getElementsByTagName("body")[0];
@@ -34,8 +36,11 @@ export const SearchModal = () => {
     data: null,
     songLinks: null,
     request_no: Date.now(),
-
-    closeModal: function ($event) {
+    /**
+     *
+     * @param {Event} $event
+     */
+    closeModal($event) {
       let self = this;
       const openButton = document.getElementById("search-button");
       const main = document.getElementsByTagName("main")[0];
@@ -53,7 +58,11 @@ export const SearchModal = () => {
       body.classList.add("overflow-auto");
       openButton.focus();
     },
-    tabEvent: function ($event) {
+    /**
+     *
+     * @param {Event} $event
+     */
+    tabEvent($event) {
       let self = this;
       if (self.$store.search.open === false) {
         return;
@@ -77,7 +86,7 @@ export const SearchModal = () => {
         $event.preventDefault();
       }
     },
-    fetchSearch: function () {
+    fetchSearch() {
       let self = this;
       if (self.query.trim() === "") {
         this.data = null;

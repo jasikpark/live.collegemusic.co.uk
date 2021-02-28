@@ -1,3 +1,5 @@
+import Spruce from "@ryangjchandler/spruce";
+
 Spruce.store("youtube", {
   apiReady: false,
   player: false,
@@ -17,6 +19,7 @@ const IsYoutubeReady = () => {
     return true;
   } else {
     setTimeout(IsYoutubeReady, 1000);
+    return false;
   }
 };
 

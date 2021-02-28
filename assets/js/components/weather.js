@@ -3,7 +3,7 @@ export const Weather = () => {
     weather_icon: "",
     weather_description: "Open Weather API",
     weather_link: "https://openweatherapi.org",
-    getWeather: function () {
+    getWeather() {
       const self = this;
       function updateWeather() {
         fetch("https://geolocation-db.com/json/")

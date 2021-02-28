@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "checkJs": true,
+    "strict": false,
+    "moduleResolution": "node",
+    "baseUrl": "."
+  },
+
+  "exclude": ["_tmp", "_site"]
+}

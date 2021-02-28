@@ -8,3 +8,4 @@ _site_style.css
 .netlify
 .vscode/
 _
+yarn-error.log

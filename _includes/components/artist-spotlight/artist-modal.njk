@@ -1,7 +1,7 @@
 {% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1' }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
         <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-3/4 p-8 relative">
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <div class="flex flex-wrap gap-8">
                     <div class="flex flex-none items-center gap-4">
                         <img class="h-32 w-32 rounded-full" src="/static/default_album_art.png"></img>
@@ -57,7 +57,7 @@ construct some sublime and varied records.
                         <h1 class="text-3xl">Discography</h1>
                         <button class="text-right text-xl" style="color: hsl(334, 100%, 55%)">Show All &rsaquo;</button>
                     </div>
-                    <ul class="flex gap-4 pt-4">
+                    <ul class="flex gap-4 pt-4 overflow-clip">
                         <li class="space-y-2">
                             <img class="w-44 h-44 rounded-2xl" src="/static/default_album_art.png"></img>
                             <div class="flex justify-between w-44">

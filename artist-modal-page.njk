@@ -3,6 +3,6 @@
 <link rel="stylesheet" href="/style.css"/>
 <main class="text-white">
     <p>Hello this is &lt;main&gt;</p>
-    <button x-data="{ ... liveCM.mixins.modal(), modalId: 'modal1', storeName: 'modal1' }" x-init="Spruce.store('modal1', { open:false } )" id="button1" @click="openModal(modalId, storeName)" class="p-1 border rounded-full">Open Modal</button>
+    <button x-data="{ ... liveCM.mixins.modal(), modalId: 'modal1', storeName: 'modal1' }" x-init="Spruce.store('modal1', { open:true } )" id="button1" @click="openModal(modalId, storeName)" class="p-1 border rounded-full">Open Modal</button>
 </main>
 {{ artistModal() }}

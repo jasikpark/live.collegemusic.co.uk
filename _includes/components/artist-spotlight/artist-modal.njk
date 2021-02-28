@@ -1,11 +1,97 @@
-{% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/3-vmin sm:pt-1/3-vmin pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500") %}
+{% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1' }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
-        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg w-1/2 h-1/2 flex items-center justify-center relative">
-            <div>
-                <h1>Artist Modal</h1>
-                <p>Oh No!</p>
+        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg w-3/4 min-h-1/2 p-8 relative">
+            <div class="space-y-4">
+                <div class="grid grid-flow-col">
+                    <div class="flex gap-4">
+                        <img class="rounded-full" src="/static/default_album_art.png"></img>
+                        <div class="flex flex-col justify-center">
+                            <div class="text-4xl font-black">Artist Name</div>
+                            <div class="text-3xl">X songs, Y albums</div>
+                        </div>
+                    </div>
+                    <ul class="flex gap-4 p-4">
+                        <li>
+                            <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
+                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
+                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
+                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
+                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
+                                <img class=" rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="flex gap-2">
+                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Lo-fi</li>
+                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Instrumental Hip-hop</li>
+                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Chillhop</li>
+                </ul>
+                <p class="max-w-prose">
+            Kalaldo (Phoenix Glendinning) is a Portland based producer and multi-instrumentalist. He creates his melodic, instrumental hip-hop
+sound by blending live instruments with found sounds and samples. Kalaido makes his debut with the stunning ‘Moonlit Tales’ LP.
+This album is a truly unique listening experience, which is largely testament to the diverse and skillful sampling present throughout.
+These sample infused beats are complemented by a range of soothing instrumental melodies, featuring Oboe, Ghuzeng and Trumpet,
+to name but a few. The foundation of "Moonlit Tales' stems from the mature and sophisticated drum beats that hold the record
+together; from the two-step beat in "Whisked Away Again’, to the understated boom-bap in ‘City Snowfall’, Kalaldo sure knows how tos
+construct some sublime and varied records.
+</p>
+                <div>
+                    <div class="flex justify-between items-center">
+                        <h1 class="text-3xl">Discography</h1>
+                        <button class="text-right text-xl" style="color: hsl(334, 100%, 55%)">Show All &rsaquo;</button>
+                    </div>
+                    <ul class="flex gap-4 pt-4">
+                        <li class="space-y-2">
+                            <img class="w-44 h-44 rounded-lg" src="/static/default_album_art.png"></img>
+                            <div class="flex justify-between w-44">
+                                <span>
+                                    <div>Album title</div>
+                                    <div>Release Date</div>
+                                </span>
+                                <button class="text-right">Info</button>
+                            </div>
+                        </li>
+                        <li class="space-y-2">
+                            <img class="w-44 h-44 rounded-lg" src="/static/default_album_art.png"></img>
+                            <div class="flex justify-between w-44">
+                                <span>
+                                    <div>Album title</div>
+                                    <div>Release Date</div>
+                                </span>
+                                <button class="text-right">Info</button>
+                            </div>
+                        </li>
+                        <li class="space-y-2">
+                            <img class="w-44 h-44 rounded-lg" src="/static/default_album_art.png"></img>
+                            <div class="flex justify-between w-44">
+                                <span>
+                                    <div>Album title</div>
+                                    <div>Release Date</div>
+                                </span>
+                                <button class="text-right">Info</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <button type="button" title="Close" class="absolute top-0 right-0 p-3 px-4" @click="closeModal(buttonId, storeName, $event)">
+            <button type="button" title="Close" class="absolute top-0 right-0 m-8" @click="closeModal(buttonId, storeName, $event)">
                 <svg aria-hidden="true" class="w-4 h-4" width="9" height="9" viewbox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.014 8.82191L4.98414 5.79205L1.95428 8.82191C1.73113 9.04506 1.36952 9.04506 1.14637 8.82191C0.923216 8.59902 0.923216 8.23715 1.14637 8.014L4.17622 4.98414L1.14637 1.95428C0.923216 1.73113 0.923216 1.36952 1.14637 1.14637C1.36952 0.923216 1.73113 0.923216 1.95428 1.14637L4.98414 4.17622L8.014 1.14637C8.23715 0.923216 8.59902 0.923216 8.82191 1.14637C9.04506 1.36952 9.04506 1.73113 8.82191 1.95428L5.79205 4.98414L8.82191 8.014C9.04506 8.23715 9.04506 8.59902 8.82191 8.82191C8.71047 8.93348 8.56427 8.98927 8.41805 8.98927C8.27183 8.98927 8.12557 8.93348 8.014 8.82191Z" fill="currentColor"/>
                 </svg>

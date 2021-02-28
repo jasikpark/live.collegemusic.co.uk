@@ -183,13 +183,8 @@ how to remove the vertical space around the range input in IE */
   @media (min-width: 1024px) {
     .hello-container {
       display: grid;
-      grid-template-columns: 64fr 36fr;
+      grid-template-columns: 72.75fr 27.25fr;
       gap: 2rem;
-      /** let's remove this for the moment - I need to figure out a solution that fits the entire app on screen with no scrollbar + maximizes the size of the video/chat.
-      max-width: 70vw;
-      max-width: calc(
-        (350px * 2.9423868313) + 2rem
-      ); */ /* this is setting the height of the video and chat by proxy since they are percentages based off the width */
     }
   }
 
@@ -200,7 +195,12 @@ how to remove the vertical space around the range input in IE */
 
   .chat-container {
     max-width: 100%;
-    min-width: 298px;
+  }
+
+  @media (min-width: 1536px) {
+    .chat-container {
+      min-width: 400px;
+    }
   }
 
   .now-playing {

@@ -19,7 +19,7 @@ searchModal %}
 {% block content %}
     <main id="main" class="sm:my-4 lg:my-0 xl:my-4 sm:rounded-lg lg:rounded-none xl:rounded-lg space-y-4 relative overflow-hidden z-0 framing">
         <header class="flex flex-wrap justify-between items-center w-full p-2 sm:pt-8 sm:px-8 relative text-white">
-            <h1 class="text-white inline">
+            <h1 class="text-white inline pr-1">
                 <a href="/">College Music |
                 <span class="font-semibold">Lofi Hip Hop Radio</span></a>
             </h1>
@@ -31,7 +31,7 @@ searchModal %}
             </span>
         </header>
 
-        <div class="hello-container space-y-4 lg:space-y-0 px-2 sm:px-8">
+        <div class="hello-container space-y-4 lg:space-y-0 sm:px-8">
             <div id="video" class="relative">
                 <a href="#chat" class="skip-link">Skip to Chat</a>
                 <div class="video-container aspect-w-16 aspect-h-9">
@@ -40,7 +40,7 @@ searchModal %}
             </div>
             <div id="chat" class="hidden sm:block relative">
                 <a href="#content" class="skip-link">Skip to Content</a>
-                <div class="chat-container aspect-w-1 aspect-h-1">
+                <div class="chat-container aspect-w-4 aspect-h-6">
                     <iframe x-data title="Youtube live chat" class="rounded-sm" width="480" height="480" referrerpolicy="origin" :src="window.matchMedia('(min-width: 640px)').matches ? `https://www.youtube.com/live_chat?v=MCkTebktHVc&embed_domain=${ window.location.hostname }&dark_theme=1` : ''" src="" allow="autoplay; encrypted-media" id="chat-embed" frameborder="0"></iframe>
                 </div>
             </div>

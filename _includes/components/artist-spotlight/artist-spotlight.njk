@@ -1,4 +1,5 @@
 {% from "components/artist-spotlight/artist-hero.njk" import artistHero %}
+{% from "components/artist-spotlight/artist-hero-button.njk" import artistHeroButton %}
 
 {% macro artistSpotlight(class="flex flex-col items-center space-y-2 artist-spotlight") %}
     <div class="{{ class }}">
@@ -10,7 +11,7 @@
                 </h2>
         <div class="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-4">
             {{ artistHero(class="kyle-mcevoy", link="https://open.spotify.com/artist/6rRqxCKHpl9C5Imf2uinft", artist="Kyle McEvoy", listeners="1,636k monthly listeners")}}
-            {{ artistHero(class="kalaido", link="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8", artist="Kalaido", listeners="594k monthly listeners")}}
+            {{ artistHeroButton(class="kalaido", link="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8", artist="Kalaido", listeners="594k monthly listeners")}}
             {{ artistHero(class="wei", link="https://open.spotify.com/artist/2jOSQFHIeUc2OcPx8tSaTw", artist="WEI", listeners="170k monthly listeners") }}
             {{ artistHero(class="santpoort", link="https://open.spotify.com/artist/7KtVS0f2RQoEhjxDcSGBtJ", artist="Santpoort", listeners="586k monthly listeners")}}
             {{ artistHero(class="eillah", link="https://open.spotify.com/artist/1Y7477zngC8nN0unyO9zg0", artist="Eillah", listeners="9,679 monthly listeners")}}

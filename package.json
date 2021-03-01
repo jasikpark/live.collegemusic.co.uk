@@ -31,7 +31,7 @@
     "concurrently": "6.0.0",
     "cssnano": "4.1.10",
     "env-var": "7.0.0",
-    "esbuild": "0.8.53",
+    "esbuild": "0.8.54",
     "html-minifier": "4.0.0",
     "husky": "5.1.1",
     "jsdoc": "3.6.6",

@@ -81,7 +81,11 @@ construct some sublime and varied records.
                 <div>
                     <div class="flex justify-between items-center">
                         <h1 class="text-3xl">Discography</h1>
-                        <button @click="showMore = !showMore" class="text-right text-xl border rounded-xl p-1 px-2" style="color: hsl(334, 100%, 55%); border-color: hsla(334, 100%, 65%, 50%); background-color: hsla(334, 100%, 55%, 25%);">Show All &rsaquo;</button>
+                        <button @click="showMore = !showMore" class="text-right text-xl border rounded-xl p-1 px-2" style="color: hsl(334, 100%, 55%); border-color: hsla(334, 100%, 65%, 50%); background-color: hsla(334, 100%, 55%, 25%);">
+                            Show All 
+                            <svg x-show="!showMore" class="inline w-6 h-6" height="21" viewBox="1 1 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><path d="m.5 8.5 4-4-4-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(9 6)"/></svg>
+                            <svg x-show="showMore" class="inline w-6 h-6" height="21" viewBox="1 1 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><path d="m8.5.5-4 4-4-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(6 8)"/></svg>
+                        </button>
                     </div>
                     <ul class="flex space-x-4 pt-4 overflow-auto max-w-prose-xl" :class="{ 'flex-wrap': showMore, 'overflow-visible': showMore, 'overflow-auto': !showMore }">
                         <li class="space-y-2">

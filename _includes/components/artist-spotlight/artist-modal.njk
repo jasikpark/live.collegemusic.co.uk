@@ -2,15 +2,15 @@
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1' }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
         <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-3/4 p-8 relative">
             <div class="space-y-6">
-                <div class="flex flex-wrap gap-8">
-                    <div class="flex flex-none items-center gap-4">
+                <div class="flex flex-wrap sm:space-x-8 space-y-8 sm:space-y-0">
+                    <div class="flex items-center space-x-4">
                         <img class="h-32 w-32 rounded-full" src="/static/default_album_art.png"></img>
                         <div class="flex flex-col justify-center">
                             <div class="text-4xl font-black">Artist Name</div>
                             <div class="text-3xl">X songs, Y albums</div>
                         </div>
                     </div>
-                    <ul class="flex flex-none items-center gap-4 py-4s pr-8 overflow-x-auto">
+                    <ul class="flex items-center space-x-4 py-4 pr-8 overflow-x-auto">
                         <li>
                             <a href="#" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <img class="w-24 rounded-lg focus-visible:rounded-lg" src="/static/default_album_art.png"></img>
@@ -38,7 +38,7 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="flex gap-2">
+                <ul class="flex space-x-2">
                     <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Lo-fi</li>
                     <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Instrumental Hip-hop</li>
                     <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Chillhop</li>
@@ -57,7 +57,7 @@ construct some sublime and varied records.
                         <h1 class="text-3xl">Discography</h1>
                         <button class="text-right text-xl" style="color: hsl(334, 100%, 55%)">Show All &rsaquo;</button>
                     </div>
-                    <ul class="flex gap-4 pt-4 overflow-clip">
+                    <ul class="flex space-x-4 pt-4 overflow-clip">
                         <li class="space-y-2">
                             <img class="w-44 h-44 rounded-2xl" src="/static/default_album_art.png"></img>
                             <div class="flex justify-between w-44">

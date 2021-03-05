@@ -1,16 +1,16 @@
-{% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500") %}
+{% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-y-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1', showMore: false }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
-        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-3/4 p-8 relative">
+        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-full p-4 sm:p-8 relative">
             <div class="space-y-6">
-                <div class="flex flex-wrap sm:space-x-8 space-y-8 sm:space-y-0">
+                <div class="flex flex-wrap pt-8 sm:pt-0 sm:space-x-8 space-y-8 sm:space-y-0">
                     <div class="flex items-center space-x-4">
-                        <img class="h-32 w-32 rounded-full shadow-inner object-cover" src="/static/kalaido.png"></img>
+                        <img class="h-24 w-24 sm:h-32 sm:w-32 rounded-full shadow-inner object-cover" src="/static/kalaido.png"></img>
                         <div class="flex flex-col justify-center">
-                            <div class="text-4xl font-black">Kalaido</div>
-                            <div class="text-3xl">55 songs, 4 albums</div>
+                            <div class="text-3xl sm:text-4xl font-black">Kalaido</div>
+                            <div class="text-2xl sm:text-3xl">55 songs, 4 albums</div>
                         </div>
                     </div>
-                    <ul class="flex flex-1 items-start justify-end space-x-4 py-4 pr-8 overflow-x-auto">
+                    <ul class="flex flex-1 items-start sm:justify-end space-x-4 py-4 pr-8 overflow-x-auto">
                         <li>
                             <a href="https://www.collegemusic.co.uk/artist-releases/kalaido/" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <img class="w-8 h-8 rounded-lg" style="filter:invert();" src="/static/cm-black-slant.png"/>
@@ -64,10 +64,10 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="flex space-x-2">
-                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Lo-fi</li>
-                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Instrumental Hip-hop</li>
-                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2">Chillhop</li>
+                <ul class="flex space-x-2 overflow-x-auto">
+                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2 flex-shrink-0">Lo-fi</li>
+                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2 flex-shrink-0">Instrumental Hip-hop</li>
+                    <li class="bg-gray-800 bg-opacity-75 border border-gray-700 border-opacity-50 rounded-xl p-1 px-2 flex-shrink-0">Chillhop</li>
                 </ul>
                 <p class="max-w-prose-xl">
             Kalaido (Phoenix Glendinning) is a Portland based producer and multi-instrumentalist. He creates his melodic, instrumental hip-hop
@@ -80,17 +80,17 @@ construct some sublime and varied records.
 </p>
                 <div>
                     <div class="flex justify-between items-center">
-                        <h1 class="text-3xl">Discography</h1>
-                        <button @click="showMore = !showMore" class="text-right text-xl border rounded-xl p-1 px-2" style="color: hsl(334, 100%, 55%); border-color: hsla(334, 100%, 65%, 50%); background-color: hsla(334, 100%, 55%, 25%);">
+                        <h1 class="text-2xl sm:text-3xl">Discography</h1>
+                        <button @click="showMore = !showMore" class="text-right sm:text-xl border rounded-xl p-1 px-2" style="color: hsl(334, 100%, 55%); border-color: hsla(334, 100%, 65%, 50%); background-color: hsla(334, 100%, 55%, 25%);">
                             Show All 
                             <svg x-show="!showMore" class="inline w-6 h-6" height="21" viewBox="1 1 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><path d="m.5 8.5 4-4-4-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(9 6)"/></svg>
                             <svg x-show="showMore" class="inline w-6 h-6" height="21" viewBox="1 1 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><path d="m8.5.5-4 4-4-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(6 8)"/></svg>
                         </button>
                     </div>
-                    <ul class="flex space-x-4 pt-4 overflow-auto max-w-prose-xl" :class="{ 'flex-wrap': showMore, 'overflow-visible': showMore, 'overflow-auto': !showMore }">
+                    <ul class="flex space-x-4 pt-4 overflow-auto max-w-prose-xl-or-full" :class="{ 'flex-wrap': showMore, 'overflow-visible': showMore, 'overflow-auto': !showMore }">
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273be97afc50f2aeea1e8bfe30a.jpg"></img>
-                            <div class="flex justify-between items-start w-44">
+                            <img class="w-32 h-32 rounded-xl sm:w-44 sm:h-44 sm:rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273be97afc50f2aeea1e8bfe30a.jpg"></img>
+                            <div class="flex justify-between items-start w-32 sm:w-44">
                                 <span>
                                     <div>Mountain Onsen</div>
                                     <div>2021</div>
@@ -104,8 +104,8 @@ construct some sublime and varied records.
                             </div>
                         </li>
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-2xl" src="/static/kalaido_albums/ab67616d0000b2739014bb858646ac6f033d28f9.jpg"></img>
-                            <div class="flex justify-between items-start w-44">
+                            <img class="w-32 h-32 rounded-xl sm:w-44 sm:h-44 sm:rounded-2xl" src="/static/kalaido_albums/ab67616d0000b2739014bb858646ac6f033d28f9.jpg"></img>
+                            <div class="flex justify-between items-start w-32 sm:w-44">
                                 <span>
                                     <div>Izayaka</div>
                                     <div>2020</div>
@@ -119,8 +119,8 @@ construct some sublime and varied records.
                             </div>
                         </li>
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-2xl" src="/static/kalaido_albums/ab67616d0000b27308e6fcc70c7e8546a4111898.jpg"></img>
-                            <div class="flex justify-between items-start w-44">
+                            <img class="w-32 h-32 rounded-xl sm:w-44 sm:h-44 sm:rounded-2xl" src="/static/kalaido_albums/ab67616d0000b27308e6fcc70c7e8546a4111898.jpg"></img>
+                            <div class="flex justify-between items-start w-32 sm:w-44">
                                 <span>
                                     <div>Technicolor Midnight</div>
                                     <div>2019</div>
@@ -134,8 +134,8 @@ construct some sublime and varied records.
                             </div>
                         </li>
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273a35ae10246ba36929d64f2b6.jpg"></img>
-                            <div class="flex justify-between items-start w-44">
+                            <img class="w-32 h-32 rounded-xl sm:w-44 sm:h-44 sm:rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273a35ae10246ba36929d64f2b6.jpg"></img>
+                            <div class="flex justify-between items-start w-32 sm:w-44">
                                 <span>
                                     <div>Motorbikes in Sapa</div>
                                     <div>2019</div>
@@ -149,8 +149,8 @@ construct some sublime and varied records.
                             </div>
                         </li>
                         <li class="space-y-2">
-                            <img class="w-44 h-44 rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273cc9be90fb0c29dda37a1036b.jpg"></img>
-                            <div class="flex justify-between items-start w-44">
+                            <img class="w-32 h-32 rounded-xl sm:w-44 sm:h-44 sm:rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273cc9be90fb0c29dda37a1036b.jpg"></img>
+                            <div class="flex justify-between items-start w-32 sm:w-44">
                                 <span>
                                     <div>Moonlit Tales</div>
                                     <div>2018</div>

@@ -132,7 +132,7 @@ module.exports = {
       "gray-translucent": "rgba(18, 21, 96, 0.17)",
     }),
     extend: {
-      maxWidth: { "prose-xl": "80ch" },
+      maxWidth: { "prose-xl-or-full": "min(80ch, 100%)" },
       width: { 116: "29rem", 232: "58rem" },
       zIndex: { "-10": "-10" },
       padding: {

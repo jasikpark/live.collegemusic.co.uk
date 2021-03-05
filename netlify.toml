@@ -15,7 +15,7 @@ command = "yarn start"
 for = "/*"
 
 [headers.values]
-X-Frame-Options = "DENY"
+X-Frame-Options = "ALLOW"
 X-XSS-Protection = "1; mode=block"
 X-Content-Type-Options = "nosniff"
 Content-Security-Policy = "frame-origin 'none';"

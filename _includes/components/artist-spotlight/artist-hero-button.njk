@@ -1,8 +1,6 @@
 {% macro artistHeroButton(class = "", link = "", artist = "", listeners = "") %}
-    <button x-data="{ ... liveCM.mixins.modal(), modalId: 'modal1', storeName: 'modal1' }" x-init="Spruce.store('modal1', { open:false } )" id="button1" @click="openModal(modalId, storeName)" height="130px" class="artist-hero {{ class }}">
-        <div class="flex flex-col justify-start items-center">
-            <h3 class="font-semibold px-2 text-center text-shadow-sm">{{ artist }}</h3>
-            <span class="px-2 text-center text-shadow-sm">{{ listeners }}</span>
-        </div>
+    <button x-data="{ ... liveCM.mixins.modal(), modalId: 'modal1', storeName: 'modal1' }" x-init="Spruce.store('modal1', { open:false } )" id="button1" @click="openModal(modalId, storeName)" height="130px" class="artist-hero flex flex-col justify-start items-center {{ class }}">
+        <h3 class="font-semibold px-2 text-center text-shadow-sm">{{ artist }}</h3>
+        <span class="px-2 text-center text-shadow-sm">{{ listeners }}</span>
     </button>
 {% endmacro %}

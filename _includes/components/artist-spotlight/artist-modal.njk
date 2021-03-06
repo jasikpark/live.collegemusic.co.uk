@@ -1,8 +1,8 @@
 {% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-y-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1', showMore: false }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
-        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-full p-4 sm:p-8 relative">
+        <div id="modal1" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-full-or-xl p-4 sm:p-8 relative">
             <div class="space-y-6">
-                <div class="flex flex-wrap pt-8 sm:pt-0 sm:space-x-8 space-y-8 sm:space-y-0">
+                <div class="flex justify-between flex-wrap pt-8 sm:pt-0 sm:space-x-8 space-y-8 sm:space-y-0">
                     <div class="flex items-center space-x-4">
                         <img class="h-24 w-24 sm:h-32 sm:w-32 rounded-full shadow-inner object-cover" src="/static/kalaido.png"></img>
                         <div class="flex flex-col justify-center">
@@ -10,14 +10,14 @@
                             <div class="text-2xl sm:text-3xl">55 songs, 4 albums</div>
                         </div>
                     </div>
-                    <ul class="flex flex-1 items-start sm:justify-end space-x-4 py-4 pr-8 overflow-x-auto">
-                        <li>
+                    <ul class="flex items-start space-x-4 py-4 pr-8 overflow-x-auto">
+                        <li class="flex-shrink-0">
                             <a href="https://www.collegemusic.co.uk/artist-releases/kalaido/" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <img class="w-8 h-8 rounded-lg" style="filter:invert();" src="/static/cm-black-slant.png"/>
                                 <span class="sr-only">College Music</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="flex-shrink-0">
                             <a href="https://music.apple.com/us/artist/kalaido/1438118140" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <svg class="w-8 h-8 rounded-lg" width="24" height="24" role="img" viewBox="0 0 24 24" fill="currentColor" color="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>Apple Music icon</title>
@@ -26,7 +26,7 @@
                                 <span class="sr-only">Apple Music</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="flex-shrink-0">
                             <a href="https://open.spotify.com/artist/5LXHT7v9uYGrsyEnL9q9K8" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <svg class="w-8 h-8 rounded-lg" width="24" height="24" role="img" viewBox="0 0 24 24" fill="currentColor" color="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>Spotify icon</title>
@@ -35,7 +35,7 @@
                                 <span class="sr-only">Spotify</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="flex-shrink-0">
                             <a href="https://www.facebook.com/kalaidobeats/" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <svg class="w-8 h-8 rounded-lg" width="24" height="24" role="img" viewBox="0 0 24 24" fill="currentColor" color="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>Facebook icon</title>
@@ -44,7 +44,7 @@
                                 <span class="sr-only">Facebook</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="flex-shrink-0">
                             <a href="https://www.instagram.com/_kalaido/" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <svg class="w-8 h-8 rounded-lg" width="24" height="24" role="img" viewBox="0 0 24 24" fill="currentColor" color="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>Instagram icon</title>
@@ -53,7 +53,7 @@
                                 <span class="sr-only">Instagram</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="flex-shrink-0">
                             <a href="https://twitter.com/_kalaido" class="focus-visible:rounded-lg focus-visible:ring-4">
                                 <svg class="w-8 h-8 rounded-lg" width="24" height="24" role="img" viewBox="0 0 24 24" fill="currentColor" color="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>Twitter icon</title>
@@ -87,7 +87,7 @@ construct some sublime and varied records.
                             <svg x-show="showMore" class="inline w-6 h-6" height="21" viewBox="1 1 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><path d="m8.5.5-4 4-4-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(6 8)"/></svg>
                         </button>
                     </div>
-                    <ul class="flex space-x-4 pt-4 overflow-auto max-w-prose-xl-or-full" :class="{ 'flex-wrap': showMore, 'overflow-visible': showMore, 'overflow-auto': !showMore }">
+                    <ul class="flex space-x-4 pt-4 overflow-auto max-w-full" :class="{ 'flex-wrap': showMore, 'overflow-visible': showMore, 'overflow-auto': !showMore }">
                         <li class="space-y-2">
                             <img class="w-32 h-32 rounded-xl sm:w-44 sm:h-44 sm:rounded-2xl" src="/static/kalaido_albums/ab67616d0000b273be97afc50f2aeea1e8bfe30a.jpg"></img>
                             <div class="flex justify-between items-start w-32 sm:w-44">

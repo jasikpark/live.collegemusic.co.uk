@@ -4,6 +4,6 @@
     ":automergeBranch",
     ":automergeRequireAllStatusChecks",
     ":automergeLinters",
-    ":automergeTypes",
+    ":automergeTypes"
   ]
 }

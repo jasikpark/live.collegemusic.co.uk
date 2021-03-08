@@ -18,7 +18,6 @@ for = "/*"
 X-Frame-Options = "ALLOW"
 X-XSS-Protection = "1; mode=block"
 X-Content-Type-Options = "nosniff"
-Content-Security-Policy = "frame-origin 'none';"
 
 [[redirects]]
 from = "/api/*"

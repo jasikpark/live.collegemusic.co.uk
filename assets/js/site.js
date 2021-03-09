@@ -1,3 +1,4 @@
+import "./sentry.js";
 import "./shims.js";
 import "@ryangjchandler/spruce";
 

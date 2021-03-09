@@ -3,7 +3,7 @@ import { Integrations } from "@sentry/tracing";
 
 Sentry.init({
   dsn:
-    "https://fad316bb96c54ed8b2fe9ff6a9e867db@o545465.ingest.sentry.io/5667419",
+    "https://7e756e3620b84104b5cf9062e20b963f@o545485.ingest.sentry.io/5667454",
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });

@@ -301,7 +301,7 @@ how to remove the vertical space around the range input in IE */
   }
 
   .artist-hero:focus-within {
-    @apply ring ring-white;
+    @apply ring ring-white rounded-lg;
   }
 
   .kyle-mcevoy {

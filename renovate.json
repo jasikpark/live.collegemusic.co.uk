@@ -5,6 +5,7 @@
     ":automergeRequireAllStatusChecks",
     ":automergeLinters",
     ":automergeTypes",
-    ":enableVulnerabilityAlerts"
+    ":enableVulnerabilityAlerts",
+    ":maintainLockFilesMonthly"
   ]
 }

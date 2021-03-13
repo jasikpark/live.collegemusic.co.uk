@@ -49,8 +49,8 @@
   },
   "dependencies": {
     "@ryangjchandler/spruce": "2.6.3",
-    "@sentry/browser": "6.2.1",
-    "@sentry/tracing": "6.2.1",
+    "@sentry/browser": "6.2.2",
+    "@sentry/tracing": "6.2.2",
     "@tailwindcss/aspect-ratio": "0.2.0",
     "alpinejs": "2.8.1",
     "focus-visible": "5.2.0",

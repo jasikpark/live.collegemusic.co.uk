@@ -402,10 +402,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@ryangjchandler/spruce@2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@ryangjchandler/spruce/-/spruce-2.7.0.tgz#8a85f4955cf385731eda00d9521c22497902193f"
-  integrity sha512-AmZFWYoK68VXYuSOqyiP3ylIfmqA1/Gp9VzS+G8t0SlmNowEy7/bJWrq0E/BhDaTKA1G2IB4l6E24nTWgKL+2g==
+"@ryangjchandler/spruce@2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@ryangjchandler/spruce/-/spruce-2.7.1.tgz#d61819750817567b1d12f9ce98e79910147c295a"
+  integrity sha512-UfSt3iYDCnErtK6p8OntDIbXYQMmzkozaLONckIqCkSgMSlqPd2VjHB/0IaBcFrbRHhhxHMOvieuiUoYg//s/g==
   dependencies:
     alpinejs "^2.5"
 

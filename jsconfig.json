@@ -6,6 +6,6 @@
     "moduleResolution": "node",
     "baseUrl": "."
   },
-
-  "exclude": ["_tmp", "_site"]
+  "include": ["assets/js/"],
+  "exclude": ["_tmp", "_site", "node_modules/"]
 }

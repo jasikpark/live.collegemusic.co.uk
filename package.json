@@ -13,6 +13,8 @@
     "start:esbuild": "esbuild assets/js/site.js --bundle --watch --sourcemap --outfile='_tmp/site.js'",
     "build": "concurrently --kill-others-on-fail 'yarn:build:*'",
     "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
+    "lint:prettier": "prettier .  --check",
+    "fix:prettier": "yarn lint:prettier --write",
     "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
     "build:esbuild": "esbuild assets/js/site.js --bundle --sourcemap --minify --outfile='_site/site.js'",
     "doc": "jsdoc --configure jsdoc.config.json -r -d docs",

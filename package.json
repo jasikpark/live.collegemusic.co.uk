@@ -18,7 +18,7 @@
     "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
     "build:esbuild": "esbuild assets/js/site.js --bundle --sourcemap --minify --outfile='_site/site.js'",
     "doc": "jsdoc --configure jsdoc.config.json -r -d docs",
-    "type-check": "tsc -p ./jsconfig.json"
+    "lint:typecheck": "tsc -p ./jsconfig.json",
   },
   "husky": {
     "hooks": {

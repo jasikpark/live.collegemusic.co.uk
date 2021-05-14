@@ -1,29 +1,35 @@
 {
   "name": "live-collegemusic-co-uk",
   "version": "1.0.0",
-  "main": "index.js",
+  "license": "MIT",
   "repository": "git@github.com:jasikpark/live.collegemusic.co.uk.git",
   "author": "Caleb Jasik <calebjasik@jasik.xyz>",
-  "license": "MIT",
+  "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ./_site ./_tmp",
-    "start": "concurrently --kill-others 'yarn:start:*'",
-    "start:eleventy": "BASE_URL='http://localhost:8080' eleventy --serve",
-    "start:postcss": "postcss assets/css/tailwind.css --o _tmp/style.css --watch",
-    "start:esbuild": "esbuild assets/js/site.js --bundle --watch --sourcemap --outfile='_tmp/site.js'",
     "build": "concurrently --kill-others-on-fail 'yarn:build:*'",
     "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
-    "lint:prettier": "prettier .  --check",
-    "fix:prettier": "yarn lint:prettier --write",
-    "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
     "build:esbuild": "esbuild assets/js/site.js --bundle --sourcemap --minify --outfile='_site/site.js'",
+    "build:postcss": "NODE_ENV=production postcss assets/css/tailwind.css --o _site/style.css",
+    "clean": "rm -rf ./_site ./_tmp",
     "doc": "jsdoc --configure jsdoc.config.json -r -d docs",
+    "fix:prettier": "yarn lint:prettier --write",
+    "lint:prettier": "prettier .  --check",
     "lint:typecheck": "tsc -p ./jsconfig.json",
+    "start": "concurrently --kill-others 'yarn:start:*'",
+    "start:eleventy": "BASE_URL='http://localhost:8080' eleventy --serve",
+    "start:esbuild": "esbuild assets/js/site.js --bundle --watch --sourcemap --outfile='_tmp/site.js'",
+    "start:postcss": "postcss assets/css/tailwind.css --o _tmp/style.css --watch"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "dependencies": {
+    "@ryangjchandler/spruce": "2.7.1",
+    "@sentry/browser": "6.3.6",
+    "@sentry/tracing": "6.3.6",
+    "@tailwindcss/aspect-ratio": "0.2.0",
+    "alpinejs": "2.8.2",
+    "focus-visible": "5.2.0",
+    "mnemonist": "0.38.3",
+    "tailwind-easing-gradients": "1.0.2",
+    "tailwindcss": "2.1.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "0.12.1",
@@ -42,6 +48,7 @@
     "postcss-cli": "8.3.1",
     "postcss-focus-visible": "5.0.0",
     "prettier": "2.3.0",
+    "prettier-plugin-package": "1.3.0",
     "prettier-plugin-toml": "0.3.1",
     "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",
@@ -49,15 +56,9 @@
     "tldjs": "2.3.1",
     "typescript": "4.2.4"
   },
-  "dependencies": {
-    "@ryangjchandler/spruce": "2.7.1",
-    "@sentry/browser": "6.3.6",
-    "@sentry/tracing": "6.3.6",
-    "@tailwindcss/aspect-ratio": "0.2.0",
-    "alpinejs": "2.8.2",
-    "focus-visible": "5.2.0",
-    "mnemonist": "0.38.3",
-    "tailwind-easing-gradients": "1.0.2",
-    "tailwindcss": "2.1.2"
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

@@ -1,7 +1,7 @@
 {% macro songData(class="space-y-4 w-full lg:w-116") %}
     <div x-data="liveCM.components.songData()" x-init="getSongData" class="{{ class }}">
         <div class="rounded-lg flex align-center now-playing">
-            <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
+            <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" role="presentation" src="/static/default_album_art.png"/>
             <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-27 sm:pl-28">
                 <button type="button" class="hidden sm:block sm:ml-4" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
                     <svg :class="{ 'hidden': $store.youtube.state === 1, 'block drop-shadow': $store.youtube.state !== 1 }" class="block w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -13,6 +13,7 @@ export const SearchButton = () => {
       const body = document.getElementsByTagName("body")[0];
 
       main.setAttribute("inert", "true");
+      main.setAttribute("aria-hidden", "true");
       console.log("before open " + self.$store.search.open);
       self.$store.search.open = true;
       body.classList.remove("overflow-auto");
@@ -53,6 +54,7 @@ export const SearchModal = () => {
       console.log("before close " + self.$store.search.open);
       self.$store.search.open = false;
       main.removeAttribute("inert");
+      main.removeAttribute("aria-hidden");
       console.log("after close " + self.$store.search.open);
       body.classList.remove("overflow-hidden");
       body.classList.add("overflow-auto");

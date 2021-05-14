@@ -11,9 +11,9 @@
 
 {% macro searchModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-1/3-vmin sm:pt-1/3-vmin pb-8 flex items-start justify-center overflow-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="liveCM.components.searchModal()" aria-live="polite" :aria-hidden="$store.search.open ? 'true' : 'false'" x-show="$store.search.open" style="display:none;" class="{{ class }}">
-        <div id="search-modal" x-ref="search-modal" @click.away="closeModal($event)" @keydown.escape.prevent="closeModal($event)" @keydown.tab.window="tabEvent($event)" class="flex flex-col items-center shadow-lg rounded-lg overflow-hidden play-history h-auto w-full lg:w-232 max-w-full relative text-black">
+        <div id="search-modal" x-ref="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title" @click.away="closeModal($event)" @keydown.escape.prevent="closeModal($event)" @keydown.tab.window="tabEvent($event)" class="flex flex-col items-center shadow-lg rounded-lg overflow-hidden play-history h-auto w-full lg:w-232 max-w-full relative text-black">
             <div class="rounded-t-lg w-full p-4 pt-2 space-y-1 play-history-header">
-                <label for="search-input">
+                <label id="search-title" for="search-input">
                     <h1 class="text-lg font-bold text-gray-700">Search</h1>
                 </label>
                 <div class="space-y-2 min-w-0 sm:flex sm:space-y-0 sm:space-x-2 sm:items-center">

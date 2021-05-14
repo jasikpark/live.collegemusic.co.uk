@@ -22,6 +22,7 @@ export const Modal = () => {
       const body = document.getElementsByTagName("body")[0];
 
       main.setAttribute("inert", "true");
+      main.setAttribute("aria-hidden", "true");
       self.$store[storeName].open = true;
       body.classList.remove("overflow-auto");
       body.classList.add("overflow-hidden");
@@ -49,6 +50,7 @@ export const Modal = () => {
 
       self.$store[storeName].open = false;
       main.removeAttribute("inert");
+      main.removeAttribute("aria-hidden");
       body.classList.remove("overflow-hidden");
       body.classList.add("overflow-auto");
       modalButton.focus();

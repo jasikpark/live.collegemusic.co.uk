@@ -1,8 +1,8 @@
 {% macro weather(class="h-8 w-8 overflow-hidden relative flex justify-center items-center focus-within:ring-4 ring-white rounded-sm") %}
-<span x-cloak x-data="liveCM.components.weather()" x-init="getWeather" x-show="weather_icon" class="{{ class }}">
-    <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener" class="focus-visible:ring-0">
-        <img aria-hidden="true" alt="" :src="weather_icon" :title="weather_description" class="inline absolute -top-2 left-0 object-cover h-12 w-12">
-        <span class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
-    </a>
-</span>
+    <span x-cloak x-data="liveCM.components.weather()" x-init="getWeather" x-show="weather_icon" class="{{ class }}">
+        <a :href="weather_link" href="https://openweatherapi.org" target="_blank" rel="noreferrer noopener" class="focus-visible:ring-0">
+            <img aria-hidden="true" aria-labelledby="weather-description" :src="weather_icon" :title="weather_description" class="inline absolute -top-2 left-0 object-cover h-12 w-12">
+            <span id="weather-description" class="sr-only focus:not-sr-only" x-text="weather_description">Openweatherapi</span>
+        </a>
+    </span>
 {% endmacro %}

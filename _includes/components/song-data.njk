@@ -63,7 +63,7 @@
 
         <div class="rounded-lg play-history overflow-hidden">
             <div class="flex rounded-t-lg justify-start align-center h-8 play-history-header">
-                <h1 class="pl-4 pt-1 text-lg font-bold text-gray-700">Last Played</h1>
+                <h2 class="pl-4 pt-1 text-lg font-bold text-gray-700">Last Played</h2>
             </div>
             <div class="overflow-y-scroll rounded-b-lg song-block-container">
                 <div x-show="!songData.song_history" class="h-full w-full flex justify-center items-center bg-gradient-to-b from-transparent to-gray-translucent">
@@ -72,7 +72,7 @@
                 <template x-if="songData.song_history" x-for="(song, index) in songData.song_history" :key="index">
                     <div class="song-block">
                         <div class="flex w-full align-center space-x-1 p-3 sm:px-4">
-                            <img :aria-labelledby="`song-details-${index}-${song.song.id}`" class="rounded-sm shadow-lg h-14 w-14" alt="" :src="song.song.art" src="/static/default_album_art.png"/>
+                            <img :aria-labelledby="`song-details-${index}-${song.song.id}`" class="rounded-sm shadow-lg h-14 w-14" role="presentation" :src="song.song.art" src="/static/default_album_art.png"/>
                             <div :id="`song-details-${index}-${song.song.id}`" class="min-w-0 flex-1 overflow-hidden">
                                 <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
                                     <span class="absolute mx-3 pt-1" x-text="song.song.title">--</span></p>

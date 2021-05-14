@@ -4,8 +4,7 @@
     "checkJs": true,
     "strict": false,
     "moduleResolution": "node",
-    "baseUrl": "."
+    "baseUrl": "./assets/js"
   },
-  "include": ["assets/js/"],
-  "exclude": ["_tmp", "_site", "node_modules/"]
+  "exclude": ["node_modules/**"]
 }

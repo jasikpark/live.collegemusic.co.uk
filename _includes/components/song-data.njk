@@ -1,114 +1,114 @@
 {% macro songData(class="space-y-4 w-full lg:w-116") %}
-<div x-data="liveCM.components.songData()" x-init="getSongData" class="{{ class }}">
-    <div class="rounded-lg flex align-center now-playing">
-        <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
-        <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-27 sm:pl-28">
-            <button type="button" class="hidden sm:block sm:ml-4" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
-                <svg aria-label="paused" :class="{ 'hidden': $store.youtube.state === 1, 'block drop-shadow': $store.youtube.state !== 1 }" class="block w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
-                    <defs>
-                        <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
-                            <stop stop-color="#2594D0"/>
-                            <stop offset="1" stop-color="#F6F6F6"/>
-                        </lineargradient>
-                    </defs>
-                </svg>
-
-                <svg aria-label="playing" :class="{ 'hidden': $store.youtube.state !== 1, 'block drop-shadow': $store.youtube.state === 1 }" class="hidden w-8 h-8" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint1_linear)"/>
-                    <defs>
-                        <lineargradient id="paint1_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
-                            <stop stop-color="#2594D0"/>
-                            <stop offset="1" stop-color="#F6F6F6"/>
-                        </lineargradient>
-                    </defs>
-                </svg>
-            </button>
-
-            <div class="ml-1 min-w-0 flex-1 overflow-hidden" id="now-playing-song-details">
-                <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
-                    <span class="absolute mx-3 pt-1" x-text="songData.now_playing.song.title">--</span></p>
-                <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
-                    <span class="absolute mx-3 pb-1" x-text="songData.now_playing.song.artist">--</span></p>
-            </div>
-
-            <div class="ml-1 self-start flex justify-center align-center space-x-3">
-                <a x-show="songLinkData.now_playing.pageUrl" :hidden="!songLinkData.now_playing.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.now_playing?.pageUrl || 'javascript:void(0)'" href="https://song.link" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
-                    <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
+    <div x-data="liveCM.components.songData()" x-init="getSongData" class="{{ class }}">
+        <div class="rounded-lg flex align-center now-playing">
+            <img :src="songData.now_playing.song.art" height="96px" width="96px" class="rounded-md shadow-lg now-playing-album-art" aria-labelledby="now-playing-song-details" alt="" src="/static/default_album_art.png"/>
+            <div class="min-w-0 flex-1 flex items-center p-3 sm:pr-4 pl-27 sm:pl-28">
+                <button type="button" class="hidden sm:block sm:ml-4" :title="$store.youtube.state === 1 ? 'playing' : 'paused'" :aria-label="$store.youtube.state === 1 ? 'playing' : 'paused'" @click="togglePlayback">
+                    <svg :class="{ 'hidden': $store.youtube.state === 1, 'block drop-shadow': $store.youtube.state !== 1 }" class="block w-8 h-8" width="30" height="35" viewbox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.3704 22.4705L9.61354 33.7965C5.5304 36.5569 0 33.6571 0 28.7611V6.10612C0 1.20727 5.5304 -1.68962 9.61354 1.0707L26.3704 12.3968C29.9508 14.8171 29.9508 20.0501 26.3704 22.4705Z" fill="url(#paint0_linear)"/>
+                        <defs>
+                            <lineargradient id="paint0_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
+                                <stop stop-color="#2594D0"/>
+                                <stop offset="1" stop-color="#F6F6F6"/>
+                            </lineargradient>
+                        </defs>
                     </svg>
-                    <span class="sr-only focus:not-sr-only">Add to playlist</span>
-                </a>
-                <div x-show="!songLinkData.now_playing.pageUrl" :hidden="songLinkData.now_playing.pageUrl">
-                    <svg  class="text-gray-600 inline" aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
+
+                    <svg :class="{ 'hidden': $store.youtube.state !== 1, 'block drop-shadow': $store.youtube.state === 1 }" class="hidden w-8 h-8" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87504 26.0557H3.29168C1.75044 26.0557 0.5 24.8052 0.5 23.264V2.79168C0.5 1.25044 1.75044 0 3.29168 0H8.87504C10.4163 0 11.6667 1.25044 11.6667 2.79168V23.264C11.6667 24.8052 10.4163 26.0557 8.87504 26.0557ZM26.5557 23.264V2.79168C26.5557 1.25044 25.3052 0 23.764 0H18.1806C16.6394 0 15.3889 1.25044 15.3889 2.79168V23.264C15.3889 24.8052 16.6394 26.0557 18.1806 26.0557H23.764C25.3052 26.0557 26.5557 24.8052 26.5557 23.264Z" fill="url(#paint1_linear)"/>
+                        <defs>
+                            <lineargradient id="paint1_linear" x1="-12.5278" y1="13.9939" x2="15.46" y2="40.0496" gradientunits="userSpaceOnUse">
+                                <stop stop-color="#2594D0"/>
+                                <stop offset="1" stop-color="#F6F6F6"/>
+                            </lineargradient>
+                        </defs>
                     </svg>
+                </button>
+
+                <div class="ml-1 min-w-0 flex-1 overflow-hidden" id="now-playing-song-details">
+                    <p x-ref="nowPlayingTitle" class="text-gray-700 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                        <span class="absolute mx-3 pt-1" x-text="songData.now_playing.song.title">--</span></p>
+                    <p x-ref="nowPlayingArtist" class="text-gray-100 h-7 text-shadow-sm font-semibold truncate overflow-clip truncate-and-animate" >
+                        <span class="absolute mx-3 pb-1" x-text="songData.now_playing.song.artist">--</span></p>
                 </div>
-                <button type="button" title="Share song" @click="shareSong($event)" :data-song-id="songData.now_playing.song.id" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
-                    <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
-                    </svg>
-                    <span class="sr-only focus:not-sr-only">Share song</span>
-                </button>
-                <button type="button" title="Love the song" @click="alert('you loved it')" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
-                    <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="currentColor"/>
-                    </svg>
-                    <span class="sr-only focus:not-sr-only">Love the song</span>
-                </button>
+
+                <div class="ml-1 self-start flex justify-center align-center space-x-3">
+                    <a x-show="songLinkData.now_playing.pageUrl" :hidden="!songLinkData.now_playing.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.now_playing?.pageUrl || 'javascript:void(0)'" href="https://song.link" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                        <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
+                        </svg>
+                        <span class="sr-only focus:not-sr-only">Add to playlist</span>
+                    </a>
+                    <div x-show="!songLinkData.now_playing.pageUrl" :hidden="songLinkData.now_playing.pageUrl">
+                        <svg  class="text-gray-600 inline" aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <button type="button" title="Share song" @click="shareSong($event)" :data-song-id="songData.now_playing.song.id" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                        <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
+                        </svg>
+                        <span class="sr-only focus:not-sr-only">Share song</span>
+                    </button>
+                    <button type="button" title="Love the song" @click="alert('you loved it')" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                        <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="currentColor"/>
+                        </svg>
+                        <span class="sr-only focus:not-sr-only">Love the song</span>
+                    </button>
+                </div>
             </div>
+
         </div>
 
-    </div>
-
-    <div class="rounded-lg play-history overflow-hidden">
-        <div class="flex rounded-t-lg justify-start align-center h-8 play-history-header">
-            <h1 class="pl-4 pt-1 text-lg font-bold text-gray-700">Last Played</h1>
-        </div>
-        <div class="overflow-y-scroll rounded-b-lg song-block-container">
-            <div x-show="!songData.song_history" class="h-full w-full flex justify-center items-center bg-gradient-to-b from-transparent to-gray-translucent">
-                <img src="/static/loader-oval.svg" alt="" width="32" height="32">
+        <div class="rounded-lg play-history overflow-hidden">
+            <div class="flex rounded-t-lg justify-start align-center h-8 play-history-header">
+                <h1 class="pl-4 pt-1 text-lg font-bold text-gray-700">Last Played</h1>
             </div>
-            <template x-if="songData.song_history" x-for="(song, index) in songData.song_history" :key="index">
-                <div class="song-block">
-                    <div class="flex w-full align-center space-x-1 p-3 sm:px-4">
-                        <img :aria-labelledby="'song-details-' + song.song.id" class="rounded-sm shadow-lg h-14 w-14" :src="song.song.art" src="/static/default_album_art.png"/>
-                        <div :id="'song-details-' + song.song.id" class="min-w-0 flex-1 overflow-hidden">
-                            <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
-                                <span class="absolute mx-3 pt-1" x-text="song.song.title">--</span></p>
-                            <p class="text-gray-100 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
-                                <span class="absolute mx-3 pb-1" x-text="song.song.artist">--</span></p>
-                        </div>
-                        <div class="self-start flex justify-center align-center space-x-3">
-                            <a x-show="songLinkData?.song_history[index]?.pageUrl" :hidden="!songLinkData?.song_history[index]?.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.song_history[index]?.pageUrl || 'javascript:void(0)'" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
-                                <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
-                                </svg>
-                                <span class="sr-only focus:not-sr-only">Add to playlist</span>
-                            </a>
-                            <div x-show="!songLinkData?.song_history[index]?.pageUrl" :hidden="songLinkData?.song_history[index]?.pageUrl">
-                                <svg aria-hidden="true" class="text-gray-600 inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
-                                </svg>
+            <div class="overflow-y-scroll rounded-b-lg song-block-container">
+                <div x-show="!songData.song_history" class="h-full w-full flex justify-center items-center bg-gradient-to-b from-transparent to-gray-translucent">
+                    <img src="/static/loader-oval.svg" alt="" width="32" height="32">
+                </div>
+                <template x-if="songData.song_history" x-for="(song, index) in songData.song_history" :key="index">
+                    <div class="song-block">
+                        <div class="flex w-full align-center space-x-1 p-3 sm:px-4">
+                            <img :aria-labelledby="`song-details-${index}-${song.song.id}`" class="rounded-sm shadow-lg h-14 w-14" alt="" :src="song.song.art" src="/static/default_album_art.png"/>
+                            <div :id="`song-details-${index}-${song.song.id}`" class="min-w-0 flex-1 overflow-hidden">
+                                <p class="text-gray-700 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
+                                    <span class="absolute mx-3 pt-1" x-text="song.song.title">--</span></p>
+                                <p class="text-gray-100 text-shadow-sm h-7 font-semibold text-left truncate overflow-clip truncate-and-animate">
+                                    <span class="absolute mx-3 pb-1" x-text="song.song.artist">--</span></p>
                             </div>
-                            <button type="button" title="Share song" @click="shareSong($event)" :data-song-id="song.song.id" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
-                                <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
-                                </svg>
-                                <span class="sr-only focus:not-sr-only">Share song</span>
-                            </button>
-                            <button type="button" title="Love the song" @click="alert('you loved it')" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
-                                <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="currentColor"/>
-                                </svg>
-                                <span class="sr-only focus:not-sr-only">Love the song</span>
-                            </button>
+                            <div class="self-start flex justify-center align-center space-x-3">
+                                <a x-show="songLinkData?.song_history[index]?.pageUrl" :hidden="!songLinkData?.song_history[index]?.pageUrl" title="Add to playlist" target="_blank" rel="noreferrer noopener" :href="songLinkData?.song_history[index]?.pageUrl || 'javascript:void(0)'" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                                    <svg aria-hidden="true" class="inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
+                                    </svg>
+                                    <span class="sr-only focus:not-sr-only">Add to playlist</span>
+                                </a>
+                                <div x-show="!songLinkData?.song_history[index]?.pageUrl" :hidden="songLinkData?.song_history[index]?.pageUrl">
+                                    <svg aria-hidden="true" class="text-gray-600 inline" width="21" height="15" viewbox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.571 4.60718H1V6.53618H12.571V4.60718ZM12.571 0.750183H1V2.67918H12.571V0.750183ZM16.428 8.46418V4.60718H14.5V8.46418H10.643V10.3932H14.5V14.2502H16.429V10.3932H20.286V8.46418H16.428ZM1 10.3932H8.714V8.46418H1V10.3932Z" stroke="currentColor" stroke-width="0.8"/>
+                                    </svg>
+                                </div>
+                                <button type="button" title="Share song" @click="shareSong($event)" :data-song-id="song.song.id" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                                    <svg aria-hidden="true" class="inline" width="19" height="15" viewbox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.3512 6.42004L11.3982 0.85104C11.3687 0.817975 11.3322 0.791859 11.2914 0.774568C11.2506 0.757278 11.2065 0.749242 11.1622 0.751041C10.9762 0.759041 10.7402 0.890041 10.7402 1.08904V3.88004C10.7391 3.92209 10.7233 3.96243 10.6955 3.99403C10.6677 4.02563 10.6298 4.04651 10.5882 4.05304C4.66922 4.96004 2.17622 9.39004 1.28922 13.989C1.25522 14.17 1.50022 14.339 1.61422 14.196C2.6252 12.7714 3.96785 11.6144 5.52616 10.825C7.08447 10.0356 8.81157 9.63746 10.5582 9.66504C10.6064 9.67249 10.6505 9.69655 10.6828 9.73308C10.7152 9.76961 10.7337 9.81629 10.7352 9.86504V12.607C10.742 12.6747 10.7677 12.7391 10.8094 12.7929C10.8511 12.8466 10.9071 12.8875 10.971 12.9109C11.0349 12.9343 11.104 12.9392 11.1706 12.9251C11.2371 12.9109 11.2983 12.8784 11.3472 12.831L17.3472 7.16504C17.3956 7.11992 17.4338 7.06502 17.4593 7.00398C17.4849 6.94294 17.4971 6.87717 17.4952 6.81104C17.4988 6.66712 17.4473 6.52727 17.3512 6.42004V6.42004Z" stroke="currentColor" stroke-width="1.16"/>
+                                    </svg>
+                                    <span class="sr-only focus:not-sr-only">Share song</span>
+                                </button>
+                                <button type="button" title="Love the song" @click="alert('you loved it')" class="transform rounded-sm hover:scale-110 motion-reduce:transform-none motion-reduce:hover:ring motion-reduce:hover:ring-white">
+                                    <svg aria-hidden="true" class="inline" width="19" height="17" viewbox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.8482 0.000346126C13.0579 0.00417681 12.2779 0.179954 11.5623 0.515476C10.8467 0.850998 10.2126 1.33823 9.70423 1.94335C9.19593 1.33836 8.56208 0.851203 7.84666 0.515685C7.13125 0.180168 6.3514 0.00432167 5.56123 0.000346126C4.89094 -0.00753544 4.22589 0.119259 3.60551 0.373209C2.98514 0.62716 2.42207 1.0031 1.94971 1.47873C1.47734 1.95436 1.10529 2.52 0.855618 3.14211C0.605946 3.76421 0.483734 4.43012 0.496232 5.10035C0.496232 8.62035 3.62623 11.4443 8.36723 15.8003L9.70423 17.0003L11.0412 15.8003C15.7822 11.4443 18.9122 8.61935 18.9122 5.10035C18.9247 4.43021 18.8025 3.76438 18.5529 3.14234C18.3033 2.5203 17.9314 1.95471 17.4591 1.47909C16.9868 1.00347 16.4239 0.627515 15.8036 0.373504C15.1834 0.119493 14.5184 -0.00740055 13.8482 0.000346126ZM10.2712 14.5783L10.0852 14.7513L9.70423 15.0963L9.32323 14.7513L9.13723 14.5783C7.20602 12.9038 5.39115 11.0996 3.70523 9.17835C2.64916 8.07133 2.01743 6.62727 1.92123 5.10035C1.91334 4.61471 2.00161 4.13231 2.18096 3.68094C2.36031 3.22956 2.62719 2.81813 2.96623 2.47035C3.30649 2.13037 3.71144 1.86203 4.15714 1.68117C4.60285 1.50031 5.08028 1.4106 5.56123 1.41735C6.14466 1.42309 6.71999 1.55451 7.24804 1.80266C7.77609 2.05081 8.24446 2.40986 8.62123 2.85535L9.70623 4.14335L10.7912 2.85535C11.1671 2.40904 11.6352 2.04935 12.1632 1.80096C12.6912 1.55257 13.2667 1.42137 13.8502 1.41635C14.3319 1.41025 14.81 1.50032 15.2565 1.68131C15.7029 1.86229 16.1088 2.13054 16.4502 2.47035C16.7891 2.81831 17.0559 3.22975 17.2354 3.68107C17.4149 4.13239 17.5035 4.6147 17.4962 5.10035C17.3971 6.62871 16.7638 8.07358 15.7072 9.18235C14.0196 11.1021 12.2034 12.905 10.2712 14.5783Z" fill="currentColor"/>
+                                    </svg>
+                                    <span class="sr-only focus:not-sr-only">Love the song</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </template>
+                </template>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 {% endmacro %}

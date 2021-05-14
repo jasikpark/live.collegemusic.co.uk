@@ -71,8 +71,8 @@ export const SearchModal = () => {
       }
       const search = document.getElementById("search-modal");
       const focusableEls = search.querySelectorAll(FOCUSABLE_SELECTORS);
-      firstFocusableEl = focusableEls[0];
-      lastFocusableEl = focusableEls[focusableEls.length - 1];
+      const firstFocusableEl = focusableEls[0];
+      const lastFocusableEl = focusableEls[focusableEls.length - 1];
       if (!search.contains(document.activeElement)) {
         firstFocusableEl.focus();
         $event.preventDefault();

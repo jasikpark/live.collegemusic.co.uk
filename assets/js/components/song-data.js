@@ -173,9 +173,10 @@ export const SongData = () => {
       if (!song) {
         return false;
       }
-      const songLink = (self.$store.songLinks.peek(songId)
-        ? self.$store.songLinks.get(songId).pageUrl
-        : self.$store.youtube.player.getVideoUrl()
+      const songLink = (
+        self.$store.songLinks.peek(songId)
+          ? self.$store.songLinks.get(songId).pageUrl
+          : self.$store.youtube.player.getVideoUrl()
       ).toString();
       console.log({ songLink });
       if (navigator.share) {

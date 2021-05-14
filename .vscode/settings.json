@@ -1,19 +1,19 @@
 {
-    "css.validate": false,
-    "less.validate": false,
-    "scss.validate": false,
-    "cSpell.words": [
-        "Tebkt",
-        "brillon",
-        "collegemusic",
-        "eillah",
-        "kalaido",
-        "mcevoy",
-        "mnemonist",
-        "nowplaying",
-        "playsinline",
-        "ryangjchandler",
-        "santpoort",
-        "tldjs"
-    ]
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "cSpell.words": [
+    "Tebkt",
+    "brillon",
+    "collegemusic",
+    "eillah",
+    "kalaido",
+    "mcevoy",
+    "mnemonist",
+    "nowplaying",
+    "playsinline",
+    "ryangjchandler",
+    "santpoort",
+    "tldjs"
+  ]
 }

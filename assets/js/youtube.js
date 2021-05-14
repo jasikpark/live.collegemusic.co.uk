@@ -50,9 +50,8 @@ const onYouTubeIframeAPIReady = () => {
 // Update `youtube.state` stored within Spruce when it changes
 const onPlayerStateChange = () => {
   console.log("state changed");
-  Spruce.store("youtube").state = Spruce.store(
-    "youtube"
-  ).player.getPlayerState();
+  Spruce.store("youtube").state =
+    Spruce.store("youtube").player.getPlayerState();
 };
 
 const onPlayerReady = () => {

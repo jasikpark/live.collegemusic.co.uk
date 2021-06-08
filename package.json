@@ -38,7 +38,7 @@
     "@types/youtube": "0.0.42",
     "autoprefixer": "10.2.6",
     "concurrently": "6.2.0",
-    "cssnano": "5.0.4",
+    "cssnano": "5.0.5",
     "env-var": "7.0.1",
     "esbuild": "0.12.6",
     "html-minifier": "4.0.0",

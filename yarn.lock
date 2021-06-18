@@ -625,10 +625,10 @@ alphanum-sort@^1.0.2:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-alpinejs@3.0.6:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-3.0.6.tgz#3690f6f81ff25b3606d511d50137787c50462cfe"
-  integrity sha512-/t0FPZvm5SYlOv0VK77SVtapwqvASYVeD4aaWl6Xi6A3ixjnesFEr9WSmQg2D7WrLxnswmLmtN6h/J59NWYH4A==
+alpinejs@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-3.0.7.tgz#a86703f064309c8c79dc1169e85b12ebe294b415"
+  integrity sha512-3LsknHgnMkYg7P2B1rzU+J9ERG0dVL5YkWQ0AeMcRnUDvQ+hLbtRgUeIhygv90zEwtxhQwa2w3WFxE7Dv/9+Rg==
   dependencies:
     "@vue/reactivity" "^3.0.2"
 

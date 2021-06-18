@@ -7,5 +7,12 @@
     ":automergeTypes",
     ":enableVulnerabilityAlerts",
     ":maintainLockFilesMonthly"
-  ]
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["typescript"],
+      "automerge": true
+    }
+  ],
+  "assignees": ["@jasikpark"]
 }

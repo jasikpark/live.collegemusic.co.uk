@@ -25,7 +25,7 @@
     "@sentry/browser": "6.7.1",
     "@sentry/tracing": "6.7.1",
     "@tailwindcss/aspect-ratio": "0.2.1",
-    "alpinejs": "3.0.8",
+    "alpinejs": "3.1.0",
     "focus-visible": "5.2.0",
     "mnemonist": "0.38.3",
     "tailwind-easing-gradients": "1.0.2",

@@ -28,4 +28,9 @@ window.liveCM = {
   },
 };
 
-import "alpinejs";
+// @ts-ignore
+import Alpine from 'alpinejs'
+
+window.Alpine = Alpine
+
+Alpine.start()

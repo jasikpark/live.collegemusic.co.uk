@@ -1,5 +1,5 @@
 {% macro volume(class="hidden sm:flex group space-x-3 justify-end") %}
-<div x-data="liveCM.components.volume()" x-init="startVolume" class="{{ class }}">
+<div x-data="liveCM.components.volume()" x-init="startVolume()" class="{{ class }}">
     <input class="w-3/4" x-model:value="$store.youtube.volume"  @input="adjustVolume" type="range" min="0" max="100" value="25" id="volume">
     <label for="volume">
         <button type="button" @click="toggleMute" class="h-8 w-8 p-1 flex justify-start items-center rounded-full bg-gray-100 bg-opacity-25 text-white hover:bg-purple-400 hover:bg-opacity-25 hover:text-purple-400 focus:bg-purple-400 focus:bg-opacity-25 focus:text-purple-400 active:text-purple-600">

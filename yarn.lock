@@ -543,10 +543,10 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
 
-"@types/youtube@0.0.42":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@types/youtube/-/youtube-0.0.42.tgz#c3568e3e82e04cbd00cac3b66564ebcd21fd9d90"
-  integrity sha512-Nqo3HMPFPcNyZ7HNFZJjpH+N4yXqpxBItG+41e7nL9zednovMRZMXWj36CctSznbBcbj6ucvkJDo5iZ8SKqLIw==
+"@types/youtube@0.0.43":
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/@types/youtube/-/youtube-0.0.43.tgz#13645208a58f418bf561fd4857150aca5691e10c"
+  integrity sha512-GTbW605JFn/vpSPkFk/CMQHoZySjraj5icYfnSW+S8gEXs9hYRNTUjy4ltjFTz7FoB/RMBwscBKmVB2elXwQlQ==
 
 "@vue/reactivity@^3.0.2":
   version "3.1.1"

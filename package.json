@@ -40,7 +40,7 @@
     "concurrently": "6.2.0",
     "cssnano": "5.0.6",
     "env-var": "7.0.1",
-    "esbuild": "0.12.12",
+    "esbuild": "0.12.13",
     "html-minifier": "4.0.0",
     "husky": "6.0.0",
     "jsdoc": "3.6.7",

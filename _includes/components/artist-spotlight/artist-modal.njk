@@ -1,6 +1,6 @@
 {% macro artistModal(class="fixed top-0 left-0 w-screen h-screen max-w-full max-h-full z-10 p-4 sm:p-8 pt-16 pb-8 flex items-start justify-center overflow-y-auto bg-opacity-75 bg-gray-500") %}
     <div x-data="{ ... liveCM.mixins.modal(), buttonId: 'button1', modalId: 'modal1', storeName: 'modal1', showMore: false }" aria-live="polite" :aria-hidden="$store[storeName].open ? 'true' : 'false'" x-show="$store[storeName].open" style="display:none;" class="{{ class }}">
-        <div id="modal1" role="dialog" aria-modal="true" aria-labelledby="artist-modal-header-kalaido" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-full-or-xl p-4 sm:p-8 relative">
+        <div id="modal1" role="dialog" aria-modal="true" aria-labelledby="artist-modal-header-kalaido" @click.away="closeModal(buttonId, storeName, $event)" @keydown.escape.prevent="closeModal(buttonId, storeName, $event)" @keydown.tab.window="tabEvent(modalId, storeName, $event)" class="text-white framing rounded-lg max-w-full-or-xl p-4 sm:p-8 relative overflow-hidden">
             <div class="space-y-6">
                 <div class="flex justify-between flex-wrap pt-8 sm:pt-0 sm:space-x-8 space-y-8 sm:space-y-0">
                     <div class="flex items-center space-x-4">

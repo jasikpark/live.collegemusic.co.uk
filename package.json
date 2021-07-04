@@ -35,7 +35,7 @@
     "@11ty/eleventy": "0.12.1",
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
-    "@types/youtube": "0.0.43",
+    "@types/youtube": "0.0.44",
     "autoprefixer": "10.2.6",
     "concurrently": "6.2.0",
     "cssnano": "5.0.6",

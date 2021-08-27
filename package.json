@@ -29,7 +29,7 @@
     "focus-visible": "5.2.0",
     "mnemonist": "0.38.3",
     "tailwind-easing-gradients": "1.0.2",
-    "tailwindcss": "2.2.7"
+    "tailwindcss": "2.2.8"
   },
   "devDependencies": {
     "@11ty/eleventy": "0.12.1",

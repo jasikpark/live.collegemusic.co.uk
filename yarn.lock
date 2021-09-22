@@ -3704,10 +3704,10 @@ postcss-discard-overridden@^5.0.1:
   resolved "https://registry.yarnpkg.com/postcss-discard-overridden/-/postcss-discard-overridden-5.0.1.tgz#454b41f707300b98109a75005ca4ab0ff2743ac6"
   integrity sha512-Y28H7y93L2BpJhrdUR2SR2fnSsT+3TVx1NmVQLbcnZWwIUpJ7mfcTC6Za9M2PG6w8j7UQRfzxqn8jU2VwFxo3Q==
 
-postcss-focus-visible@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-focus-visible/-/postcss-focus-visible-6.0.0.tgz#c5c5cb618e5be7f58b2fd71d408b56fc1a739c63"
-  integrity sha512-NRBDXFZyVBUs0Jc7Ne/t442xR69SIsSt5ApyUuqVtKovtETJ8CASYcJO0sL5EJgDRGOkj2rsYqr1aA0PR0xERw==
+postcss-focus-visible@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-focus-visible/-/postcss-focus-visible-6.0.1.tgz#b12a859616eca7152976fec24ef337ab29bbc405"
+  integrity sha512-UddLlBmJ78Nu7OrKME70EKxCPBdxTx7pKIyD3GDNRM8Tnq19zmscT9QzsvR8gygz0i0nNUjMtSz4N3AEWZ5R/Q==
 
 postcss-html@^0.36.0:
   version "0.36.0"

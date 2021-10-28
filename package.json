@@ -36,7 +36,7 @@
     "@commitlint/cli": "13.2.1",
     "@commitlint/config-conventional": "13.2.0",
     "@types/youtube": "0.0.46",
-    "autoprefixer": "10.3.7",
+    "autoprefixer": "10.4.0",
     "concurrently": "6.3.0",
     "cssnano": "5.0.8",
     "env-var": "7.0.1",

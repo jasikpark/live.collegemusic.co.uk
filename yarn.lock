@@ -1602,10 +1602,10 @@ entities@~2.0.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.3.tgz#5c487e5742ab93c15abb5da22759b8590ec03b7f"
   integrity sha512-MyoZ0jgnLvB2X3Lg5HqpFmn1kybDiIfEQmKzTb5apr51Rb+T3KdmMiqa70T+bhGnyv7bQ6WMj2QMHpGMmlrUYQ==
 
-env-var@7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/env-var/-/env-var-7.0.1.tgz#a3ec1667bcfa893bb2fc67811a71999993274fc8"
-  integrity sha512-w4iTR5nongmpSgIByBhEaMvuLZOQCyzv4IUbhZnYMSKo/X8tj9E2Wdn4ikzKNFi29K78e5eT64iQkpar+nIYzw==
+env-var@7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/env-var/-/env-var-7.1.1.tgz#c1697f8dfded0b54418dc9bbd78a82119910e57c"
+  integrity sha512-4+vvlq+wwGQNwY/nI3/+Ojc1MKHCmITRJ6VWkQzDtMD6fAEb60ACRUCnlIAonMKW9YzqYmYxbyVu9vTb++yNRg==
 
 errno@^0.1.2:
   version "0.1.8"

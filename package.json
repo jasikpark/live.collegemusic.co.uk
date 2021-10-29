@@ -27,7 +27,7 @@
     "@tailwindcss/aspect-ratio": "0.3.0",
     "alpinejs": "2.8.2",
     "focus-visible": "5.2.0",
-    "mnemonist": "0.38.4",
+    "mnemonist": "0.38.5",
     "tailwind-easing-gradients": "1.0.2",
     "tailwindcss": "2.2.19"
   },

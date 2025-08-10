@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@ryangjchandler/spruce": "2.7.1",
-    "@sentry/browser": "6.15.0",
+    "@sentry/browser": "7.119.1",
     "@sentry/tracing": "6.15.0",
     "@tailwindcss/aspect-ratio": "0.3.0",
     "alpinejs": "2.8.2",
